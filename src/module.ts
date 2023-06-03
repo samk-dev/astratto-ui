@@ -1,19 +1,32 @@
-import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addComponentsDir, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { name, version } from '../package.json'
+import type { AuModuleOptions } from './types'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule<AuModuleOptions>({
   meta: {
-    name: 'astratto-ui',
-    configKey: 'myModule'
+    name,
+    version,
+    configKey: 'astrattoUI',
+    compatibility: {
+      bridge: false,
+      nuxt: '^3.0.0'
+    }
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
-  setup(_options, _nuxt) {
+  defaults: {
+    prefix: 'au'
+  },
+  async setup(options, _nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
+    await addComponentsDir({
+      pathPrefix: false,
+      path: resolver.resolve('runtime/components', 'form-elements'),
+      prefix: `${options.prefix}-icon`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
   }
 })
