@@ -2,7 +2,6 @@
   "name": "@samk-dev/astratto-ui",
   "version": "1.0.0-dev",
   "description": "Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt",
-  "repository": "samk-dev/astratto-ui",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -16,6 +15,21 @@
   "types": "./dist/types.d.ts",
   "files": [
     "dist"
+  ],
+  "repository": "samk-dev/astratto-ui",
+  "author": {
+    "name": "Sam K",
+    "url": "https://samk.dev"
+  },
+  "bugs": "https://github.com/samk-dev/astratto-ui/issues",
+  "keywords": [
+    "nuxt",
+    "nuxtjs",
+    "nuxt3",
+    "nuxt-module",
+    "uikit3",
+    "yoothemes",
+    "ui-library"
   ],
   "scripts": {
     "prepack": "nuxt-module-build",
