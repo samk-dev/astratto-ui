@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": [
+    "@nuxtjs/eslint-config-typescript",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "vue/multi-word-component-names": 0
+  }
+}
