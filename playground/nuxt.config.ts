@@ -1,4 +1,4 @@
 export default defineNuxtConfig({
-  modules: ['../src/module'],
-  myModule: {}
+  modules: ['../src/module', '@samk-dev/nuxt-uikit3']
+  // myModule: {}
 })

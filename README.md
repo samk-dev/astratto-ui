@@ -1,5 +1,7 @@
 # Astratto UI
 
+⚠️ Library still under development ⚠️
+
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
@@ -7,18 +9,20 @@
 
 Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt.
 
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
+It's the successor of my old `private library with support for nuxt2`. I usually use it in clients work.
+
+Nuxt 3 came out so the need for an upgrade is necessary, so why not a re-write and open it for everyone?
+
+<!-- - [✨ &nbsp;Release Notes](/CHANGELOG.md) -->
 
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/astratto-ui?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- Built on top of UIkit 3
+- Very light weight && elegant
+- Modular, use what only what's needed
 
 ## Quick Setup
 
