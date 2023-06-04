@@ -6,7 +6,8 @@ const form = ref({
   email: '',
   password: '',
   age: '',
-  phone: ''
+  phone: '',
+  policy: false
 })
 </script>
 <template>
@@ -71,6 +72,14 @@ const form = ref({
           type="tel"
           :required="true"
           icon="receiver"
+        />
+      </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-checkbox
+          v-model:model-value="form.policy"
+          name="policy"
+          label="I have read and accept your 💩 policy"
         />
       </div>
     </form>

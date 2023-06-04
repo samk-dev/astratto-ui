@@ -1,20 +1,20 @@
-export interface AuLabel {
-  /**
-   * @description assigns the label to an input
-   * */
-  for: string
+export interface PropsBaseInput {
   /**
    * @description label text
    * */
   label: string
   /**
-   * @description if the label is visible or only for screen readers
-   * @default false
+   * @description unique input id, it is used as id and name attrs
    * */
-  srOnly?: boolean
+  name: string
   /**
    * @description if the input related to the label is required
    * @default false
    * */
   required?: boolean
+  /**
+   * @description input disabled state
+   * @default false
+   * */
+  disabled?: boolean
 }
