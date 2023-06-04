@@ -6,22 +6,15 @@ export default {
 
 <script setup lang="ts">
 import { AuLabel } from '../index'
+import type { PropsBaseInput } from '../../../types'
 import { computed, ref } from '#imports'
 
-interface PropsAuInput {
-  /**
-   * @description input label, used as input label, aria-label and screen readers
-   * */
-  label: string
+interface PropsAuInput extends PropsBaseInput {
   /**
    * @description hide the label for browsers but enable it on screen readers
    * @default undefined
    * */
   labelSrVisibility?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * */
-  name: string
   /**
    * @description hint message
    * @default undefined
@@ -57,16 +50,6 @@ interface PropsAuInput {
    * @default undefined
    * */
   width?: 'xsmall' | 'small' | 'medium' | 'large'
-  /**
-   * @description input disabled state
-   * @default false
-   * */
-  disabled?: boolean
-  /**
-   * @description input is required or not
-   * @default false
-   * */
-  required?: boolean
   /**
    * @description validation message will be displayed under the input
    * @default undefined
@@ -155,6 +138,7 @@ const isPassVisible = ref(false)
         :disabled="props.disabled"
         :required="props.required"
         :class="['uk-input', elCls]"
+        :aria-label="props.label"
         @focus="emits('focus')"
         @blur="emits('blur')"
       />
