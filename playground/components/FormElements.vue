@@ -8,6 +8,7 @@ const form = ref({
   age: '',
   phone: '',
   mode: '',
+  comment: '',
   policy: false
 })
 
@@ -100,6 +101,15 @@ const radioGroupOpts = [
           name="radio-group"
           label="Select your option"
           :options="radioGroupOpts"
+        />
+      </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-text-area
+          v-model="form.comment"
+          label="Your comment"
+          name="comment"
+          placeholder="Enter your comment"
         />
       </div>
 
