@@ -4,6 +4,10 @@ export interface PropsBaseInput {
    * */
   label: string
   /**
+   * @description label visibilty
+   * */
+  labelVisibility?: boolean
+  /**
    * @description unique input id, it is used as id and name attrs
    * */
   name: string

@@ -14,7 +14,7 @@ interface PropsAuInput extends PropsBaseInput {
    * @description hide the label for browsers but enable it on screen readers
    * @default undefined
    * */
-  labelSrVisibility?: boolean
+  labelVisibility?: boolean
   /**
    * @description hint message
    * @default undefined
@@ -67,7 +67,7 @@ interface PropsAuInput extends PropsBaseInput {
 }
 
 const props = withDefaults(defineProps<PropsAuInput>(), {
-  labelSrVisibility: undefined,
+  labelVisibility: true,
   name: undefined,
   hint: undefined,
   icon: undefined,
@@ -119,7 +119,7 @@ const isPassVisible = ref(false)
       :for="`id-${props.name}`"
       :label="props.label"
       :required="props.required"
-      :sr-only="props.labelSrVisibility"
+      :sr-only="props.labelVisibility"
       class="uk-display-block"
     />
 
