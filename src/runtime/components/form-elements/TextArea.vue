@@ -24,6 +24,8 @@ const props = withDefaults(defineProps<PropsAuTextArea>(), {
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string): void
+  (e: 'focus'): void
+  (e: 'blur'): void
 }>()
 </script>
 
@@ -48,6 +50,8 @@ const emits = defineEmits<{
       @input="
         emits('update:modelValue', ($event.target as HTMLTextAreaElement).value)
       "
+      @focus="emits('focus')"
+      @blur="emits('blur')"
     />
   </div>
 </template>
