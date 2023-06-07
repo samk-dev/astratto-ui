@@ -8,6 +8,7 @@ const form = ref({
   age: '',
   phone: '',
   mode: '',
+  select: '',
   range: 0,
   comment: '',
   policy: false
@@ -30,6 +31,7 @@ const radioGroupOpts = [
     value: 'C'
   }
 ]
+const selectOpts = ['Option One', 'Option Two']
 </script>
 <template>
   <section>
@@ -93,6 +95,15 @@ const radioGroupOpts = [
           type="tel"
           :required="true"
           icon="receiver"
+        />
+      </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-select
+          v-model="form.select"
+          label="Select Option"
+          name="select-option"
+          :options="selectOpts"
         />
       </div>
 
