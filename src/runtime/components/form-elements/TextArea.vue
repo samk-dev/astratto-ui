@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  inheritAttrs: false
+}
+</script>
+
 <script setup lang="ts">
 import type { PropsBaseInput } from '../../../types'
 import AuLabel from './Label.vue'
@@ -24,6 +30,8 @@ const props = withDefaults(defineProps<PropsAuTextArea>(), {
 
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string): void
+  (e: 'focus'): void
+  (e: 'blur'): void
 }>()
 </script>
 
@@ -36,6 +44,7 @@ const emits = defineEmits<{
     />
 
     <textarea
+      v-bind="$attrs"
       :id="`id-${props.name}`"
       :name="props.name"
       :placeholder="props.placeholder"
@@ -45,9 +54,12 @@ const emits = defineEmits<{
       :maxlength="props.maxLength"
       :wrap="props.wrap"
       :aria-label="props.label"
+      class="uk-textarea"
       @input="
         emits('update:modelValue', ($event.target as HTMLTextAreaElement).value)
       "
+      @focus="emits('focus')"
+      @blur="emits('blur')"
     />
   </div>
 </template>
