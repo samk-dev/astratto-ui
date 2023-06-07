@@ -8,6 +8,7 @@ const form = ref({
   age: '',
   phone: '',
   mode: '',
+  range: 0,
   comment: '',
   policy: false
 })
@@ -93,6 +94,10 @@ const radioGroupOpts = [
           :required="true"
           icon="receiver"
         />
+      </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-range v-model="form.range" name="form-range" label="Slide me" />
       </div>
 
       <div class="uk-form-controls uk-margin">
