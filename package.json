@@ -45,13 +45,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
-    "@nuxt/devtools": "^0.5.5",
+    "@nuxt/devtools": "^0.6.1",
     "@nuxt/kit": "^3.5.3",
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.5.3",
     "@nuxt/test-utils": "^3.5.3",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@samk-dev/nuxt-uikit3": "^1.0.1",
     "@types/node": "^20.2.5",
     "changelogen": "^0.5.3",
     "eslint": "^8.42.0",
@@ -75,5 +74,8 @@
     "*.md": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@samk-dev/nuxt-uikit3": "^1.0.2"
   }
 }
