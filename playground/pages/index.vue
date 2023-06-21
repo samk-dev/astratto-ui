@@ -5,5 +5,7 @@
     </section>
 
     <form-elements />
+
+    <base-components />
   </div>
 </template>
