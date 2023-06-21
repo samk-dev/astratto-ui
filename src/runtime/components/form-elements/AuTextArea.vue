@@ -39,6 +39,7 @@ const emits = defineEmits<{
       :for="`id-${props.name}`"
       :required="props.required"
       :label="props.label"
+      :sr-only="props.srOnly"
     />
 
     <textarea

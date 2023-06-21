@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'AuLegend'
+})
+
 export interface PropsAuLegend {
   /**
    * @description legend text

@@ -77,7 +77,7 @@ interface EmitsAuInput {
 }
 
 const props = withDefaults(defineProps<PropsAuInput>(), {
-  showLabel: false,
+  srOnly: true,
   leftIcon: undefined,
   rightIcon: undefined,
   rightIconClickable: false,
@@ -132,7 +132,7 @@ const slugify = useSlugify
       :for="`id-${slugify(props.label)}`"
       :label="props.label"
       :required="props.required"
-      :visible="props.showLabel"
+      :sr-only="props.srOnly"
       class="uk-display-block"
     />
 

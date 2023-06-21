@@ -16,7 +16,7 @@ export interface PropsAuLabel {
    * @description if the label is visible or only for screen readers
    * @default false
    * */
-  visible?: boolean
+  srOnly?: boolean
   /**
    * @description if the input related to the label is required
    * @default false
@@ -25,7 +25,7 @@ export interface PropsAuLabel {
 }
 
 const props = withDefaults(defineProps<PropsAuLabel>(), {
-  visible: false,
+  srOnly: true,
   required: false
 })
 </script>
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="['uk-form-label', !props.visible ? 'uk-sr-only' : '']"
+    :class="['uk-form-label', props.srOnly ? 'uk-sr-only' : '']"
     :aria-label="props.label"
   >
     <slot>

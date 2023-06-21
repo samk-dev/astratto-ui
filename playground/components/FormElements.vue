@@ -136,12 +136,11 @@ const selectGroupOpts = [
         class="uk-form-stack uk-width-expand uk-flex uk-flex-wrap uk-flex-top"
         style="gap: 15px"
       >
-        <fieldset
+        <au-fieldset
+          legend="Inputs"
           class="uk-form-controls uk-flex uk-flex-column"
           style="gap: 20px"
         >
-          <legend>Inputs</legend>
-
           <div>
             <au-input
               v-model="form.text"
@@ -153,9 +152,18 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.email"
-              label="Email"
+              label="Email Input"
               placeholder="Email Input"
               type="email"
+            />
+          </div>
+
+          <div>
+            <au-input
+              v-model="form.number"
+              label="Number"
+              placeholder="Number Input"
+              type="number"
             />
           </div>
 
@@ -191,18 +199,17 @@ const selectGroupOpts = [
             <au-input
               v-model="form.withVisibleLabel"
               label="With Visible Label"
-              show-label
-              placeholder="Visible Label and"
+              :sr-only="false"
+              placeholder="Visible Label"
             />
           </div>
-        </fieldset>
+        </au-fieldset>
 
-        <fieldset
+        <au-fieldset
+          legend="Inputs state"
           class="uk-form-controls uk-flex uk-flex-column"
           style="gap: 20px"
         >
-          <legend>Inputs state</legend>
-
           <div>
             <au-input
               v-model="form.disabled"
@@ -248,14 +255,13 @@ const selectGroupOpts = [
               validationtype="success"
             />
           </div>
-        </fieldset>
+        </au-fieldset>
 
-        <fieldset
+        <au-fieldset
+          legend="Native Date time"
           class="uk-form-controls uk-flex uk-flex-column"
           style="gap: 20px"
         >
-          <legend>Date time</legend>
-
           <div>
             <au-input
               v-model="form.date"
@@ -300,14 +306,13 @@ const selectGroupOpts = [
               type="week"
             />
           </div>
-        </fieldset>
+        </au-fieldset>
 
-        <fieldset
+        <au-fieldset
+          legend="Selection"
           class="uk-form-controls uk-flex uk-flex-column"
           style="gap: 20px"
         >
-          <legend>Selection</legend>
-
           <div>
             <au-select
               v-model="form.select"
@@ -331,7 +336,7 @@ const selectGroupOpts = [
               v-model="form.radioGroup"
               name="radio-group"
               label="Select your option"
-              :show-label="true"
+              :sr-only="true"
               :options="radioGroupOpts"
             />
           </div>
@@ -340,11 +345,9 @@ const selectGroupOpts = [
             v-model="form.checkbox"
             label="I have read and accept your 💩 policy"
           />
-        </fieldset>
+        </au-fieldset>
 
-        <fieldset>
-          <legend>Decoration</legend>
-
+        <au-fieldset legend="Decoration">
           <div>
             <au-input
               v-model="form.withLeftIcon"
@@ -373,19 +376,8 @@ const selectGroupOpts = [
               @right-icon-click="handleClickableIcon"
             />
           </div>
-        </fieldset>
-      </form>
-    </div>
+        </au-fieldset>
 
-      <div class="uk-form-controls uk-margin">
-        <au-checkbox
-          v-model:model-value="form.policy"
-          name="policy"
-          label="I have read and accept your 💩 policy"
-        />
-      </div>
-
-      <div class="uk-form-controls uk-margin">
         <au-fieldset legend="Legend">
           <template #legend>
             <span>Legend Slot</span>
@@ -393,7 +385,7 @@ const selectGroupOpts = [
           </template>
           <div class="uk-form-controls uk-margin">
             <au-input
-              v-model="form.username"
+              v-model="form.text"
               name="username"
               class="uk-width-medium"
               label="Username"
@@ -404,8 +396,8 @@ const selectGroupOpts = [
 
           <div class="uk-form-controls uk-margin">
             <au-input
-              v-model="form.email"
-              name="email"
+              v-model="form.text"
+              name="emailaddress"
               class="uk-width-medium"
               label="Email"
               placeholder="Enter your email"
@@ -415,7 +407,7 @@ const selectGroupOpts = [
             />
           </div>
         </au-fieldset>
-      </div>
-    </form>
+      </form>
+    </div>
   </section>
 </template>

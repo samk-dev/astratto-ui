@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { AuLegend } from '../index'
+import AuLegend from './AuLegend.vue'
+
+defineOptions({
+  name: 'AuFieldset'
+})
 
 export interface PropsAuFieldset {
   /**
