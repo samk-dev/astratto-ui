@@ -38,7 +38,6 @@ export interface PropsBaseInput {
    * */
   validationtype?: 'danger' | 'success'
 }
-
 export type PropsBaseInputOption = {
   key: string | number
   value: string | number

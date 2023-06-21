@@ -1,3 +1,6 @@
+export { default as AuButton } from './base/AuButton.vue'
+export { default as AuIcon } from './base/AuIcon.vue'
+
 export { default as AuCheckbox } from './form-elements/AuCheckbox.vue'
 export { default as AuFieldset } from './form-elements/AuFieldset.vue'
 export { default as AuInput } from './form-elements/AuInput.vue'
