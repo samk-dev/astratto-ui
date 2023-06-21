@@ -1,12 +1,10 @@
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
-
 <script setup lang="ts">
 import type { PropsBaseInput } from '../../../types'
-import AuLabel from './Label.vue'
+import AuLabel from './AuLabel.vue'
+
+defineOptions({
+  name: 'AuTextArea'
+})
 
 interface PropsAuTextArea extends PropsBaseInput {
   placeholder: string

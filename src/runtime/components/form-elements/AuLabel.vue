@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'AuLabel'
+})
+
 export interface PropsAuLabel {
   /**
    * @description assigns the label to an input
@@ -12,7 +16,7 @@ export interface PropsAuLabel {
    * @description if the label is visible or only for screen readers
    * @default false
    * */
-  srOnly?: boolean
+  visible?: boolean
   /**
    * @description if the input related to the label is required
    * @default false
@@ -21,7 +25,7 @@ export interface PropsAuLabel {
 }
 
 const props = withDefaults(defineProps<PropsAuLabel>(), {
-  srOnly: false,
+  visible: false,
   required: false
 })
 </script>
@@ -29,7 +33,7 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="['uk-form-label', props.srOnly ? 'uk-sr-only' : '']"
+    :class="['uk-form-label', !props.visible ? 'uk-sr-only' : '']"
     :aria-label="props.label"
   >
     <slot>
@@ -38,3 +42,15 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
     </slot>
   </label>
 </template>
+
+<style scoped>
+.uk-sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+</style>

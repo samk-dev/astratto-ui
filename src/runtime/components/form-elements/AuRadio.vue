@@ -1,12 +1,12 @@
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
-
 <script setup lang="ts">
 import type { PropsBaseInput } from '../../../types'
+import { useSlugify } from '../../utils'
 import { computed } from '#imports'
+
+defineOptions({
+  name: 'AuRadio',
+  inheritAttrs: false
+})
 
 interface PropsRadio extends PropsBaseInput {
   options: any
@@ -16,23 +16,33 @@ interface PropsRadio extends PropsBaseInput {
   modelValue: string | number | boolean | object
 }
 
+interface EmitsAuRadio {
+  (
+    e: 'update:modelValue',
+    value: PropsRadio['modelValue']
+  ): PropsRadio['modelValue']
+
+  (e: 'focus'): void
+
+  (e: 'blur'): void
+}
+
 const props = withDefaults(defineProps<PropsRadio>(), {
   disabled: false,
   required: false
 })
 
-const emits = defineEmits<{
-  (e: 'update:modelValue', value: PropsRadio['modelValue']): void
-}>()
+const emit = defineEmits<EmitsAuRadio>()
 
 const selectedVal = computed({
   get() {
     return props.modelValue
   },
   set(val) {
-    emits('update:modelValue', val)
+    emit('update:modelValue', val)
   }
 })
+const slugify = useSlugify
 </script>
 
 <template>
@@ -42,15 +52,20 @@ const selectedVal = computed({
   >
     <label v-for="(option, i) of options" :key="i">
       <input
-        :id="`id-${option.id}`"
+        :id="`id-${slugify(option.value)}`"
         v-model="selectedVal"
-        :name="option.id"
+        :name="option.value"
         :value="option.value"
         type="radio"
         class="uk-radio"
+        @change="
+          emit('update:modelValue', ($event.target as HTMLInputElement).value)
+        "
+        @focus="emit('focus')"
+        @blur="emit('blur')"
       />
       <slot>
-        {{ option.label }}
+        {{ option.value }}
       </slot>
     </label>
   </div>

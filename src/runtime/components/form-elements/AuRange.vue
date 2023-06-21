@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { PropsBaseInput } from '../../../types'
-import { AuLabel } from '../index'
+import AuLabel from './AuLabel.vue'
+
+defineOptions({
+  name: 'AuRange',
+  inheritAttrs: false
+})
 
 interface PropsAuRange extends PropsBaseInput {
   min?: number
@@ -31,6 +36,7 @@ const emits = defineEmits<{
       :required="props.required"
     />
     <input
+      v-bind="$attrs"
       :id="`id-${props.name}`"
       :name="props.name"
       type="range"
