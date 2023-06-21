@@ -7,7 +7,7 @@ export interface PropsBaseInput {
    * @description label visibility, it hides the label for browsers and active for screen readers
    * @default false
    * */
-  showLabel?: boolean
+  srOnly?: boolean
   /**
    * @description unique input id, it is used as id and name attrs
    * */

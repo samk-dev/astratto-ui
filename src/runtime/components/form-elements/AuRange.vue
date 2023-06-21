@@ -15,6 +15,7 @@ interface PropsAuRange extends PropsBaseInput {
 }
 
 const props = withDefaults(defineProps<PropsAuRange>(), {
+  srOnly: false,
   min: 0,
   max: 10,
   step: 1,
@@ -34,6 +35,7 @@ const emits = defineEmits<{
       :for="`id-${props.name}`"
       :label="props.label"
       :required="props.required"
+      :sr-only="props.srOnly"
     />
     <input
       v-bind="$attrs"

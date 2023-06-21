@@ -48,7 +48,7 @@ const slugify = useSlugify
     <au-label
       :for="`id-${slugify(props.label)}`"
       :label="props.label"
-      :visible="props.labelVisibility"
+      :sr-only="props.labelVisibility"
       :required="props.required"
       :aria-required="props.required"
     />
