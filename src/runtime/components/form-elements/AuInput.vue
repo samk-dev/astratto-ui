@@ -1,31 +1,32 @@
-<script lang="ts">
-export default {
-  inheritAttrs: false
-}
-</script>
-
 <script setup lang="ts">
-import { AuLabel } from '../index'
 import type { PropsBaseInput } from '../../../types'
+import { useSlugify } from '../../utils'
+import AuLabel from './AuLabel.vue'
 import { computed, ref } from '#imports'
+
+defineOptions({
+  name: 'AuInput',
+  inheritAttrs: false
+})
 
 interface PropsAuInput extends PropsBaseInput {
   /**
-   * @description hide the label for browsers but enable it on screen readers
-   * @default undefined
-   * */
-  labelSrVisibility?: boolean
-  /**
-   * @description hint message
-   * @default undefined
-   * */
-  hint?: string
-  /**
-   * @description input icon, uses uikit icons
+   * @description input left icon, uses uikit icons
    * @example <au-input icon="heart" />
    * @default undefined
    * */
-  icon?: string
+  leftIcon?: string
+  /**
+   * @description input right icon, uses uikit icons
+   * @example <au-input icon="heart" />
+   * @default undefined
+   * */
+  rightIcon?: string
+  /**
+   * @description render the icon as clickable element
+   * @default false
+   * */
+  rightIconClickable?: boolean
   /**
    * @description input placeholder
    * */
@@ -39,7 +40,19 @@ interface PropsAuInput extends PropsBaseInput {
    * @description input HTML type
    * @default text
    * */
-  type?: 'text' | 'email' | 'number' | 'password' | 'search' | 'tel'
+  type?:
+    | 'text'
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'date'
+    | 'time'
+    | 'datetime-local'
+    | 'month'
+    | 'week'
+    | 'url'
   /**
    * @description applies uikit input size class
    * @default undefined
@@ -50,27 +63,24 @@ interface PropsAuInput extends PropsBaseInput {
    * @default undefined
    * */
   width?: 'xsmall' | 'small' | 'medium' | 'large'
-  /**
-   * @description validation message will be displayed under the input
-   * @default undefined
-   * */
-  validationMsg?: string
-  /**
-   * @description validation type that will style borders and text
-   * @default undefined
-   * */
-  validationtype?: 'danger' | 'success'
+  loading?: boolean
   /**
    * @description input model value
    * */
   modelValue: string | number
 }
+interface EmitsAuInput {
+  (e: 'update:modelValue', value: string | number): void
+  (e: 'focus'): void
+  (e: 'blur'): void
+  (e: 'rightIconClick'): void
+}
 
 const props = withDefaults(defineProps<PropsAuInput>(), {
-  labelSrVisibility: undefined,
-  name: undefined,
-  hint: undefined,
-  icon: undefined,
+  showLabel: false,
+  leftIcon: undefined,
+  rightIcon: undefined,
+  rightIconClickable: false,
   autocomplete: 'off',
   type: 'text',
   size: undefined,
@@ -78,13 +88,10 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
   disabled: false,
   required: false,
   validationMsg: undefined,
-  validationtype: undefined
+  validationtype: undefined,
+  loading: false
 })
-const emits = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void
-  (e: 'focus'): void
-  (e: 'blur'): void
-}>()
+const emits = defineEmits<EmitsAuInput>()
 
 const inputValue = computed({
   get() {
@@ -111,26 +118,36 @@ const elCls = computed(() => {
 })
 
 const isPassVisible = ref(false)
+
+const handleRightIconClick = () => {
+  if (props.rightIconClickable) emits('rightIconClick')
+}
+
+const slugify = useSlugify
 </script>
 
 <template>
   <div>
     <au-label
-      :for="`id-${props.name}`"
+      :for="`id-${slugify(props.label)}`"
       :label="props.label"
       :required="props.required"
-      :sr-only="props.labelSrVisibility"
+      :visible="props.showLabel"
       class="uk-display-block"
     />
 
     <div class="uk-inline-block">
-      <span v-if="props.icon" class="uk-form-icon" :data-uk-icon="props.icon" />
+      <span
+        v-if="props.leftIcon"
+        class="uk-form-icon"
+        :data-uk-icon="props.leftIcon"
+      />
 
       <input
         v-bind="$attrs"
-        :id="`id-${props.name}`"
+        :id="`id-${slugify(props.label)}`"
         v-model="inputValue"
-        :name="props.name"
+        :name="slugify(props.label)"
         :placeholder="props.placeholder"
         :autocomplete="props.autocomplete"
         :value="inputValue"
@@ -142,12 +159,28 @@ const isPassVisible = ref(false)
         @focus="emits('focus')"
         @blur="emits('blur')"
       />
+
       <a
-        v-if="props.type === 'password'"
+        v-if="!props.loading && props.type === 'password'"
         class="uk-form-icon uk-form-icon-flip"
         href=""
         :data-uk-icon="!isPassVisible ? 'eye' : 'eye-slash'"
         @click.prevent="isPassVisible = !isPassVisible"
+      />
+
+      <component
+        :is="props.rightIconClickable ? 'a' : 'span'"
+        v-if="props.type !== 'password' && props.rightIcon && !props.loading"
+        class="uk-form-icon uk-form-icon-flip"
+        :href="props.rightIconClickable"
+        :data-uk-icon="props.rightIcon"
+        @click.prevent="handleRightIconClick"
+      />
+
+      <span
+        v-if="props.loading"
+        data-uk-spinner="ratio: 0.5"
+        class="uk-form-icon uk-form-icon-flip"
       />
     </div>
 

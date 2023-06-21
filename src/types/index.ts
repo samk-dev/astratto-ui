@@ -1,3 +1,3 @@
-export { AuModuleOptions } from './module'
+export type { AuModuleOptions } from './module'
 // form elements
-export { PropsBaseInput } from './components'
+export type { PropsBaseInput } from './components'
