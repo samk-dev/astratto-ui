@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AuIcon from './AuIcon.vue'
 import { computed } from '#imports'
 
 defineOptions({
@@ -90,9 +91,10 @@ const elCls = computed(() => {
       elCls.size
     ]"
   >
-    <span
+    <au-icon
       v-if="props.leadingIcon"
-      :data-uk-icon="`icon: ${props.leadingIcon}; ratio: ${elCls.iconSize}`"
+      :name="props.leadingIcon"
+      :ratio="elCls.iconSize"
       style="margin-right: 0.5rem"
     />
 
@@ -103,9 +105,10 @@ const elCls = computed(() => {
       </slot>
     </span>
 
-    <span
+    <au-icon
       v-if="props.trailingIcon"
-      :data-uk-icon="`icon: ${props.trailingIcon}; ratio: ${elCls.iconSize}`"
+      :name="props.trailingIcon"
+      :ratio="elCls.iconSize"
       style="margin-left: 0.5rem"
     />
   </button>
