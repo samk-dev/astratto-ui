@@ -376,5 +376,46 @@ const selectGroupOpts = [
         </fieldset>
       </form>
     </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-checkbox
+          v-model:model-value="form.policy"
+          name="policy"
+          label="I have read and accept your 💩 policy"
+        />
+      </div>
+
+      <div class="uk-form-controls uk-margin">
+        <au-fieldset legend="Legend">
+          <template #legend>
+            <span>Legend Slot</span>
+            <span data-uk-icon="arrow-right"></span>
+          </template>
+          <div class="uk-form-controls uk-margin">
+            <au-input
+              v-model="form.username"
+              name="username"
+              class="uk-width-medium"
+              label="Username"
+              placeholder="Enter your username"
+              :required="true"
+            />
+          </div>
+
+          <div class="uk-form-controls uk-margin">
+            <au-input
+              v-model="form.email"
+              name="email"
+              class="uk-width-medium"
+              label="Email"
+              placeholder="Enter your email"
+              type="email"
+              :required="true"
+              icon="mail"
+            />
+          </div>
+        </au-fieldset>
+      </div>
+    </form>
   </section>
 </template>
