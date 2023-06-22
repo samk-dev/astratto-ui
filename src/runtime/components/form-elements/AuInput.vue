@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PropsBaseInput } from '../../../types'
 import { useSlugify } from '../../utils'
 import AuLabel from './AuLabel.vue'
 import { computed, ref } from '#imports'
@@ -9,7 +8,46 @@ defineOptions({
   inheritAttrs: false
 })
 
-interface PropsAuInput extends PropsBaseInput {
+interface PropsAuInput {
+  /**
+   * @description label text
+   * */
+  label: string
+  /**
+   * @description label visibility, it hides the label for browsers and active for screen readers
+   * @default false
+   * */
+  srOnly?: boolean
+  /**
+   * @description unique input id, it is used as id and name attrs
+   * @default the label prop slugfied
+   * */
+  name?: string
+  /**
+   * @description hint message
+   * @default undefined
+   * */
+  hint?: string
+  /**
+   * @description if the input related to the label is required
+   * @default false
+   * */
+  required?: boolean
+  /**
+   * @description input disabled state
+   * @default false
+   * */
+  disabled?: boolean
+  /**
+   * @description validation message will be displayed under the input
+   * @default undefined
+   * */
+  validationMsg?: string
+  /**
+   * @description validation type that will style borders and text
+   * @default undefined
+   * */
+  validationtype?: 'danger' | 'success'
   /**
    * @description input left icon, uses uikit icons
    * @example <au-input icon="heart" />
@@ -70,7 +108,7 @@ interface PropsAuInput extends PropsBaseInput {
   modelValue: string | number
 }
 interface EmitsAuInput {
-  (e: 'update:modelValue', value: string | number): void
+  (e: 'update:modelValue', value: string | number): string | number
   (e: 'focus'): void
   (e: 'blur'): void
   (e: 'rightIconClick'): void
@@ -87,6 +125,7 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
   width: undefined,
   disabled: false,
   required: false,
+  hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
   loading: false
