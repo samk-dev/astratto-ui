@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<PropsAuFieldset>(), {
 </script>
 
 <template>
-  <fieldset :class="['uk-fieldset', props.srOnly ? 'uk-sr-only' : '']">
+  <fieldset :class="['au-fieldset', props.srOnly ? 'au-sr-only' : '']">
     <slot name="legend">
       <au-legend v-if="legend" :label="legend" />
     </slot>

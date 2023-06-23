@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<PropsAuIcon>(), {
 <template>
   <component
     :is="props.tag"
-    :data-uk-icon="`icon: ${props.name}; ratio: ${props.ratio}`"
+    :data-au-icon="`icon: ${props.name}; ratio: ${props.ratio}`"
     aria-hidden
   />
 </template>

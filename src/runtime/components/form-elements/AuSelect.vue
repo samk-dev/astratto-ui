@@ -94,7 +94,7 @@ const slugify = useSlugify
       v-bind="$attrs"
       :id="`id-${slugify(props.label)}`"
       :name="slugify(props.label)"
-      class="uk-select"
+      class="au-select"
       :aria-label="props.label"
       @input="
         emits('update:modelValue', ($event.target as HTMLSelectElement).value)

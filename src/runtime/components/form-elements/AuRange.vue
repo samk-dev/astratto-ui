@@ -87,7 +87,7 @@ const emits = defineEmits<{
       :aria-label="props.label"
       :required="props.required"
       :disabled="props.disabled"
-      class="uk-range"
+      class="au-range"
       @change="
         emits('update:modelValue', ($event.target as HTMLInputElement).value)
       "
