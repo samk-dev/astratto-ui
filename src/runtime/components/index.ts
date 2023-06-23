@@ -1,4 +1,7 @@
+export { default as AuAlert } from './base/AuAlert.vue'
 export { default as AuButton } from './base/AuButton.vue'
+export { default as AuDescriptionList } from './base/AuDescriptionList.vue'
+export { default as AuHeading } from './base/AuHeading.vue'
 export { default as AuIcon } from './base/AuIcon.vue'
 
 export { default as AuCheckbox } from './form-elements/AuCheckbox.vue'
@@ -10,3 +13,7 @@ export { default as AuRadio } from './form-elements/AuRadio.vue'
 export { default as AuRange } from './form-elements/AuRange.vue'
 export { default as AuSelect } from './form-elements/AuSelect.vue'
 export { default as AuTextArea } from './form-elements/AuTextArea.vue'
+
+export { default as AuContainer } from './layout/AuContainer.vue'
+export { default as AuGrid } from './layout/AuGrid.vue'
+export { default as AuSection } from './layout/AuSection.vue'
