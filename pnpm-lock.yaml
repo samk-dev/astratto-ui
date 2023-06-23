@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@samk-dev/nuxt-uikit3':
     specifier: ^1.0.3
@@ -18,7 +14,7 @@ devDependencies:
     version: 17.6.5
   '@nuxt/devtools':
     specifier: ^0.6.1
-    version: 0.6.1(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9)
+    version: 0.6.3(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9)
   '@nuxt/kit':
     specifier: ^3.5.3
     version: 3.5.3(rollup@3.25.1)
@@ -1045,7 +1041,7 @@ packages:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.5.2
+      semver: 7.5.3
       tar: 6.1.15
     transitivePeerDependencies:
       - encoding
@@ -1079,7 +1075,7 @@ packages:
     resolution: {integrity: sha512-7kZUAaLscfgbwBQRbvdMYaZOWyMEcPTH/tJjnyAWJ/dvvs9Ef+CERx/qJb9GExJpl1qipaDGn7KqHnFGGixd0w==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /@npmcli/git@4.1.0:
@@ -1092,7 +1088,7 @@ packages:
       proc-log: 3.0.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.5.2
+      semver: 7.5.3
       which: 3.0.1
     transitivePeerDependencies:
       - bluebird
@@ -1135,22 +1131,6 @@ packages:
   /@nuxt/devalue@2.0.2:
     resolution: {integrity: sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==}
 
-  /@nuxt/devtools-kit@0.6.1(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9):
-    resolution: {integrity: sha512-4x4f9MynFGRajUx91sh5GuDQGoZlmDxF4JOhTN/s90x5wkjRLN4hIb988E7NZ2ak3iH4+DTh7VQWZTBfLaBqlA==}
-    peerDependencies:
-      nuxt: ^3.5.1
-      vite: '*'
-    dependencies:
-      '@nuxt/kit': 3.5.3(rollup@3.25.1)
-      '@nuxt/schema': 3.5.3(rollup@3.25.1)
-      execa: 7.1.1
-      nuxt: 3.5.3(@types/node@20.2.5)(eslint@8.42.0)(rollup@3.25.1)(typescript@5.1.3)
-      vite: 4.3.9(@types/node@20.2.5)
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
-
   /@nuxt/devtools-kit@0.6.3(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9):
     resolution: {integrity: sha512-YRGyM7Kz3LH4SyaCFU1KtwN8d3vxUovJ/pWWXxJp9BCAHg/6kWtAllsLgyPAkt03lU249FJTJ23RBDOkqzmegA==}
     peerDependencies:
@@ -1165,10 +1145,9 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: false
 
-  /@nuxt/devtools-wizard@0.6.1:
-    resolution: {integrity: sha512-eQVYNZHw8wrVyZXeQpTAv4jc08VVNV7Db2D2KmMO08DipkrCqzCf7c6sFtcSmNIlGArm6lcObszTOpdZPhWTHw==}
+  /@nuxt/devtools-wizard@0.6.3:
+    resolution: {integrity: sha512-oZbv0HZizfKlD0f+AX6WgWgSqDnQfTXVReF+9oSaZ2Gi2jUe8dGLv3EyMfJRTa3vvu0cvuRKoDvl5FjbAnpMhQ==}
     hasBin: true
     dependencies:
       consola: 3.1.0
@@ -1181,19 +1160,19 @@ packages:
       pkg-types: 1.0.3
       prompts: 2.4.2
       rc9: 2.1.1
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
-  /@nuxt/devtools@0.6.1(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9):
-    resolution: {integrity: sha512-nz1FCJ2WViQWKUG9dTjwib/XZ7/dzeaP/r+++Y7W6a70y3ME5q58YldSNhNKJZXcbYWAU5UFzsoaslB5SWrlhw==}
+  /@nuxt/devtools@0.6.3(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9):
+    resolution: {integrity: sha512-ToQLbVtNtbr7Px/HDyKDDmZl373LkYQsRnKMzpgk/dTfEwZIpgneUHqIL/1Whxo7ST8ayVJ9Z35PmiOsm1mjgQ==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.5.1
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.6.1(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9)
-      '@nuxt/devtools-wizard': 0.6.1
-      '@nuxt/kit': 3.5.3(rollup@3.25.1)
+      '@nuxt/devtools-kit': 0.6.3(nuxt@3.5.3)(rollup@3.25.1)(vite@4.3.9)
+      '@nuxt/devtools-wizard': 0.6.3
+      '@nuxt/kit': 3.6.0(rollup@3.25.1)
       birpc: 0.2.12
       boxen: 7.1.0
       consola: 3.1.0
@@ -1217,7 +1196,7 @@ packages:
       picocolors: 1.0.0
       pkg-types: 1.0.3
       rc9: 2.1.1
-      semver: 7.5.2
+      semver: 7.5.3
       sirv: 2.0.3
       unimport: 3.0.8(rollup@3.25.1)
       vite: 4.3.9(@types/node@20.2.5)
@@ -1284,7 +1263,6 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: false
 
   /@nuxt/module-builder@0.4.0(@nuxt/kit@3.5.3)(nuxi@3.5.3):
     resolution: {integrity: sha512-B+UAYgFV1Hkc2ZcD7GaiKZ3SNHhyxFlXzZoBWTc9ulE0Z/+rq6RTa9fNm13BZyGhVhDCl5FN/wF/yYa1O/D2iw==}
@@ -1338,13 +1316,12 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: false
 
   /@nuxt/telemetry@2.2.0(rollup@3.25.1):
     resolution: {integrity: sha512-Z2UmPkBy5WjxvHKuUcl1X6vKWnIyWSP+9UGde1F+MzzZxYgAQybFud1uL2B3KCowxZdoqT1hd2WklV7EtyCwrQ==}
     hasBin: true
     dependencies:
-      '@nuxt/kit': 3.5.3(rollup@3.25.1)
+      '@nuxt/kit': 3.6.0(rollup@3.25.1)
       chalk: 5.2.0
       ci-info: 3.8.0
       consola: 3.1.0
@@ -1820,7 +1797,7 @@ packages:
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0(typescript@5.1.3)
       typescript: 5.1.3
     transitivePeerDependencies:
@@ -1894,7 +1871,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.2
+      semver: 7.5.3
       tsutils: 3.21.0(typescript@5.1.3)
       typescript: 5.1.3
     transitivePeerDependencies:
@@ -1915,7 +1892,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.60.0(typescript@5.1.3)
       eslint: 8.42.0
       eslint-scope: 5.1.1
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2611,7 +2588,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /bundle-name@3.0.0:
@@ -2953,7 +2930,7 @@ packages:
       js-string-escape: 1.0.1
       lodash: 4.17.21
       md5-hex: 3.0.1
-      semver: 7.5.2
+      semver: 7.5.3
       well-known-symbols: 2.0.0
     dev: true
 
@@ -3813,7 +3790,7 @@ packages:
       is-core-module: 2.12.1
       minimatch: 3.1.2
       resolve: 1.22.2
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /eslint-plugin-node@11.1.0(eslint@8.42.0):
@@ -3876,7 +3853,7 @@ packages:
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
       safe-regex: 2.1.1
-      semver: 7.5.2
+      semver: 7.5.3
       strip-indent: 3.0.0
     dev: true
 
@@ -3891,7 +3868,7 @@ packages:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.13
-      semver: 7.5.2
+      semver: 7.5.3
       vue-eslint-parser: 9.3.1(eslint@8.42.0)
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -5850,7 +5827,7 @@ packages:
       rollup: 3.25.1
       rollup-plugin-visualizer: 5.9.2(rollup@3.25.1)
       scule: 1.0.0
-      semver: 7.5.2
+      semver: 7.5.3
       serve-placeholder: 2.0.1
       serve-static: 1.15.0
       source-map-support: 0.5.21
@@ -5921,7 +5898,7 @@ packages:
       nopt: 6.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.5.2
+      semver: 7.5.3
       tar: 6.1.15
       which: 2.0.2
     transitivePeerDependencies:
@@ -5961,7 +5938,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.12.1
-      semver: 7.5.2
+      semver: 7.5.3
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -5971,7 +5948,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.1
       is-core-module: 2.12.1
-      semver: 7.5.2
+      semver: 7.5.3
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -5994,7 +5971,7 @@ packages:
     resolution: {integrity: sha512-dH3GmQL4vsPtld59cOn8uY0iOqRmqKvV+DLGwNXV/Q7MDgD2QfOADWd/mFXcIE5LVhYYGjA3baz6W9JneqnuCw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /npm-normalize-package-bin@3.0.1:
@@ -6008,7 +5985,7 @@ packages:
     dependencies:
       hosted-git-info: 6.1.1
       proc-log: 3.0.0
-      semver: 7.5.2
+      semver: 7.5.3
       validate-npm-package-name: 5.0.0
     dev: true
 
@@ -6026,7 +6003,7 @@ packages:
       npm-install-checks: 6.1.1
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 10.1.0
-      semver: 7.5.2
+      semver: 7.5.3
     dev: true
 
   /npm-registry-fetch@14.0.5:
@@ -7284,7 +7261,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: false
 
   /send@0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
@@ -8303,7 +8279,7 @@ packages:
       lodash.debounce: 4.0.8
       lodash.pick: 4.4.0
       npm-run-path: 4.0.1
-      semver: 7.5.2
+      semver: 7.5.3
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.1
       typescript: 5.1.3
@@ -8457,7 +8433,7 @@ packages:
     engines: {vscode: ^1.52.0}
     dependencies:
       minimatch: 3.1.2
-      semver: 7.5.2
+      semver: 7.5.3
       vscode-languageserver-protocol: 3.16.0
 
   /vscode-languageserver-protocol@3.16.0:
@@ -8502,7 +8478,7 @@ packages:
       espree: 9.5.2
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.5.2
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8752,3 +8728,7 @@ packages:
       archiver-utils: 2.1.0
       compress-commons: 4.1.1
       readable-stream: 3.6.2
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
