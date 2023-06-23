@@ -1,4 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const dlItems = [
+  {
+    term: 'Term 01',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore.'
+  },
+  {
+    term: 'Term 02',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore.'
+  },
+  {
+    term: 'Term 03',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore.'
+  }
+]
+</script>
 
 <template>
   <section class="au-margin">
@@ -73,5 +91,24 @@
         <h2>Warning theme and title slot &rarr;</h2>
       </template>
     </au-alert>
+  </section>
+
+  <section>
+    <h2>Description list</h2>
+
+    <au-description-list :items="dlItems" />
+  </section>
+
+  <section>
+    <h2>Headings</h2>
+
+    <au-heading tag="h3" text="Heading Default" />
+    <au-heading tag="h3">Heading Default with Slot</au-heading>
+
+    <au-heading tag="h5" text="Heading small" size="small" />
+    <au-heading tag="h3" text="Heading medium" size="medium" />
+    <au-heading tag="h3" text="Heading large" size="large" />
+    <au-heading tag="h3" text="Heading xlarge" size="xlarge" />
+    <au-heading tag="h3" text="Heading 2xlarge" size="2xlarge" />
   </section>
 </template>
