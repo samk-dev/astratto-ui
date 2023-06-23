@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <section class="au-margin">
     <h2>Buttons</h2>
@@ -40,5 +42,36 @@
         size="large"
       />
     </div>
+  </section>
+
+  <section>
+    <h2>Alerts</h2>
+
+    <au-alert title="Default" />
+    <au-alert
+      title="Primary with message"
+      message="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore."
+      theme="primary"
+    />
+    <au-alert
+      title="Danger theme and none closable"
+      message="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore."
+      theme="danger"
+      :close-btn="false"
+    />
+    <au-alert
+      title="Success theme and close event"
+      message="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore."
+      theme="success"
+    />
+    <au-alert
+      title="Warning theme and title slot"
+      message="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae repudiandae illum sint obcaecati autem harum dolore."
+      theme="warning"
+    >
+      <template #title>
+        <h2>Warning theme and title slot &rarr;</h2>
+      </template>
+    </au-alert>
   </section>
 </template>
