@@ -33,18 +33,18 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="['uk-form-label', props.srOnly ? 'uk-sr-only' : '']"
+    :class="['au-form-label', props.srOnly ? 'au-sr-only' : '']"
     :aria-label="props.label"
   >
     <slot>
       {{ props.label }}
-      <span v-if="props.required" class="uk-text-danger">*</span>
+      <span v-if="props.required" class="au-text-danger">*</span>
     </slot>
   </label>
 </template>
 
 <style scoped>
-.uk-sr-only {
+.au-sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;

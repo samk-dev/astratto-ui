@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<PropsAuLegend>(), {
 
 <template>
   <legend
-    :class="['uk-legend', props.srOnly ? 'uk-sr-only' : '']"
+    :class="['au-legend', props.srOnly ? 'au-sr-only' : '']"
     :aria-label="props.label"
   >
     <slot>{{ props.label }}</slot>

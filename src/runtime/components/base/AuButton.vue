@@ -59,8 +59,8 @@ const props = withDefaults(defineProps<PropsBaseButton>(), {
 })
 
 const elCls = computed(() => {
-  const theme = `uk-button-${props.theme}`
-  const size = props.size ? `uk-button-${props.size}` : ''
+  const theme = `au-button-${props.theme}`
+  const size = props.size ? `au-button-${props.size}` : ''
 
   let spinnerSize = 0.5
   if (props.size === 'small') {
@@ -86,7 +86,7 @@ const elCls = computed(() => {
     :title="props.label"
     :disabled="props.disabled"
     :class="[
-      'uk-button uk-flex-inline uk-flex-center uk-flex-middle',
+      'au-button au-flex-inline au-flex-center au-flex-middle',
       elCls.theme,
       elCls.size
     ]"
@@ -101,7 +101,7 @@ const elCls = computed(() => {
     <span>
       <slot>
         <span v-if="!props.loading">{{ props.label }}</span>
-        <span v-else :data-uk-spinner="`ratio: ${elCls.spinnerSize}`" />
+        <span v-else :data-au-spinner="`ratio: ${elCls.spinnerSize}`" />
       </slot>
     </span>
 

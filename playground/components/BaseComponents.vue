@@ -1,5 +1,5 @@
 <template>
-  <section class="uk-margin">
+  <section class="au-margin">
     <h2>Buttons</h2>
     <div>
       <au-button label="Default Button" />
@@ -11,18 +11,18 @@
       <au-button label="Link Button" theme="link" />
     </div>
 
-    <div class="uk-margin">
+    <div class="au-margin">
       <au-button label="Small Button" size="small" />
       <au-button label="Large Button" size="large" />
     </div>
 
-    <div class="uk-margin">
+    <div class="au-margin">
       <au-button label="Loading Button" size="small" loading />
       <au-button label="Loading Button" loading />
       <au-button label="Loading Button" size="large" loading />
     </div>
 
-    <div class="uk-margin">
+    <div class="au-margin">
       <au-button label="Leading Icon" leading-icon="print" size="small" />
       <au-button
         label="Trailing Icon"

@@ -124,8 +124,8 @@ const selectGroupOpts = [
   <section>
     <h2>Form Elements</h2>
 
-    <div class="uk-flex uk-flex-wrap uk-flex-top">
-      <div class="uk-width-auto uk-margin-medium-right">
+    <div class="au-flex au-flex-wrap au-flex-top">
+      <div class="au-width-auto au-margin-medium-right">
         <pre>
       {{ form }}
     </pre
@@ -133,12 +133,12 @@ const selectGroupOpts = [
       </div>
 
       <form
-        class="uk-form-stack uk-width-expand uk-flex uk-flex-wrap uk-flex-top"
+        class="au-form-stack au-width-expand au-flex au-flex-wrap au-flex-top"
         style="gap: 15px"
       >
         <au-fieldset
           legend="Inputs"
-          class="uk-form-controls uk-flex uk-flex-column"
+          class="au-form-controls au-flex au-flex-column"
           style="gap: 20px"
         >
           <div>
@@ -195,7 +195,7 @@ const selectGroupOpts = [
             />
           </div>
 
-          <div class="uk-form-controls">
+          <div class="au-form-controls">
             <au-input
               v-model="form.withVisibleLabel"
               label="With Visible Label"
@@ -207,7 +207,7 @@ const selectGroupOpts = [
 
         <au-fieldset
           legend="Inputs state"
-          class="uk-form-controls uk-flex uk-flex-column"
+          class="au-form-controls au-flex au-flex-column"
           style="gap: 20px"
         >
           <div>
@@ -259,7 +259,7 @@ const selectGroupOpts = [
 
         <au-fieldset
           legend="Native Date time"
-          class="uk-form-controls uk-flex uk-flex-column"
+          class="au-form-controls au-flex au-flex-column"
           style="gap: 20px"
         >
           <div>
@@ -310,7 +310,7 @@ const selectGroupOpts = [
 
         <au-fieldset
           legend="Selection"
-          class="uk-form-controls uk-flex uk-flex-column"
+          class="au-form-controls au-flex au-flex-column"
           style="gap: 20px"
         >
           <div>
@@ -381,24 +381,24 @@ const selectGroupOpts = [
         <au-fieldset legend="Legend">
           <template #legend>
             <span>Legend Slot</span>
-            <span data-uk-icon="arrow-right"></span>
+            <span data-au-icon="arrow-right"></span>
           </template>
-          <div class="uk-form-controls uk-margin">
+          <div class="au-form-controls au-margin">
             <au-input
               v-model="form.text"
               name="username"
-              class="uk-width-medium"
+              class="au-width-medium"
               label="Username"
               placeholder="Enter your username"
               :required="true"
             />
           </div>
 
-          <div class="uk-form-controls uk-margin">
+          <div class="au-form-controls au-margin">
             <au-input
               v-model="form.text"
               name="emailaddress"
-              class="uk-width-medium"
+              class="au-width-medium"
               label="Email"
               placeholder="Enter your email"
               type="email"

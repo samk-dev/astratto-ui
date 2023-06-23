@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-container">
+  <div class="au-container">
     <section>
       <h1>Astratto UI Playground</h1>
     </section>

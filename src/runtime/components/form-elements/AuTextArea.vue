@@ -91,7 +91,7 @@ const emits = defineEmits<{
       :maxlength="props.maxLength"
       :wrap="props.wrap"
       :aria-label="props.label"
-      class="uk-textarea"
+      class="au-textarea"
       @input="
         emits('update:modelValue', ($event.target as HTMLTextAreaElement).value)
       "
