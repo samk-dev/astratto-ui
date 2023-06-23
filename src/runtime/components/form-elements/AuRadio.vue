@@ -59,9 +59,7 @@ interface EmitsAuRadio {
     e: 'update:modelValue',
     value: PropsRadio['modelValue']
   ): PropsRadio['modelValue']
-
   (e: 'focus'): void
-
   (e: 'blur'): void
 }
 

@@ -2,7 +2,7 @@
 defineOptions({
   name: 'AuLegend'
 })
-
+// TODO: icon
 export interface PropsAuLegend {
   /**
    * @description legend text

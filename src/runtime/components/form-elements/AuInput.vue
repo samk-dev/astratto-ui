@@ -175,7 +175,7 @@ const slugify = useSlugify
       class="uk-display-block"
     />
 
-    <div class="uk-inline-block">
+    <div class="uk-inline-block uk-width-1-1">
       <span
         v-if="props.leftIcon"
         class="uk-form-icon"

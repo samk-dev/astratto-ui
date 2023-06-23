@@ -17,7 +17,7 @@ type selectGroup = {
   groupOptions: SelectOption[]
 }
 
-// TODO: validation msg && hints
+// TODO: validation msg && hints && icons
 interface PropsAuSelect {
   /**
    * @description label text

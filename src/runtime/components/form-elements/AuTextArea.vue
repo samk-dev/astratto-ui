@@ -5,7 +5,7 @@ defineOptions({
   name: 'AuTextArea'
 })
 
-// TODO: validation msg && hints
+// TODO: validation msg && hints & icons
 interface PropsAuTextArea {
   /**
    * @description label text
