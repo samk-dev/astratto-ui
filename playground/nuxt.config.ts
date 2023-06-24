@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['../src/module', '@samk-dev/nuxt-uikit3'],
+  modules: ['../src/module'],
   // myModule: {}
   devtools: {
     enabled: true

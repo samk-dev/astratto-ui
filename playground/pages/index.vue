@@ -1,11 +1,15 @@
 <template>
-  <div class="au-container">
-    <section>
-      <h1>Astratto UI Playground</h1>
-    </section>
+  <div>
+    <div class="au-container">
+      <section>
+        <h1>Astratto UI Playground</h1>
+      </section>
 
-    <form-elements />
+      <form-elements />
 
-    <base-components />
+      <base-components />
+    </div>
+
+    <layout-components />
   </div>
 </template>

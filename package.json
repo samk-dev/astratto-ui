@@ -1,6 +1,6 @@
 {
   "name": "@samk-dev/astratto-ui",
-  "version": "1.0.0-dev-2",
+  "version": "1.0.0-dev-3",
   "description": "Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt",
   "license": "MIT",
   "type": "module",
@@ -36,14 +36,12 @@
     "dev": "PORT=4666 nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "uikit:prefix": "node ./src/scripts/prefix-uikit.mjs",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "prepare": "husky install",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"
-  },
-  "dependencies": {
-    "@samk-dev/nuxt-uikit3": "^1.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
@@ -55,14 +53,17 @@
     "@nuxt/test-utils": "^3.6.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@types/node": "^20.3.1",
+    "@types/uikit": "^3.14.0",
     "changelogen": "^0.5.3",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "fs-extra": "^11.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "nuxt": "^3.6.0",
     "prettier": "^2.8.8",
+    "uikit": "^3.16.22",
     "vitest": "^0.32.2"
   },
   "lint-staged": {
