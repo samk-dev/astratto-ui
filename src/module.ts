@@ -1,9 +1,4 @@
-import {
-  addPlugin,
-  addComponentsDir,
-  createResolver,
-  defineNuxtModule
-} from '@nuxt/kit'
+import { addComponentsDir, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { name, version } from '../package.json'
 import type { AuModuleOptions } from './types'
 
@@ -17,7 +12,6 @@ export default defineNuxtModule<AuModuleOptions>({
       nuxt: '^3.0.0'
     }
   },
-  // Default configuration options of the Nuxt module
   defaults: {
     prefix: 'au'
   },
@@ -29,13 +23,19 @@ export default defineNuxtModule<AuModuleOptions>({
 
     nuxt.options.build.transpile ||= []
     nuxt.options.build.transpile.push(
-      resolver.resolve('./runtime/assets/js/uikit.js')
+      resolver.resolve('./runtime/assets/js/uikit')
     )
     nuxt.options.build.transpile.push(
-      resolver.resolve('./runtime/assets/js/uikit-icons.js')
+      resolver.resolve('./runtime/assets/js/uikit-icons')
     )
 
-    addPlugin({ src: resolver.resolve('./runtime/plugin'), mode: 'client' })
+    nuxt.options.app.head.script ||= []
+    nuxt.options.app.head.script.push(
+      resolver.resolve('./runtime/assets/js/uikit.js')
+    )
+    nuxt.options.app.head.script.push(
+      resolver.resolve('./runtime/assets/js/uikit-icons.js')
+    )
 
     await addComponentsDir({
       pathPrefix: false,
