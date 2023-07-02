@@ -42,9 +42,9 @@ const props = withDefaults(defineProps<PropsAuHeading>(), {
   <component
     :is="props.tag"
     :class="[
-      `au-heading-${props.size}`,
-      props.divider ? 'au-heading-divider' : '',
-      props.bullet ? 'au-heading-bullet' : ''
+      `uk-heading-${props.size}`,
+      props.divider ? 'uk-heading-divider' : '',
+      props.bullet ? 'uk-heading-bullet' : ''
     ]"
   >
     <slot>

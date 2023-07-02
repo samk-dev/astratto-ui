@@ -22,8 +22,8 @@ const props = withDefaults(defineProps<PropsAuDescriptionList>(), {
 <template>
   <dl
     :class="[
-      'au-description-list',
-      props.divider ? 'au-description-list-divider' : ''
+      'uk-description-list',
+      props.divider ? 'uk-description-list-divider' : ''
     ]"
   >
     <template v-for="(item, i) in props.items" :key="i">

@@ -87,7 +87,7 @@ const slugify = useSlugify
       :id="`id-${slugify(props.label)}`"
       v-model="isChecked"
       :name="slugify(props.label)"
-      class="au-checkbox"
+      class="uk-checkbox"
       type="checkbox"
       :aria-label="props.label"
       :aria-checked="isChecked"
@@ -101,7 +101,7 @@ const slugify = useSlugify
     />
     <slot>
       {{ props.label }}
-      <span v-if="props.required" class="au-text-danger">*</span>
+      <span v-if="props.required" class="uk-text-danger">*</span>
     </slot>
   </label>
 </template>

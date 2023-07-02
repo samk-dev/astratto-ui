@@ -50,13 +50,13 @@ interface PropsAuInput {
   validationtype?: 'danger' | 'success'
   /**
    * @description input left icon, uses uikit icons
-   * @example <au-input icon="heart" />
+   * @example <uk-input icon="heart" />
    * @default undefined
    * */
   leftIcon?: string
   /**
    * @description input right icon, uses uikit icons
-   * @example <au-input icon="heart" />
+   * @example <uk-input icon="heart" />
    * @default undefined
    * */
   rightIcon?: string
@@ -146,11 +146,11 @@ const elCls = computed(() => {
 
   if (props.validationtype) {
     clsState =
-      props.validationtype === 'danger' ? 'au-form-danger' : 'au-form-success'
+      props.validationtype === 'danger' ? 'uk-form-danger' : 'uk-form-success'
   }
 
   if (props.size) {
-    clsSize = props.size === 'small' ? 'au-form-small' : 'au-form-large'
+    clsSize = props.size === 'small' ? 'uk-form-small' : 'uk-form-large'
   }
 
   return [clsState, clsSize]
@@ -172,14 +172,14 @@ const slugify = useSlugify
       :label="props.label"
       :required="props.required"
       :sr-only="props.srOnly"
-      class="au-display-block"
+      class="uk-display-block"
     />
 
-    <div class="au-inline-block au-width-1-1">
+    <div class="uk-inline-block uk-width-1-1">
       <span
         v-if="props.leftIcon"
-        class="au-form-icon"
-        :data-au-icon="props.leftIcon"
+        class="uk-form-icon"
+        :data-uk-icon="props.leftIcon"
       />
 
       <input
@@ -193,7 +193,7 @@ const slugify = useSlugify
         :type="!isPassVisible ? props.type : 'text'"
         :disabled="props.disabled"
         :required="props.required"
-        :class="['au-input', elCls]"
+        :class="['uk-input', elCls]"
         :aria-label="props.label"
         @focus="emits('focus')"
         @blur="emits('blur')"
@@ -201,34 +201,34 @@ const slugify = useSlugify
 
       <a
         v-if="!props.loading && props.type === 'password'"
-        class="au-form-icon au-form-icon-flip"
+        class="uk-form-icon uk-form-icon-flip"
         href=""
-        :data-au-icon="!isPassVisible ? 'eye' : 'eye-slash'"
+        :data-uk-icon="!isPassVisible ? 'eye' : 'eye-slash'"
         @click.prevent="isPassVisible = !isPassVisible"
       />
 
       <component
         :is="props.rightIconClickable ? 'a' : 'span'"
         v-if="props.type !== 'password' && props.rightIcon && !props.loading"
-        class="au-form-icon au-form-icon-flip"
+        class="uk-form-icon uk-form-icon-flip"
         :href="props.rightIconClickable"
-        :data-au-icon="props.rightIcon"
+        :data-uk-icon="props.rightIcon"
         @click.prevent="handleRightIconClick"
       />
 
       <span
         v-if="props.loading"
-        data-au-spinner="ratio: 0.5"
-        class="au-form-icon au-form-icon-flip"
+        data-uk-spinner="ratio: 0.5"
+        class="uk-form-icon uk-form-icon-flip"
       />
     </div>
 
-    <span v-if="props.hint" class="au-display-block">
+    <span v-if="props.hint" class="uk-display-block">
       {{ props.hint }}
     </span>
     <span
       v-if="props.validationMsg"
-      :class="['au-display-block', `au-text-${props.validationtype}`]"
+      :class="['uk-display-block', `uk-text-${props.validationtype}`]"
     >
       {{ props.validationMsg }}
     </span>

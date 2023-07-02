@@ -331,6 +331,18 @@ const selectGroupOpts = [
             />
           </div>
 
+          <!-- <div>
+            <au-select-box />
+          </div>
+
+          <div>
+            <au-select-box2 />
+          </div> -->
+
+          <div>
+            <au-select-box3 />
+          </div>
+
           <div>
             <au-radio
               v-model="form.radioGroup"

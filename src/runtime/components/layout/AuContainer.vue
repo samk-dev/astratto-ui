@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<PropsAuContainer>(), {
 <template>
   <component
     :is="props.tag"
-    :class="['au-container', props.size ? `au-container-${props.size}` : '']"
+    :class="['uk-container', props.size ? `uk-container-${props.size}` : '']"
   >
     <slot />
   </component>

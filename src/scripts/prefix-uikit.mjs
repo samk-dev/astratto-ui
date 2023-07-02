@@ -1,89 +1,67 @@
 #!/usr/bin/env node
 
 import { exec } from 'child_process'
+import { promisify } from 'util'
+import path from 'path'
 import { createResolver, useLogger } from '@nuxt/kit'
-import { copy } from 'fs-extra'
+import { copy, pathExists, remove } from 'fs-extra'
+import ora from 'ora'
 
-const logger = useLogger('uikit-minion')
+const execAsync = promisify(exec)
+const copyAsync = promisify(copy)
+
+const logger = useLogger('uikit-builder')
 const resolver = createResolver(import.meta.url)
 
-const uikitPath = resolver.resolve('../../node_modules/uikit')
+const buildPath = resolver.resolve('../../../../uikit-build')
+const uikitPath = path.join(buildPath, 'uikit')
 
-logger.info('runing uikit minion')
+logger.info(`build dir: ${uikitPath}`)
 
-const prefixUikit = () => {
-  logger.info('prefixing uikit...')
-  exec(`cd ${uikitPath} && npm run prefix -- -p au`, (err, stdout, stderr) => {
-    if (err)
-      logger.error(
-        'There has been an error installing uikit dependencies: ',
-        err
-      )
-
-    if (stderr) logger.error('stderr: ', stderr)
-    logger.success('uikit dependencies installed successfully: ', stdout)
-  })
-}
-
-const copyPrefixedAssets = () => {
-  const files = [
-    {
-      srcPath: `${uikitPath}/dist/css/`,
-      srcName: 'uikit.min.css',
-      destName: 'base.css',
-      destPath: resolver.resolve(`../runtime/assets/styles/`)
-    },
-    {
-      srcPath: `${uikitPath}/dist/css/`,
-      srcName: 'uikit-rtl.min.css',
-      destName: 'base-rtl.css',
-      destPath: resolver.resolve(`../runtime/assets/styles/`)
-    },
-    {
-      srcPath: `${uikitPath}/dist/js/`,
-      srcName: 'uikit.js',
-      destName: 'uikit.js',
-      destPath: resolver.resolve(`../runtime/assets/js/`)
-    },
-    {
-      srcPath: `${uikitPath}/dist/js/`,
-      srcName: 'uikit-icons.js',
-      destName: 'uikit-icons.js',
-      destPath: resolver.resolve(`../runtime/assets/js/`)
+async function setupUIkit() {
+  try {
+    const spinner = ora('Checking existing UIkit directory').start()
+    const uikitExists = await pathExists(uikitPath)
+    if (uikitExists) {
+      await remove(uikitPath)
+      spinner.succeed('Existing UIkit directory removed!')
+    } else {
+      spinner.succeed('No existing UIkit directory found!')
     }
-  ]
 
-  files.forEach((file) => {
-    logger.info('copying ', file.srcName)
+    const cloneSpinner = ora('Cloning UIkit repository').start()
+    const cloneCommand = `cd ${buildPath} && git clone https://github.com/uikit/uikit.git`
+    await execAsync(cloneCommand)
+    cloneSpinner.succeed('UIkit repository cloned successfully!')
 
-    copy(
-      `${file.srcPath}/${file.srcName}`,
-      `${file.destPath}/${file.destName}`,
-      { overwrite: true },
-      (err) => {
-        if (err) logger.error('Err copying ', file.srcName)
+    const installSpinner = ora('Installing UIkit').start()
+    const installCommand = `cd ${uikitPath} && rm pnpm-lock.yaml && npm install`
+    await execAsync(installCommand)
+    installSpinner.succeed('UIkit installation completed successfully!')
 
-        logger.success(file.srcName, ' copied successfully!')
-      }
+    const prefixSpinner = ora('Prefixing and copying files').start()
+    const prefixCommand = `cd ${uikitPath} && npm run prefix -- -p au`
+    await execAsync(prefixCommand)
+    prefixSpinner.succeed('Prefixing and copying completed successfully!')
+
+    const cssSpinner = ora('Copying CSS files').start()
+    await copyAsync(
+      path.join(uikitPath, 'dist/css'),
+      resolver.resolve('../runtime/assets/css'),
+      { overwrite: true }
     )
-  })
+    cssSpinner.succeed('CSS files copied successfully!')
+
+    const jsSpinner = ora('Copying JS files').start()
+    await copyAsync(
+      path.join(uikitPath, 'dist/js'),
+      resolver.resolve('../runtime/assets/js'),
+      { overwrite: true }
+    )
+    jsSpinner.succeed('JS files copied successfully!')
+  } catch (err) {
+    logger.error(err)
+  }
 }
 
-const init = () => {
-  logger.info('installing uikit dependencies...')
-  exec(`cd ${uikitPath} && npm install`, (err, stdout, stderr) => {
-    if (err)
-      logger.error(
-        'There has been an error installing uikit dependencies: ',
-        err
-      )
-
-    if (stderr) logger.error('stderr: ', stderr)
-    logger.success('uikit dependencies installed successfully', stdout)
-
-    prefixUikit()
-    copyPrefixedAssets()
-  })
-}
-
-init()
+setupUIkit()
