@@ -19,7 +19,7 @@ const dlItems = [
 </script>
 
 <template>
-  <section class="au-margin">
+  <section class="uk-margin">
     <h2>Buttons</h2>
     <div>
       <au-button label="Default Button" />
@@ -31,18 +31,18 @@ const dlItems = [
       <au-button label="Link Button" theme="link" />
     </div>
 
-    <div class="au-margin">
+    <div class="uk-margin">
       <au-button label="Small Button" size="small" />
       <au-button label="Large Button" size="large" />
     </div>
 
-    <div class="au-margin">
+    <div class="uk-margin">
       <au-button label="Loading Button" size="small" loading />
       <au-button label="Loading Button" loading />
       <au-button label="Loading Button" size="large" loading />
     </div>
 
-    <div class="au-margin">
+    <div class="uk-margin">
       <au-button label="Leading Icon" leading-icon="print" size="small" />
       <au-button
         label="Trailing Icon"

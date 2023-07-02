@@ -105,7 +105,7 @@ const elCls = computed(() => {
       </slot>
     </span>
 
-    <uk-icon
+    <au-icon
       v-if="props.trailingIcon"
       :name="props.trailingIcon"
       :ratio="elCls.iconSize"
