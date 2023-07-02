@@ -47,11 +47,11 @@ const props = withDefaults(defineProps<PropsAuAlert>(), {
 
 <template>
   <div
-    :data-au-alert="`animation: ${props.animation}; duration: ${props.duration}`"
-    :class="[props.theme ? `au-alert-${props.theme}` : '']"
+    :data-uk-alert="`animation: ${props.animation}; duration: ${props.duration}`"
+    :class="[props.theme ? `uk-alert-${props.theme}` : '']"
   >
     <slot name="close">
-      <a v-show="props.closeBtn" class="au-alert-close" au-close />
+      <a v-show="props.closeBtn" class="uk-alert-close" uk-close />
     </slot>
     <slot name="title">
       <h3>

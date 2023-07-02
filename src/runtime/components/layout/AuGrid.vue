@@ -49,9 +49,9 @@ const props = withDefaults(defineProps<PropsAuGrid>(), {
 
 const elCls = computed(() => {
   return {
-    elGap: props.gap ? `au-grid-${props.gap}` : '',
-    elMatchHeight: props.matchHeight ? 'au-grid-match' : '',
-    elDivider: props.divider ? 'au-grid-divider' : ''
+    elGap: props.gap ? `uk-grid-${props.gap}` : '',
+    elMatchHeight: props.matchHeight ? 'uk-grid-match' : '',
+    elDivider: props.divider ? 'uk-grid-divider' : ''
   }
 })
 
@@ -65,8 +65,8 @@ const elAttrs = computed(() => {
 <template>
   <component
     :is="props.tag"
-    :data-au-grid="elAttrs"
-    :class="['au-grid', elCls.elGap, elCls.elDivider, elCls.elMatchHeight]"
+    :data-uk-grid="elAttrs"
+    :class="['uk-grid', elCls.elGap, elCls.elDivider, elCls.elMatchHeight]"
   >
     <slot />
   </component>

@@ -83,7 +83,7 @@ const slugify = useSlugify
 
 <template>
   <div
-    class="au-margin au-grid-small au-child-width-auto au-grid"
+    class="uk-margin uk-grid-small uk-child-width-auto uk-grid"
     role="radiogroup"
   >
     <label v-for="(option, i) of options" :key="i">
@@ -93,7 +93,7 @@ const slugify = useSlugify
         :name="option.value"
         :value="option.value"
         type="radio"
-        class="au-radio"
+        class="uk-radio"
         @change="
           emit('update:modelValue', ($event.target as HTMLInputElement).value)
         "

@@ -31,10 +31,10 @@ const props = withDefaults(defineProps<PropsAuSection>(), {
 
 const elCls = computed(() => {
   return {
-    elBgColor: props.bgColor ? `au-section-${props.bgColor}` : '',
-    elSize: props.size ? `au-section-${props.size}` : '',
+    elBgColor: props.bgColor ? `uk-section-${props.bgColor}` : '',
+    elSize: props.size ? `uk-section-${props.size}` : '',
     elRemoveVerticalPadding: props.removeVerticalPadding
-      ? 'au-padding-remove-vertical'
+      ? 'uk-padding-remove-vertical'
       : ''
   }
 })
@@ -43,7 +43,7 @@ const elCls = computed(() => {
 <template>
   <section
     :class="[
-      'au-section',
+      'uk-section',
       elCls.elBgColor,
       elCls.elSize,
       elCls.elRemoveVerticalPadding
