@@ -20,7 +20,7 @@ export default defineNuxtModule<AuModuleOptions>({
   defaults: {
     prefix: 'au'
   },
-  async setup(options, nuxt) {
+  async setup(options, _nuxt) {
     const resolver = createResolver(import.meta.url)
 
     installModule('@samk-dev/nuxt-uikit3')
@@ -56,7 +56,3 @@ export default defineNuxtModule<AuModuleOptions>({
     })
   }
 })
-
-function addTemplate(arg0: { filename: string; getContents: () => string }) {
-  throw new Error('Function not implemented.')
-}

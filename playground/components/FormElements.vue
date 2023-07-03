@@ -9,13 +9,10 @@ const form = ref({
   tel: '',
   url: '',
   search: '',
-  date: '',
-  time: '',
-  datetime: '',
-  month: '',
-  week: '',
   select: '',
   selectGroup: '',
+  selectBox: '',
+  selectBoxMulti: '',
   disabled: '',
   withLeftIcon: '',
   withRightIcon: '',
@@ -64,6 +61,20 @@ const selectOpts = [
   {
     label: 'Option Three',
     value: 'Option Three'
+  }
+]
+const selectBoxOpts = [
+  {
+    id: 0,
+    label: 'Option One'
+  },
+  {
+    id: 1,
+    label: 'Option Two'
+  },
+  {
+    id: 2,
+    label: 'Option Three'
   }
 ]
 const selectGroupOpts = [
@@ -146,6 +157,7 @@ const selectGroupOpts = [
               v-model="form.text"
               label="text"
               placeholder="Text Input"
+              autofocus
             />
           </div>
 
@@ -258,57 +270,6 @@ const selectGroupOpts = [
         </au-fieldset>
 
         <au-fieldset
-          legend="Native Date time"
-          class="uk-form-controls uk-flex uk-flex-column"
-          style="gap: 20px"
-        >
-          <div>
-            <au-input
-              v-model="form.date"
-              label="date"
-              placeholder="Date Input"
-              type="date"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.time"
-              label="time"
-              placeholder="Time Input"
-              type="time"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.datetime"
-              label="datetime"
-              placeholder="Datetime Input"
-              type="datetime-local"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.month"
-              label="Month"
-              placeholder="Month Input"
-              type="month"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.week"
-              label="Week"
-              placeholder="Week Input"
-              type="week"
-            />
-          </div>
-        </au-fieldset>
-
-        <au-fieldset
           legend="Selection"
           class="uk-form-controls uk-flex uk-flex-column"
           style="gap: 20px"
@@ -331,16 +292,23 @@ const selectGroupOpts = [
             />
           </div>
 
-          <!-- <div>
-            <au-select-box />
+          <div>
+            <au-select-box
+              v-model="form.selectBox"
+              label="Select Box"
+              placeholder="Please select"
+              :options="selectBoxOpts"
+            />
           </div>
 
           <div>
-            <au-select-box2 />
-          </div> -->
-
-          <div>
-            <au-select-box3 />
+            <au-select-box
+              v-model="form.selectBoxMulti"
+              label="Select Box Multi"
+              placeholder="Please select"
+              multiselect
+              :options="selectBoxOpts"
+            />
           </div>
 
           <div>

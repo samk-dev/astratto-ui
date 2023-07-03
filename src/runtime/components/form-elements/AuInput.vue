@@ -1,83 +1,27 @@
 <script setup lang="ts">
 import { useSlugify } from '../../utils'
 import AuLabel from './AuLabel.vue'
-import { computed, ref } from '#imports'
-
+import { computed, ref, onMounted } from '#imports'
 defineOptions({
   name: 'AuInput',
   inheritAttrs: false
 })
 
 interface PropsAuInput {
-  /**
-   * @description label text
-   * */
   label: string
-  /**
-   * @description label visibility, it hides the label for browsers and active for screen readers
-   * @default false
-   * */
   srOnly?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * @default the label prop slugfied
-   * */
   name?: string
-  /**
-   * @description hint message
-   * @default undefined
-   * */
   hint?: string
-  /**
-   * @description if the input related to the label is required
-   * @default false
-   * */
   required?: boolean
-  /**
-   * @description input disabled state
-   * @default false
-   * */
   disabled?: boolean
-  /**
-   * @description validation message will be displayed under the input
-   * @default undefined
-   * */
   validationMsg?: string
-  /**
-   * @description validation type that will style borders and text
-   * @default undefined
-   * */
   validationtype?: 'danger' | 'success'
-  /**
-   * @description input left icon, uses uikit icons
-   * @example <uk-input icon="heart" />
-   * @default undefined
-   * */
   leftIcon?: string
-  /**
-   * @description input right icon, uses uikit icons
-   * @example <uk-input icon="heart" />
-   * @default undefined
-   * */
   rightIcon?: string
-  /**
-   * @description render the icon as clickable element
-   * @default false
-   * */
   rightIconClickable?: boolean
-  /**
-   * @description input placeholder
-   * */
   placeholder: string
-  /**
-   * @description input autocomplete
-   * @default off
-   * */
   autocomplete?: 'on' | 'off'
-  /**
-   * @description input HTML type
-   * @default text
-   * */
+  autofocus?: boolean
   type?:
     | 'text'
     | 'email'
@@ -91,20 +35,9 @@ interface PropsAuInput {
     | 'month'
     | 'week'
     | 'url'
-  /**
-   * @description applies uikit input size class
-   * @default undefined
-   * */
   size?: 'small' | 'large'
-  /**
-   * @description applies uikit input width class
-   * @default undefined
-   * */
   width?: 'xsmall' | 'small' | 'medium' | 'large'
   loading?: boolean
-  /**
-   * @description input model value
-   * */
   modelValue: string | number
 }
 interface EmitsAuInput {
@@ -120,6 +53,7 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
   rightIcon: undefined,
   rightIconClickable: false,
   autocomplete: 'off',
+  autofocus: false,
   type: 'text',
   size: undefined,
   width: undefined,
@@ -138,6 +72,18 @@ const inputValue = computed({
   },
   set(val) {
     emits('update:modelValue', val)
+  }
+})
+
+const refSearchInput = ref<HTMLInputElement | null>(null)
+
+const autoFocus = () => {
+  refSearchInput.value?.focus()
+}
+
+onMounted(() => {
+  if (props.autofocus) {
+    autoFocus()
   }
 })
 
@@ -185,6 +131,7 @@ const slugify = useSlugify
       <input
         v-bind="$attrs"
         :id="`id-${slugify(props.label)}`"
+        ref="refSearchInput"
         v-model="inputValue"
         :name="slugify(props.label)"
         :placeholder="props.placeholder"

@@ -12,6 +12,7 @@ export { default as AuLegend } from './form-elements/AuLegend.vue'
 export { default as AuRadio } from './form-elements/AuRadio.vue'
 export { default as AuRange } from './form-elements/AuRange.vue'
 export { default as AuSelect } from './form-elements/AuSelect.vue'
+export { default as AuSelectBox } from './form-elements/AuSelectBox.vue'
 export { default as AuTextArea } from './form-elements/AuTextArea.vue'
 
 export { default as AuContainer } from './layout/AuContainer.vue'
