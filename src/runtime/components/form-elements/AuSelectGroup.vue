@@ -12,13 +12,18 @@ type SelectOption = {
   disabled?: boolean
 }
 
-// TODO: validation msg && hints && icons
-interface PropsAuSelect extends PropsAuSelectBase {
+type GroupOptions = {
+  label: string
   options: SelectOption[]
+}
+
+// TODO: validation msg && hints && icons
+interface PropsAuSelectGroup extends PropsAuSelectBase {
+  options: GroupOptions[]
   modelValue: string
 }
 
-const props = withDefaults(defineProps<PropsAuSelect>(), {
+const props = withDefaults(defineProps<PropsAuSelectGroup>(), {
   loading: false,
   disabled: false,
   required: false
@@ -55,16 +60,23 @@ const emits = defineEmits<{
       </option>
 
       <template
-        v-for="(option, i) in options"
-        :key="`${option.id}-${option.label}-${i}`"
+        v-for="(groupOpt, i) in options"
+        :key="`${groupOpt.label}-${i}`"
       >
-        <option
-          :value="option.label"
-          :selected="option.label === props.modelValue"
-          :disabled="option.disabled"
-        >
-          {{ option.label }}
-        </option>
+        <optgroup :label="groupOpt.label">
+          <template
+            v-for="(option, k) in groupOpt.options"
+            :key="`${option.id}-${option.label}-${k}`"
+          >
+            <option
+              :value="option.label"
+              :selected="option.label === props.modelValue"
+              :disabled="option.disabled"
+            >
+              {{ option.label }}
+            </option>
+          </template>
+        </optgroup>
       </template>
     </select>
   </div>

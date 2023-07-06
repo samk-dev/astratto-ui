@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useSlugify } from '../../utils'
-import AuLabel from './AuLabel.vue'
 import { computed, ref, onMounted } from '#imports'
 defineOptions({
   name: 'AuInput',
@@ -8,50 +6,35 @@ defineOptions({
 })
 
 interface PropsAuInput {
-  label: string
-  srOnly?: boolean
-  name?: string
+  placeholder: string
   hint?: string
   required?: boolean
   disabled?: boolean
   validationMsg?: string
   validationtype?: 'danger' | 'success'
-  leftIcon?: string
-  rightIcon?: string
-  rightIconClickable?: boolean
-  placeholder: string
+  iconLeading?: string
+  iconTrailing?: string
+  iconTrailingClickable?: boolean
   autocomplete?: 'on' | 'off'
   autofocus?: boolean
-  type?:
-    | 'text'
-    | 'email'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'date'
-    | 'time'
-    | 'datetime-local'
-    | 'month'
-    | 'week'
-    | 'url'
+  type?: 'text' | 'email' | 'number' | 'password' | 'tel' | 'url' | 'search'
   size?: 'small' | 'large'
   width?: 'xsmall' | 'small' | 'medium' | 'large'
   loading?: boolean
   modelValue: string | number
 }
+
 interface EmitsAuInput {
   (e: 'update:modelValue', value: string | number): string | number
   (e: 'focus'): void
   (e: 'blur'): void
-  (e: 'rightIconClick'): void
+  (e: 'iconTrailingClick'): void
 }
 
 const props = withDefaults(defineProps<PropsAuInput>(), {
-  srOnly: true,
-  leftIcon: undefined,
-  rightIcon: undefined,
-  rightIconClickable: false,
+  iconLeading: undefined,
+  iconTrailing: undefined,
+  iconTrailingClickable: false,
   autocomplete: 'off',
   autofocus: false,
   type: 'text',
@@ -65,15 +48,6 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
   loading: false
 })
 const emits = defineEmits<EmitsAuInput>()
-
-const inputValue = computed({
-  get() {
-    return props.modelValue
-  },
-  set(val) {
-    emits('update:modelValue', val)
-  }
-})
 
 const refSearchInput = ref<HTMLInputElement | null>(null)
 
@@ -104,44 +78,33 @@ const elCls = computed(() => {
 
 const isPassVisible = ref(false)
 
-const handleRightIconClick = () => {
-  if (props.rightIconClickable) emits('rightIconClick')
+const handleiconTrailingClick = () => {
+  if (props.iconTrailingClickable) emits('iconTrailingClick')
 }
-
-const slugify = useSlugify
 </script>
 
 <template>
   <div>
-    <au-label
-      :for="`id-${slugify(props.label)}`"
-      :label="props.label"
-      :required="props.required"
-      :sr-only="props.srOnly"
-      class="uk-display-block"
-    />
-
     <div class="uk-inline-block uk-width-1-1">
       <span
-        v-if="props.leftIcon"
+        v-if="props.iconLeading"
         class="uk-form-icon"
-        :data-uk-icon="props.leftIcon"
+        :data-uk-icon="props.iconLeading"
       />
 
       <input
         v-bind="$attrs"
-        :id="`id-${slugify(props.label)}`"
         ref="refSearchInput"
-        v-model="inputValue"
-        :name="slugify(props.label)"
         :placeholder="props.placeholder"
         :autocomplete="props.autocomplete"
-        :value="inputValue"
+        :value="props.modelValue"
         :type="!isPassVisible ? props.type : 'text'"
         :disabled="props.disabled"
         :required="props.required"
         :class="['uk-input', elCls]"
-        :aria-label="props.label"
+        @input="
+          emits('update:modelValue', ($event.target as HTMLInputElement).value)
+        "
         @focus="emits('focus')"
         @blur="emits('blur')"
       />
@@ -155,12 +118,12 @@ const slugify = useSlugify
       />
 
       <component
-        :is="props.rightIconClickable ? 'a' : 'span'"
-        v-if="props.type !== 'password' && props.rightIcon && !props.loading"
+        :is="props.iconTrailingClickable ? 'a' : 'span'"
+        v-if="props.type !== 'password' && props.iconTrailing && !props.loading"
         class="uk-form-icon uk-form-icon-flip"
-        :href="props.rightIconClickable"
-        :data-uk-icon="props.rightIcon"
-        @click.prevent="handleRightIconClick"
+        :href="props.iconTrailingClickable"
+        :data-uk-icon="props.iconTrailing"
+        @click.prevent="handleiconTrailingClick"
       />
 
       <span

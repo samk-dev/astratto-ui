@@ -12,8 +12,6 @@ type Option = {
 }
 
 interface PropsAuSelectBox {
-  label: string
-  srOnly?: boolean
   placeholder: string
   size?: '' | 'small' | 'large' | 'xlarge'
   iconLeading?: string
@@ -126,7 +124,6 @@ defineExpose({
     />
 
     <div
-      :id="props.label"
       data-uk-drop="mode: click"
       class="uk-background-default uk-padding-small"
     >
@@ -140,7 +137,9 @@ defineExpose({
         size="small"
         type="search"
         :loading="searchLoading"
-        @update:model-value="emits('update:modelValue', props.modelValue)"
+        @update:model-value="
+          (e) => emits('update:modelValue', props.modelValue)
+        "
         @input="emits('search', searchQuery)"
         @right-icon-click="handleClearSearch"
       />

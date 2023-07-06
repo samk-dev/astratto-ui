@@ -88,9 +88,9 @@ const slugify = useSlugify
   >
     <label v-for="(option, i) of options" :key="i">
       <input
-        :id="`id-${slugify(option.value)}`"
+        :id="`${slugify(option.value)}-${i}`"
         v-model="selectedVal"
-        :name="option.value"
+        :name="slugify(option.value)"
         :value="option.value"
         type="radio"
         class="uk-radio"

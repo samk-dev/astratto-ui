@@ -1,25 +1,10 @@
 <script setup lang="ts">
-import AuLabel from './AuLabel.vue'
-
 defineOptions({
   name: 'AuTextArea'
 })
 
 // TODO: validation msg && hints & icons
 interface PropsAuTextArea {
-  /**
-   * @description label text
-   * */
-  label: string
-  /**
-   * @description label visibility, it hides the label for browsers and active for screen readers
-   * @default false
-   * */
-  srOnly?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * */
-  name?: string
   /**
    * @description hint message
    * @default undefined
@@ -51,7 +36,7 @@ interface PropsAuTextArea {
   rows?: number
   maxLength?: number
   wrap?: 'hard' | 'soft'
-  modeValue?: string
+  modeValue: string
 }
 
 const props = withDefaults(defineProps<PropsAuTextArea>(), {
@@ -61,7 +46,9 @@ const props = withDefaults(defineProps<PropsAuTextArea>(), {
   wrap: 'soft',
   disabled: false,
   required: false,
-  modeValue: ''
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined
 })
 
 const emits = defineEmits<{
@@ -73,24 +60,14 @@ const emits = defineEmits<{
 
 <template>
   <div>
-    <au-label
-      :for="`id-${props.name}`"
-      :required="props.required"
-      :label="props.label"
-      :sr-only="props.srOnly"
-    />
-
     <textarea
       v-bind="$attrs"
-      :id="`id-${props.name}`"
-      :name="props.name"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
       :cols="props.cols"
       :rows="props.rows"
       :maxlength="props.maxLength"
       :wrap="props.wrap"
-      :aria-label="props.label"
       class="uk-textarea"
       @input="
         emits('update:modelValue', ($event.target as HTMLTextAreaElement).value)

@@ -25,7 +25,7 @@ export interface PropsAuLabel {
 }
 
 const props = withDefaults(defineProps<PropsAuLabel>(), {
-  srOnly: true,
+  srOnly: false,
   required: false
 })
 </script>
@@ -33,8 +33,9 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="['uk-form-label', props.srOnly ? 'uk-sr-only' : '']"
+    :class="[props.srOnly ? 'uk-sr-only' : 'uk-form-label']"
     :aria-label="props.label"
+    :aria-required="props.required"
   >
     <slot>
       {{ props.label }}

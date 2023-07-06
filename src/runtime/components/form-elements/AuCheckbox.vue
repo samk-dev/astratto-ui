@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSlugify } from '../../utils'
 import { computed } from '#imports'
 
 defineOptions({
@@ -13,15 +12,6 @@ interface PropsAuCheckbox {
    * @description label text
    * */
   label: string
-  /**
-   * @description label visibility, it hides the label for browsers and active for screen readers
-   * @default false
-   * */
-  srOnly?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * */
-  name?: string
   /**
    * @description hint message
    * @default undefined
@@ -62,6 +52,9 @@ interface EmitsAuCheckbox {
 }
 
 const props = withDefaults(defineProps<PropsAuCheckbox>(), {
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined,
   required: false,
   disabled: false
 })
@@ -76,19 +69,16 @@ const isChecked = computed({
     emit('update:modelValue', val)
   }
 })
-
-const slugify = useSlugify
 </script>
 
 <template>
   <label>
     <input
       v-bind="$attrs"
-      :id="`id-${slugify(props.label)}`"
       v-model="isChecked"
-      :name="slugify(props.label)"
       class="uk-checkbox"
       type="checkbox"
+      :checked="isChecked"
       :aria-label="props.label"
       :aria-checked="isChecked"
       :disabled="props.disabled"

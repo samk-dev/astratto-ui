@@ -52,15 +52,15 @@ const radioGroupOpts = [
 const selectOpts = [
   {
     label: 'Option One',
-    value: 'Option One'
+    id: 'option-one'
   },
   {
     label: 'Option Two',
-    value: 'Option Two'
+    id: 1
   },
   {
     label: 'Option Three',
-    value: 'Option Three'
+    id: 'option-three'
   }
 ]
 const selectBoxOpts = [
@@ -79,53 +79,53 @@ const selectBoxOpts = [
 ]
 const selectGroupOpts = [
   {
-    groupLabel: 'Group 01',
-    groupOptions: [
+    label: 'Group 01',
+    options: [
       {
         label: 'Option One',
-        value: 'Option One'
+        id: 'a1063085-3886-5885-a0e1-aa891105c646'
       },
       {
         label: 'Option Two',
-        value: 'Option Two'
+        id: '9393e5d8-80cf-5198-bba5-47f4f34cd138'
       },
       {
         label: 'Option Three',
-        value: 'Option Three'
+        id: 'ab570f00-fb79-5fd7-8e72-8046e3619bd8'
       }
     ]
   },
   {
-    groupLabel: 'Group 02',
-    groupOptions: [
+    label: 'Group 02',
+    options: [
       {
         label: 'Option One',
-        value: 'Option One'
+        id: '2f93d379-2ea4-5bb5-85d1-9f454cb95f88'
       },
       {
         label: 'Option Two',
-        value: 'Option Two'
+        id: '38fd7b3b-2b98-5aa3-a756-5cc35313ee4d'
       },
       {
         label: 'Option Three',
-        value: 'Option Three'
+        id: 'b38e8e62-c9cd-5e15-8ecf-51608cd1b8e1'
       }
     ]
   },
   {
-    groupLabel: 'Group 03',
-    groupOptions: [
+    label: 'Group 03',
+    options: [
       {
         label: 'Option One',
-        value: 'Option One'
+        id: 'a48bf59c-ae61-53b7-8faf-4fc0e90cb389'
       },
       {
         label: 'Option Two',
-        value: 'Option Two'
+        id: 'e2571345-0524-52c7-8ab9-80bc8e6906ca'
       },
       {
         label: 'Option Three',
-        value: 'Option Three'
+        id: '76d94296-2757-58e1-b046-fe99e3b220e3'
       }
     ]
   }
@@ -153,18 +153,12 @@ const selectGroupOpts = [
           style="gap: 20px"
         >
           <div>
-            <au-input
-              v-model="form.text"
-              label="text"
-              placeholder="Text Input"
-              autofocus
-            />
+            <au-input v-model="form.text" placeholder="Text Input" autofocus />
           </div>
 
           <div>
             <au-input
               v-model="form.email"
-              label="Email Input"
               placeholder="Email Input"
               type="email"
             />
@@ -173,7 +167,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.number"
-              label="Number"
               placeholder="Number Input"
               type="number"
             />
@@ -182,7 +175,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.password"
-              label="Password"
               placeholder="Password Input"
               type="password"
               :required="true"
@@ -190,27 +182,16 @@ const selectGroupOpts = [
           </div>
 
           <div>
-            <au-input
-              v-model="form.tel"
-              label="Tel"
-              placeholder="Tel Input"
-              type="tel"
-            />
+            <au-input v-model="form.tel" placeholder="Tel Input" type="tel" />
           </div>
 
           <div>
-            <au-input
-              v-model="form.url"
-              label="Url"
-              placeholder="Url Input"
-              type="url"
-            />
+            <au-input v-model="form.url" placeholder="Url Input" type="url" />
           </div>
 
           <div class="au-form-controls">
             <au-input
               v-model="form.withVisibleLabel"
-              label="With Visible Label"
               :sr-only="false"
               placeholder="Visible Label"
             />
@@ -225,7 +206,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.disabled"
-              label="Loading"
               placeholder="Loading Input"
               loading
             />
@@ -234,7 +214,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.disabled"
-              label="Disabled"
               placeholder="Disabled Input"
               :disabled="true"
             />
@@ -243,7 +222,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.withHintText"
-              label="With hint text"
               placeholder="With hint text"
               hint="Help text here"
             />
@@ -252,7 +230,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.withErrMsg"
-              label="With error msg"
               placeholder="With error msg"
               validationtype="danger"
               validation-msg="Invalid value!"
@@ -262,7 +239,6 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.successState"
-              label="Success state"
               placeholder="Success state"
               validationtype="success"
             />
@@ -277,25 +253,22 @@ const selectGroupOpts = [
           <div>
             <au-select
               v-model="form.select"
-              label="Select input"
               placeholder="Select input"
               :options="selectOpts"
             />
           </div>
 
           <div>
-            <au-select
+            <au-select-group
               v-model="form.selectGroup"
-              label="Select group input"
               placeholder="Select group input"
-              :group-options="selectGroupOpts"
+              :options="selectGroupOpts"
             />
           </div>
 
           <div>
             <au-select-box
               v-model="form.selectBox"
-              label="Select Box"
               placeholder="Please select"
               :options="selectBoxOpts"
             />
@@ -304,7 +277,6 @@ const selectGroupOpts = [
           <div>
             <au-select-box
               v-model="form.selectBoxMulti"
-              label="Select Box Multi"
               placeholder="Please select"
               multiselect
               :options="selectBoxOpts"
@@ -314,9 +286,7 @@ const selectGroupOpts = [
           <div>
             <au-radio
               v-model="form.radioGroup"
-              name="radio-group"
               label="Select your option"
-              :sr-only="true"
               :options="radioGroupOpts"
             />
           </div>
@@ -331,29 +301,26 @@ const selectGroupOpts = [
           <div>
             <au-input
               v-model="form.withLeftIcon"
-              label="With left icon"
               placeholder="Left icon"
-              left-icon="happy"
+              icon-leading="happy"
             />
           </div>
 
           <div>
             <au-input
               v-model="form.withRightIcon"
-              label="With right icon"
               placeholder="Right icon"
-              right-icon="github"
+              icon-trailing="github"
             />
           </div>
 
           <div>
             <au-input
               v-model="form.withRightIconClicable"
-              label="With right icon clicks"
               placeholder="Right icon clickable"
-              right-icon="search"
-              right-icon-clickable
-              @right-icon-click="handleClickableIcon"
+              icon-trailing="search"
+              icon-trailing-clickable
+              @icon-trailing-click="handleClickableIcon"
             />
           </div>
         </au-fieldset>
@@ -377,9 +344,7 @@ const selectGroupOpts = [
           <div class="uk-form-controls au-margin">
             <au-input
               v-model="form.text"
-              name="emailaddress"
               class="uk-width-medium"
-              label="Email"
               placeholder="Enter your email"
               type="email"
               :required="true"
