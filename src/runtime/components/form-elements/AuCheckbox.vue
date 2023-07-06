@@ -6,48 +6,19 @@ defineOptions({
   inheritAttrs: false
 })
 
-// TODO: validation msg && hints
 interface PropsAuCheckbox {
-  /**
-   * @description label text
-   * */
   label: string
-  /**
-   * @description hint message
-   * @default undefined
-   * */
   hint?: string
-  /**
-   * @description if the input related to the label is required
-   * @default false
-   * */
   required?: boolean
-  /**
-   * @description input disabled state
-   * @default false
-   * */
   disabled?: boolean
-  /**
-   * @description validation message will be displayed under the input
-   * @default undefined
-   * */
   validationMsg?: string
-  /**
-   * @description validation type that will style borders and text
-   * @default undefined
-   * */
   validationtype?: 'danger' | 'success'
-  /**
-   * @description checkbox model value
-   * */
   modelValue: boolean
 }
 
 interface EmitsAuCheckbox {
-  (e: 'update:modelValue', value: boolean): boolean
-
+  (e: 'update:modelValue', value: PropsAuCheckbox['modelValue']): void
   (e: 'focus'): void
-
   (e: 'blur'): void
 }
 
@@ -61,7 +32,7 @@ const props = withDefaults(defineProps<PropsAuCheckbox>(), {
 
 const emit = defineEmits<EmitsAuCheckbox>()
 
-const isChecked = computed({
+const isChecked = computed<boolean>({
   get() {
     return props.modelValue
   },
@@ -83,9 +54,6 @@ const isChecked = computed({
       :aria-checked="isChecked"
       :disabled="props.disabled"
       :required="props.required"
-      @change="
-        emit('update:modelValue', ($event.target as HTMLInputElement).checked)
-      "
       @focus="emit('focus')"
       @blur="emit('blur')"
     />

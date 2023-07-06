@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { PropsAuSelectBase } from '../../../types'
-
 defineOptions({
   name: 'AuSelect',
   inheritAttrs: false
@@ -12,13 +10,22 @@ type SelectOption = {
   disabled?: boolean
 }
 
-// TODO: validation msg && hints && icons
-interface PropsAuSelect extends PropsAuSelectBase {
+interface PropsAuSelect {
+  hint?: string
+  required?: boolean
+  disabled?: boolean
+  loading?: boolean
+  validationMsg?: string
+  validationtype?: 'danger' | 'success'
+  placeholder: string
   options: SelectOption[]
   modelValue: string
 }
 
 const props = withDefaults(defineProps<PropsAuSelect>(), {
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined,
   loading: false,
   disabled: false,
   required: false

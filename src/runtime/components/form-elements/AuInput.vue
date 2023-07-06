@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from '#imports'
+
 defineOptions({
   name: 'AuInput',
   inheritAttrs: false
@@ -25,7 +26,7 @@ interface PropsAuInput {
 }
 
 interface EmitsAuInput {
-  (e: 'update:modelValue', value: string | number): string | number
+  (e: 'update:modelValue', value: PropsAuInput['modelValue']): void
   (e: 'focus'): void
   (e: 'blur'): void
   (e: 'iconTrailingClick'): void
@@ -49,10 +50,10 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
 })
 const emits = defineEmits<EmitsAuInput>()
 
-const refSearchInput = ref<HTMLInputElement | null>(null)
+const refInput = ref<HTMLInputElement | null>(null)
 
 const autoFocus = () => {
-  refSearchInput.value?.focus()
+  refInput.value?.focus()
 }
 
 onMounted(() => {
@@ -94,7 +95,7 @@ const handleiconTrailingClick = () => {
 
       <input
         v-bind="$attrs"
-        ref="refSearchInput"
+        ref="refInput"
         :placeholder="props.placeholder"
         :autocomplete="props.autocomplete"
         :value="props.modelValue"

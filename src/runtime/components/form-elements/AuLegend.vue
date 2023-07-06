@@ -4,18 +4,13 @@ defineOptions({
 })
 // TODO: icon
 export interface PropsAuLegend {
-  /**
-   * @description legend text
-   * */
   label: string
-  /**
-   * @description if the legend is visible or only for screen readers
-   * @default false
-   * */
+  icon?: string
   srOnly?: boolean
 }
 
 const props = withDefaults(defineProps<PropsAuLegend>(), {
+  icon: undefined,
   srOnly: false
 })
 </script>

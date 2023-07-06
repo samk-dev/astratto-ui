@@ -6,14 +6,7 @@ defineOptions({
 })
 
 export interface PropsAuFieldset {
-  /**
-   * @description legend text
-   * */
   legend?: string
-  /**
-   * @description if the legend is visible or only for screen readers
-   * @default false
-   * */
   srOnly?: boolean
 }
 

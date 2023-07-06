@@ -9,6 +9,7 @@ type Option = {
   id: string | number
   label: string
   icon?: string
+  disabled?: boolean
 }
 
 interface PropsAuSelectBox {
@@ -131,9 +132,9 @@ defineExpose({
         v-model="searchQuery"
         label="Search"
         placeholder="search"
-        left-icon="search"
-        :right-icon="searchQuery.length > 1 ? 'close' : undefined"
-        right-icon-clickable
+        icon-leading="search"
+        :icon-trailing="searchQuery.length > 1 ? 'close' : undefined"
+        icon-trailing-clickable
         size="small"
         type="search"
         :loading="searchLoading"
@@ -141,7 +142,7 @@ defineExpose({
           (e) => emits('update:modelValue', props.modelValue)
         "
         @input="emits('search', searchQuery)"
-        @right-icon-click="handleClearSearch"
+        @icon-trailing-click="handleClearSearch"
       />
 
       <ul role="listbox" tabindex="0" class="uk-list">
