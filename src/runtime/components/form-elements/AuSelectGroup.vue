@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+
 defineOptions({
   name: 'AuSelect',
   inheritAttrs: false
@@ -15,64 +17,59 @@ type GroupOptions = {
   options: SelectOption[]
 }
 
-// TODO: validation msg && hints && icons
 interface PropsAuSelectGroup {
-  /**
-   * @description hint message
-   * @default undefined
-   * */
+  iconLeading?: string
   hint?: string
-  /**
-   * @description if the input related to the label is required
-   * @default false
-   * */
   required?: boolean
-  /**
-   * @description input disabled state
-   * @default false
-   * */
   disabled?: boolean
-  /**
-   * @description input loading state
-   * @default false
-   * */
   loading?: boolean
-  /**
-   * @description validation message will be displayed under the input
-   * @default undefined
-   * */
   validationMsg?: string
-  /**
-   * @description validation type that will style borders and text
-   * @default undefined
-   * */
   validationtype?: 'danger' | 'success'
-  /**
-   * @description select placeholder
-   * */
   placeholder: string
   options: GroupOptions[]
   modelValue: string
 }
 
 const props = withDefaults(defineProps<PropsAuSelectGroup>(), {
+  iconLeading: undefined,
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined,
   loading: false,
   disabled: false,
   required: false
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): string
+  (e: 'update:modelValue', value: PropsAuSelectGroup['modelValue']): void
   (e: 'focus'): void
   (e: 'blur'): void
 }>()
+
+const elCls = computed(() => {
+  let styles
+
+  if (props.iconLeading) {
+    styles = 'padding-left: 40px'
+  }
+
+  return { styles }
+})
 </script>
 
 <template>
-  <div>
+  <div class="uk-position-relative">
+    <span
+      v-if="props.iconLeading"
+      data-uk-icon="happy"
+      class="uk-form-icon"
+      style="width: 40px"
+    />
+
     <select
       v-bind="$attrs"
       class="uk-select"
+      :style="elCls.styles"
       :disabled="props.disabled"
       :required="props.required"
       @input="

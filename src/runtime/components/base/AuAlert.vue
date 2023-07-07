@@ -5,34 +5,11 @@ defineOptions({
 
 // TODO: border radius 'xsmall' | 'small' etc..
 interface PropsAuAlert {
-  /**
-   * @description alert title
-   */
   title: string
-  /**
-   * @description alert message
-   * @default undefined
-   */
   message?: string
-  /**
-   * @description show/hide alert close btn
-   * @default true
-   */
   closeBtn?: boolean
-  /**
-   * @description alert theme
-   * @default undefined
-   */
   theme?: 'primary' | 'success' | 'warning' | 'danger'
-  /**
-   * @description fade out or hide the alert directly
-   * @default true
-   */
   animation?: boolean
-  /**
-   * @description alert animation duration in milliseconds
-   * @default 150
-   */
   duration?: number
 }
 

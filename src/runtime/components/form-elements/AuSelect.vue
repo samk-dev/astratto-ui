@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+
 defineOptions({
   name: 'AuSelect',
   inheritAttrs: false
@@ -11,6 +13,7 @@ type SelectOption = {
 }
 
 interface PropsAuSelect {
+  iconLeading?: string
   hint?: string
   required?: boolean
   disabled?: boolean
@@ -23,6 +26,7 @@ interface PropsAuSelect {
 }
 
 const props = withDefaults(defineProps<PropsAuSelect>(), {
+  iconLeading: undefined,
   hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
@@ -36,13 +40,30 @@ const emits = defineEmits<{
   (e: 'focus'): void
   (e: 'blur'): void
 }>()
+
+const elCls = computed(() => {
+  let styles
+
+  if (props.iconLeading) {
+    styles = 'padding-left: 40px'
+  }
+
+  return { styles }
+})
 </script>
 
 <template>
-  <div>
+  <div class="uk-position-relative">
+    <span
+      v-if="props.iconLeading"
+      data-uk-icon="happy"
+      class="uk-form-icon"
+      style="width: 40px"
+    />
     <select
       v-bind="$attrs"
       class="uk-select"
+      :style="elCls.styles"
       :disabled="props.disabled"
       :required="props.required"
       @input="

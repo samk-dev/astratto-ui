@@ -31,12 +31,6 @@ const formBuilder = ref([
 
       <form-elements />
 
-      <base-components />
-    </div>
-
-    <layout-components />
-
-    <div>
       <pre>
         <span v-for="value in formBuilder" :key="value.id">
           {{ value.modelValue }}

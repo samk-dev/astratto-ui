@@ -7,7 +7,6 @@ defineOptions({
   inheritAttrs: false
 })
 
-// TODO: validation msg && hint
 interface PropsRadio {
   label: string
   srOnly?: boolean
@@ -16,7 +15,7 @@ interface PropsRadio {
   validationMsg?: string
   validationtype?: 'danger' | 'success'
   options: any
-  modelValue: string | number | boolean | object
+  modelValue: string | number | boolean
 }
 
 interface EmitsAuRadio {
@@ -26,6 +25,9 @@ interface EmitsAuRadio {
 }
 
 const props = withDefaults(defineProps<PropsRadio>(), {
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined,
   disabled: false,
   required: false
 })
@@ -44,10 +46,7 @@ const slugify = useSlugify
 </script>
 
 <template>
-  <div
-    class="uk-margin uk-grid-small uk-child-width-auto uk-grid"
-    role="radiogroup"
-  >
+  <div class="uk-grid-small uk-child-width-auto uk-grid" role="radiogroup">
     <label v-for="(option, i) of options" :key="i">
       <input
         :id="`${slugify(option.value)}-${i}`"
@@ -55,7 +54,7 @@ const slugify = useSlugify
         :name="slugify(option.value)"
         :value="option.value"
         type="radio"
-        class="uk-radio"
+        class="uk-radio uk-margin-small-right"
         @focus="emit('focus')"
         @blur="emit('blur')"
       />

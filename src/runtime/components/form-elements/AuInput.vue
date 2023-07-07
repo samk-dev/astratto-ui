@@ -63,7 +63,7 @@ onMounted(() => {
 })
 
 const elCls = computed(() => {
-  let clsState, clsSize
+  let clsState, clsSize, clsWidth
 
   if (props.validationtype) {
     clsState =
@@ -74,7 +74,26 @@ const elCls = computed(() => {
     clsSize = props.size === 'small' ? 'uk-form-small' : 'uk-form-large'
   }
 
-  return [clsState, clsSize]
+  if (props.width) {
+    switch (props.width) {
+      case 'xsmall':
+        clsWidth = 'uk-form-width-xsmall'
+        break
+      case 'small':
+        clsWidth = 'uk-form-width-small'
+        break
+      case 'medium':
+        clsWidth = 'uk-form-width-medium'
+        break
+      case 'large':
+        clsWidth = 'uk-form-width-large'
+        break
+      default:
+        clsWidth = ''
+    }
+  }
+
+  return [clsState, clsSize, clsWidth]
 })
 
 const isPassVisible = ref(false)
@@ -100,7 +119,7 @@ const handleiconTrailingClick = () => {
         :autocomplete="props.autocomplete"
         :value="props.modelValue"
         :type="!isPassVisible ? props.type : 'text'"
-        :disabled="props.disabled"
+        :disabled="props.disabled || props.loading"
         :required="props.required"
         :class="['uk-input', elCls]"
         @input="

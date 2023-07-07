@@ -7,44 +7,13 @@ defineOptions({
 })
 
 export interface PropsBaseButton {
-  /**
-   * @description label for the button, also used for title attr
-   */
   label: string
-  /**
-   * @description button HTML type
-   * @default button
-   */
   type?: 'button' | 'submit' | 'reset'
-  /**
-   * @description background color
-   * @default default
-   */
   theme?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' | 'link'
-  /**
-   * @description size
-   * @default undefined
-   */
   size?: string
-  /**
-   * @description disabled state
-   * @default false
-   */
   disabled?: boolean
-  /**
-   * @description laoding state
-   * @default false
-   */
   loading?: boolean
-  /**
-   * @description leading icon. uikit icon name
-   * @default undefined
-   */
   leadingIcon?: string
-  /**
-   * @description traling icon. uikit icon name
-   * @default undefined
-   */
   trailingIcon?: string
 }
 

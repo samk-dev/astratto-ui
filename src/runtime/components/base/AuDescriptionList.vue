@@ -4,14 +4,7 @@ defineOptions({
 })
 
 interface PropsAuDescriptionList {
-  /**
-   * @description horizontal line between list item
-   * @default true
-   */
   divider?: boolean
-  /**
-   * @description description list items
-   */
   items: any
 }
 const props = withDefaults(defineProps<PropsAuDescriptionList>(), {

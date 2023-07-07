@@ -47,7 +47,7 @@ const isChecked = computed<boolean>({
     <input
       v-bind="$attrs"
       v-model="isChecked"
-      class="uk-checkbox"
+      class="uk-checkbox uk-margin-small-right"
       type="checkbox"
       :checked="isChecked"
       :aria-label="props.label"

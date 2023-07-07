@@ -14,9 +14,8 @@ type Option = {
 
 interface PropsAuSelectBox {
   placeholder: string
-  size?: '' | 'small' | 'large' | 'xlarge'
+  size?: 'small' | 'large' | 'xlarge'
   iconLeading?: string
-  iconTrailing?: string
   iconSelected?: string
   multiselect?: boolean
   search?: boolean
@@ -33,9 +32,8 @@ interface EmitsAuSelectBox {
   (e: 'search', value: string): void
 }
 const props = withDefaults(defineProps<PropsAuSelectBox>(), {
-  size: '',
-  iconLeading: '',
-  iconTrailing: '',
+  size: undefined,
+  iconLeading: undefined,
   iconSelected: 'check',
   multiselect: false,
   search: false,
@@ -45,8 +43,15 @@ const props = withDefaults(defineProps<PropsAuSelectBox>(), {
 })
 const emits = defineEmits<EmitsAuSelectBox>()
 
+const open = ref<boolean>(false)
+
 const searchQuery = ref<string>('')
 const searchLoading = ref<boolean>(false)
+
+const handleSearch = () => {
+  emits('update:modelValue', props.modelValue)
+  emits('search', searchQuery.value)
+}
 
 const handleClearSearch = () => {
   searchQuery.value = ''
@@ -99,34 +104,29 @@ const handleToggleSelectItem = (option: Option, index: number) => {
   emits('update:modelValue', selectedOptions.value)
   emits('optionToggled', option)
 }
-
-defineExpose({
-  selectedOptions,
-  filtredOptions,
-  searchQuery,
-  searchLoading
-})
 </script>
 
 <template>
-  <div class="uk-inline">
-    <button type="button" class="uk-button uk-button-default">
-      {{ selectLabel }}
-      <span uk-drop-parent-icon />
+  <div class="uk-position-relative">
+    <button
+      type="button"
+      class="uk-flex uk-flex-between uk-flex-middle uk-button uk-button-default uk-width-1-1 uk-height-1-1"
+      @click="open = !open"
+    >
+      <div class="uk-flex uk-flex-middle">
+        <span data-uk-icon="happy" class="uk-margin-small-right" />
+        <span>
+          {{ selectLabel }}
+        </span>
+      </div>
+
+      <span data-uk-icon="chevron-down" />
     </button>
 
-    <input
-      :value="selectedOptions"
-      style="position: absolute; top: 0; left: 0; opacity: 0; cursor: default"
-      :disabled="props.disabled"
-      :required="props.required"
-      tabindex="-1"
-      aria-hidden="true"
-    />
-
     <div
-      data-uk-drop="mode: click"
-      class="uk-background-default uk-padding-small"
+      ref="selectBox"
+      data-uk-dropdown="mode: click"
+      class="uk-background-default uk-padding-small uk-width-1-1"
     >
       <au-input
         v-model="searchQuery"
@@ -135,13 +135,9 @@ defineExpose({
         icon-leading="search"
         :icon-trailing="searchQuery.length > 1 ? 'close' : undefined"
         icon-trailing-clickable
-        size="small"
         type="search"
         :loading="searchLoading"
-        @update:model-value="
-          (e) => emits('update:modelValue', props.modelValue)
-        "
-        @input="emits('search', searchQuery)"
+        @update:model-value="() => handleSearch"
         @icon-trailing-click="handleClearSearch"
       />
 
@@ -151,21 +147,40 @@ defineExpose({
             <li
               tabindex="0"
               role="option"
+              class="uk-flex uk-flex-between uk-flex-middle"
               :aria-selected="isSelected(option)"
               @click="handleToggleSelectItem(option, i)"
             >
-              <span v-if="option.icon" :data-uk-icon="props.iconLeading" />
-              <span>
-                {{ option.label }}
-              </span>
-              <span
-                v-show="isSelected(option)"
-                :data-uk-icon="props.iconSelected"
-              />
+              <div class="uk-flex uk-flex-middle">
+                <span
+                  v-if="option.icon"
+                  :data-uk-icon="option.icon"
+                  class="uk-margin-small-right"
+                />
+                <span>
+                  {{ option.label }}
+                </span>
+              </div>
+
+              <div class="uk-text-primary">
+                <span
+                  v-show="isSelected(option)"
+                  :data-uk-icon="props.iconSelected"
+                />
+              </div>
             </li>
           </template>
         </slot>
       </ul>
     </div>
+
+    <input
+      :value="selectedOptions"
+      style="position: absolute; top: 0; left: 0; opacity: 0; cursor: default"
+      :disabled="props.disabled"
+      :required="props.required"
+      tabindex="-1"
+      aria-hidden="true"
+    />
   </div>
 </template>
