@@ -1,6 +1,6 @@
 {
   "name": "@samk-dev/astratto-ui",
-  "version": "1.0.0-dev-6.2",
+  "version": "1.0.0-dev-6.3",
   "description": "Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt",
   "license": "MIT",
   "type": "module",
