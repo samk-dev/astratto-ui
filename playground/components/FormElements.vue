@@ -1,425 +1,196 @@
 <script setup lang="ts">
 import { ref } from '#imports'
 
-const form = ref({
-  text: '',
-  email: '',
-  number: '',
-  password: '',
-  tel: '',
-  url: '',
-  search: '',
-  date: '',
-  time: '',
-  datetime: '',
-  month: '',
-  week: '',
-  select: '',
-  selectGroup: '',
-  disabled: '',
-  withLeftIcon: '',
-  withRightIcon: '',
-  withRightIconClicable: '',
-  withHintText: '',
-  withErrMsg: '',
-  successState: '',
-  withVisibleLabel: '',
-  withVisibleRequired: '',
-  loading: '',
-  radioGroup: 'Option Two',
-  textArea: '',
-  checkbox: false
-})
+// const input = ref('')
+// const select = ref('')
 
-const handleClickableIcon = () => {
-  alert('icon clicked!!')
-}
+// const selectOpts = [
+//   {
+//     label: 'Option One',
+//     id: 'option-one'
+//   },
+//   {
+//     label: 'Option Two',
+//     id: 1
+//   },
+//   {
+//     label: 'Option Three',
+//     id: 'option-three'
+//   }
+// ]
 
-const radioGroupOpts = [
+// const selectGroupOpts = [
+//   {
+//     label: 'Group 01',
+//     options: [
+//       {
+//         label: 'Option One',
+//         id: 'a1063085-3886-5885-a0e1-aa891105c646'
+//       },
+//       {
+//         label: 'Option Two',
+//         id: '9393e5d8-80cf-5198-bba5-47f4f34cd138'
+//       },
+//       {
+//         label: 'Option Three',
+//         id: 'ab570f00-fb79-5fd7-8e72-8046e3619bd8'
+//       }
+//     ]
+//   },
+//   {
+//     label: 'Group 02',
+//     options: [
+//       {
+//         label: 'Option One',
+//         id: '2f93d379-2ea4-5bb5-85d1-9f454cb95f88'
+//       },
+//       {
+//         label: 'Option Two',
+//         id: '38fd7b3b-2b98-5aa3-a756-5cc35313ee4d'
+//       },
+//       {
+//         label: 'Option Three',
+//         id: 'b38e8e62-c9cd-5e15-8ecf-51608cd1b8e1'
+//       }
+//     ]
+//   },
+//   {
+//     label: 'Group 03',
+//     options: [
+//       {
+//         label: 'Option One',
+//         id: 'a48bf59c-ae61-53b7-8faf-4fc0e90cb389'
+//       },
+//       {
+//         label: 'Option Two',
+//         id: 'e2571345-0524-52c7-8ab9-80bc8e6906ca'
+//       },
+//       {
+//         label: 'Option Three',
+//         id: '76d94296-2757-58e1-b046-fe99e3b220e3'
+//       }
+//     ]
+//   }
+// ]
+
+const selectBox = ref('')
+const selectBoxMultiple = ref([])
+const selectBoxOpts = [
   {
-    id: 'a',
-    label: 'A',
-    value: 'A'
-  },
-  {
-    id: 'b',
-    label: 'B',
-    value: 'B'
-  },
-  {
-    id: 'c',
-    label: 'C',
-    value: 'C'
-  }
-]
-const selectOpts = [
-  {
+    id: 0,
     label: 'Option One',
-    value: 'Option One'
+    icon: 'heart'
   },
   {
+    id: 1,
     label: 'Option Two',
-    value: 'Option Two'
+    icon: 'home'
   },
   {
+    id: 2,
     label: 'Option Three',
-    value: 'Option Three'
-  }
-]
-const selectGroupOpts = [
-  {
-    groupLabel: 'Group 01',
-    groupOptions: [
-      {
-        label: 'Option One',
-        value: 'Option One'
-      },
-      {
-        label: 'Option Two',
-        value: 'Option Two'
-      },
-      {
-        label: 'Option Three',
-        value: 'Option Three'
-      }
-    ]
-  },
-  {
-    groupLabel: 'Group 02',
-    groupOptions: [
-      {
-        label: 'Option One',
-        value: 'Option One'
-      },
-      {
-        label: 'Option Two',
-        value: 'Option Two'
-      },
-      {
-        label: 'Option Three',
-        value: 'Option Three'
-      }
-    ]
-  },
-  {
-    groupLabel: 'Group 03',
-    groupOptions: [
-      {
-        label: 'Option One',
-        value: 'Option One'
-      },
-      {
-        label: 'Option Two',
-        value: 'Option Two'
-      },
-      {
-        label: 'Option Three',
-        value: 'Option Three'
-      }
-    ]
+    icon: 'happy',
+    disabled: true
   }
 ]
 </script>
+
 <template>
-  <section>
-    <h2>Form Elements</h2>
+  <div>
+    <pre>
+      <!-- {{ input }}
+      {{ select }} -->
+      {{ selectBox }}
+      {{ selectBoxMultiple }}
+    </pre>
+    <form>
+      <au-select-box
+        v-model="selectBox"
+        placeholder="Selectbox"
+        :options="selectBoxOpts"
+      />
 
-    <div class="au-flex au-flex-wrap au-flex-top">
-      <div class="au-width-auto au-margin-medium-right">
-        <pre>
-      {{ form }}
-    </pre
-        >
-      </div>
+      <au-select-box
+        v-model="selectBoxMultiple"
+        placeholder="Selectbox Multiple"
+        multiselect
+        :options="selectBoxOpts"
+      />
+      <!-- <au-select
+        v-model="select"
+        placeholder="Native Select"
+        :options="selectOpts"
+      />
 
-      <form
-        class="au-form-stack au-width-expand au-flex au-flex-wrap au-flex-top"
-        style="gap: 15px"
-      >
-        <au-fieldset
-          legend="Inputs"
-          class="au-form-controls au-flex au-flex-column"
-          style="gap: 20px"
-        >
-          <div>
-            <au-input
-              v-model="form.text"
-              label="text"
-              placeholder="Text Input"
-            />
-          </div>
+      <au-select
+        v-model="select"
+        placeholder="Native Select"
+        icon-leading="happy"
+        :options="selectOpts"
+      />
 
-          <div>
-            <au-input
-              v-model="form.email"
-              label="Email Input"
-              placeholder="Email Input"
-              type="email"
-            />
-          </div>
+      <au-select-group
+        v-model="select"
+        placeholder="Native Select Group"
+        :options="selectGroupOpts"
+      />
 
-          <div>
-            <au-input
-              v-model="form.number"
-              label="Number"
-              placeholder="Number Input"
-              type="number"
-            />
-          </div>
+      <au-select-group
+        v-model="select"
+        placeholder="Native Select Group"
+        icon-leading="happy"
+        :options="selectGroupOpts"
+      /> -->
 
-          <div>
-            <au-input
-              v-model="form.password"
-              label="Password"
-              placeholder="Password Input"
-              type="password"
-              :required="true"
-            />
-          </div>
+      <!-- <au-input v-model="input" placeholder="Default input" />
 
-          <div>
-            <au-input
-              v-model="form.tel"
-              label="Tel"
-              placeholder="Tel Input"
-              type="tel"
-            />
-          </div>
+      <au-input v-model="input" placeholder="Autofocus" autofocus />
 
-          <div>
-            <au-input
-              v-model="form.url"
-              label="Url"
-              placeholder="Url Input"
-              type="url"
-            />
-          </div>
+      <au-input
+        v-model="input"
+        placeholder="State danger"
+        validationtype="danger"
+        validation-msg="Invalid value!"
+      />
 
-          <div class="au-form-controls">
-            <au-input
-              v-model="form.withVisibleLabel"
-              label="With Visible Label"
-              :sr-only="false"
-              placeholder="Visible Label"
-            />
-          </div>
-        </au-fieldset>
+      <au-input
+        v-model="input"
+        placeholder="State success"
+        validationtype="success"
+        validation-msg="Valid value!"
+      />
 
-        <au-fieldset
-          legend="Inputs state"
-          class="au-form-controls au-flex au-flex-column"
-          style="gap: 20px"
-        >
-          <div>
-            <au-input
-              v-model="form.disabled"
-              label="Loading"
-              placeholder="Loading Input"
-              loading
-            />
-          </div>
+      <au-input v-model="input" placeholder="State disabled" disabled />
+      <au-input v-model="input" placeholder="State loading" loading />
 
-          <div>
-            <au-input
-              v-model="form.disabled"
-              label="Disabled"
-              placeholder="Disabled Input"
-              :disabled="true"
-            />
-          </div>
+      <au-input v-model="input" placeholder="Size small" size="small" />
+      <au-input v-model="input" placeholder="Size default" />
+      <au-input v-model="input" placeholder="Size large" size="large" />
 
-          <div>
-            <au-input
-              v-model="form.withHintText"
-              label="With hint text"
-              placeholder="With hint text"
-              hint="Help text here"
-            />
-          </div>
+      <au-input v-model="input" placeholder="Width xsmall" width="xsmall" />
+      <au-input v-model="input" placeholder="Width small" width="small" />
+      <au-input v-model="input" placeholder="Width medium" width="medium" />
+      <au-input v-model="input" placeholder="Width large" width="large" />
 
-          <div>
-            <au-input
-              v-model="form.withErrMsg"
-              label="With error msg"
-              placeholder="With error msg"
-              validationtype="danger"
-              validation-msg="Invalid value!"
-            />
-          </div>
+      <au-input
+        v-model="input"
+        placeholder="Icon leading"
+        icon-leading="happy"
+      />
 
-          <div>
-            <au-input
-              v-model="form.successState"
-              label="Success state"
-              placeholder="Success state"
-              validationtype="success"
-            />
-          </div>
-        </au-fieldset>
+      <au-input
+        v-model="input"
+        placeholder="Icon trailing"
+        icon-trailing="heart"
+      />
 
-        <au-fieldset
-          legend="Native Date time"
-          class="au-form-controls au-flex au-flex-column"
-          style="gap: 20px"
-        >
-          <div>
-            <au-input
-              v-model="form.date"
-              label="date"
-              placeholder="Date Input"
-              type="date"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.time"
-              label="time"
-              placeholder="Time Input"
-              type="time"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.datetime"
-              label="datetime"
-              placeholder="Datetime Input"
-              type="datetime-local"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.month"
-              label="Month"
-              placeholder="Month Input"
-              type="month"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.week"
-              label="Week"
-              placeholder="Week Input"
-              type="week"
-            />
-          </div>
-        </au-fieldset>
-
-        <au-fieldset
-          legend="Selection"
-          class="au-form-controls au-flex au-flex-column"
-          style="gap: 20px"
-        >
-          <div>
-            <au-select
-              v-model="form.select"
-              label="Select input"
-              placeholder="Select input"
-              :options="selectOpts"
-            />
-          </div>
-
-          <div>
-            <au-select
-              v-model="form.selectGroup"
-              label="Select group input"
-              placeholder="Select group input"
-              :group-options="selectGroupOpts"
-            />
-          </div>
-
-          <!-- <div>
-            <au-select-box />
-          </div>
-
-          <div>
-            <au-select-box2 />
-          </div> -->
-
-          <div>
-            <au-select-box3 />
-          </div>
-
-          <div>
-            <au-radio
-              v-model="form.radioGroup"
-              name="radio-group"
-              label="Select your option"
-              :sr-only="true"
-              :options="radioGroupOpts"
-            />
-          </div>
-
-          <au-checkbox
-            v-model="form.checkbox"
-            label="I have read and accept your 💩 policy"
-          />
-        </au-fieldset>
-
-        <au-fieldset legend="Decoration">
-          <div>
-            <au-input
-              v-model="form.withLeftIcon"
-              label="With left icon"
-              placeholder="Left icon"
-              left-icon="happy"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.withRightIcon"
-              label="With right icon"
-              placeholder="Right icon"
-              right-icon="github"
-            />
-          </div>
-
-          <div>
-            <au-input
-              v-model="form.withRightIconClicable"
-              label="With right icon clicks"
-              placeholder="Right icon clickable"
-              right-icon="search"
-              right-icon-clickable
-              @right-icon-click="handleClickableIcon"
-            />
-          </div>
-        </au-fieldset>
-
-        <au-fieldset legend="Legend">
-          <template #legend>
-            <span>Legend Slot</span>
-            <span data-au-icon="arrow-right"></span>
-          </template>
-          <div class="au-form-controls au-margin">
-            <au-input
-              v-model="form.text"
-              name="username"
-              class="au-width-medium"
-              label="Username"
-              placeholder="Enter your username"
-              :required="true"
-            />
-          </div>
-
-          <div class="au-form-controls au-margin">
-            <au-input
-              v-model="form.text"
-              name="emailaddress"
-              class="au-width-medium"
-              label="Email"
-              placeholder="Enter your email"
-              type="email"
-              :required="true"
-              icon="mail"
-            />
-          </div>
-        </au-fieldset>
-      </form>
-    </div>
-  </section>
+      <au-input
+        v-model="input"
+        placeholder="Icon trailing clickable"
+        icon-trailing="search"
+        icon-trailing-clickable
+        @icon-trailing-click="console.log('Input icon trailing clicked')"
+      /> -->
+    </form>
+  </div>
 </template>

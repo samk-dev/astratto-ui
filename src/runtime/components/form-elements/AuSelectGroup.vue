@@ -12,7 +12,12 @@ type SelectOption = {
   disabled?: boolean
 }
 
-interface PropsAuSelect {
+type GroupOptions = {
+  label: string
+  options: SelectOption[]
+}
+
+interface PropsAuSelectGroup {
   iconLeading?: string
   hint?: string
   required?: boolean
@@ -22,11 +27,11 @@ interface PropsAuSelect {
   validationtype?: 'danger' | 'success'
   radius?: 'rounded' | 'none'
   placeholder: string
-  options: SelectOption[]
+  options: GroupOptions[]
   modelValue: string
 }
 
-const props = withDefaults(defineProps<PropsAuSelect>(), {
+const props = withDefaults(defineProps<PropsAuSelectGroup>(), {
   iconLeading: undefined,
   hint: undefined,
   validationMsg: undefined,
@@ -38,7 +43,7 @@ const props = withDefaults(defineProps<PropsAuSelect>(), {
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: PropsAuSelectGroup['modelValue']): void
   (e: 'focus'): void
   (e: 'blur'): void
 }>()
@@ -50,8 +55,7 @@ const elCls = computed(() => {
     styles = 'padding-left: 40px'
   }
 
-  const borderRadius = props.radius ? `uk-border-${props.radius}` : ''
-  return { styles, borderRadius }
+  return { styles }
 })
 </script>
 
@@ -63,9 +67,10 @@ const elCls = computed(() => {
       class="uk-form-icon"
       style="width: 40px"
     />
+
     <select
       v-bind="$attrs"
-      :class="['uk-select', elCls.borderRadius]"
+      :class="['uk-select', props.radius ? `uk-border-${props.radius}` : '']"
       :style="elCls.styles"
       :disabled="props.disabled"
       :required="props.required"
@@ -86,16 +91,23 @@ const elCls = computed(() => {
       </option>
 
       <template
-        v-for="(option, i) in options"
-        :key="`${option.id}-${option.label}-${i}`"
+        v-for="(groupOpt, i) in options"
+        :key="`${groupOpt.label}-${i}`"
       >
-        <option
-          :value="option.label"
-          :selected="option.label === props.modelValue"
-          :disabled="option.disabled"
-        >
-          {{ option.label }}
-        </option>
+        <optgroup :label="groupOpt.label">
+          <template
+            v-for="(option, k) in groupOpt.options"
+            :key="`${option.id}-${option.label}-${k}`"
+          >
+            <option
+              :value="option.label"
+              :selected="option.label === props.modelValue"
+              :disabled="option.disabled"
+            >
+              {{ option.label }}
+            </option>
+          </template>
+        </optgroup>
       </template>
     </select>
   </div>

@@ -4,28 +4,16 @@ defineOptions({
 })
 
 export interface PropsAuLabel {
-  /**
-   * @description assigns the label to an input
-   * */
   for: string
-  /**
-   * @description label text
-   * */
   label: string
-  /**
-   * @description if the label is visible or only for screen readers
-   * @default false
-   * */
+  size?: 'small' | 'default' | 'large'
   srOnly?: boolean
-  /**
-   * @description if the input related to the label is required
-   * @default false
-   * */
   required?: boolean
 }
 
 const props = withDefaults(defineProps<PropsAuLabel>(), {
-  srOnly: true,
+  size: 'default',
+  srOnly: false,
   required: false
 })
 </script>
@@ -33,8 +21,12 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="['uk-form-label', props.srOnly ? 'uk-sr-only' : '']"
+    :class="[
+      props.srOnly ? 'uk-sr-only' : '',
+      props.size ? `uk-text-${props.size}` : ''
+    ]"
     :aria-label="props.label"
+    :aria-required="props.required"
   >
     <slot>
       {{ props.label }}

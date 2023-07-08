@@ -4,29 +4,10 @@ defineOptions({
 })
 
 interface PropsAuHeading {
-  /**
-   * @description heading html tag
-   */
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  /**
-   * @description heading text
-   * @default undefined
-   */
   text?: string
-  /**
-   * @description heading size
-   * @default medium
-   */
   size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'
-  /**
-   * @description heading undeline divider
-   * @default false
-   */
   divider?: boolean
-  /**
-   * @description heading left bullet
-   * @default false
-   */
   bullet?: boolean
 }
 

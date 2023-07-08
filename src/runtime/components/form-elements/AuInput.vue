@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useSlugify } from '../../utils'
-import AuLabel from './AuLabel.vue'
-import { computed, ref } from '#imports'
+import { computed, ref, onMounted } from '#imports'
 
 defineOptions({
   name: 'AuInput',
@@ -9,120 +7,42 @@ defineOptions({
 })
 
 interface PropsAuInput {
-  /**
-   * @description label text
-   * */
-  label: string
-  /**
-   * @description label visibility, it hides the label for browsers and active for screen readers
-   * @default false
-   * */
-  srOnly?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * @default the label prop slugfied
-   * */
-  name?: string
-  /**
-   * @description hint message
-   * @default undefined
-   * */
-  hint?: string
-  /**
-   * @description if the input related to the label is required
-   * @default false
-   * */
-  required?: boolean
-  /**
-   * @description input disabled state
-   * @default false
-   * */
-  disabled?: boolean
-  /**
-   * @description validation message will be displayed under the input
-   * @default undefined
-   * */
-  validationMsg?: string
-  /**
-   * @description validation type that will style borders and text
-   * @default undefined
-   * */
-  validationtype?: 'danger' | 'success'
-  /**
-   * @description input left icon, uses uikit icons
-   * @example <uk-input icon="heart" />
-   * @default undefined
-   * */
-  leftIcon?: string
-  /**
-   * @description input right icon, uses uikit icons
-   * @example <uk-input icon="heart" />
-   * @default undefined
-   * */
-  rightIcon?: string
-  /**
-   * @description render the icon as clickable element
-   * @default false
-   * */
-  rightIconClickable?: boolean
-  /**
-   * @description input placeholder
-   * */
   placeholder: string
-  /**
-   * @description input autocomplete
-   * @default off
-   * */
+  hint?: string
+  required?: boolean
+  disabled?: boolean
+  validationMsg?: string
+  validationtype?: 'danger' | 'success'
+  iconLeading?: string
+  iconTrailing?: string
+  iconTrailingClickable?: boolean
   autocomplete?: 'on' | 'off'
-  /**
-   * @description input HTML type
-   * @default text
-   * */
-  type?:
-    | 'text'
-    | 'email'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'date'
-    | 'time'
-    | 'datetime-local'
-    | 'month'
-    | 'week'
-    | 'url'
-  /**
-   * @description applies uikit input size class
-   * @default undefined
-   * */
+  autofocus?: boolean
+  type?: 'text' | 'email' | 'number' | 'password' | 'tel' | 'url' | 'search'
   size?: 'small' | 'large'
-  /**
-   * @description applies uikit input width class
-   * @default undefined
-   * */
   width?: 'xsmall' | 'small' | 'medium' | 'large'
+  radius?: 'rounded'
   loading?: boolean
-  /**
-   * @description input model value
-   * */
   modelValue: string | number
 }
+
 interface EmitsAuInput {
-  (e: 'update:modelValue', value: string | number): string | number
+  (e: 'update:modelValue', value: PropsAuInput['modelValue']): void
   (e: 'focus'): void
   (e: 'blur'): void
-  (e: 'rightIconClick'): void
+  (e: 'iconTrailingClick'): void
 }
 
 const props = withDefaults(defineProps<PropsAuInput>(), {
-  srOnly: true,
-  leftIcon: undefined,
-  rightIcon: undefined,
-  rightIconClickable: false,
+  iconLeading: undefined,
+  iconTrailing: undefined,
+  iconTrailingClickable: false,
   autocomplete: 'off',
+  autofocus: false,
   type: 'text',
   size: undefined,
   width: undefined,
+  radius: 'rounded',
   disabled: false,
   required: false,
   hint: undefined,
@@ -132,17 +52,20 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
 })
 const emits = defineEmits<EmitsAuInput>()
 
-const inputValue = computed({
-  get() {
-    return props.modelValue
-  },
-  set(val) {
-    emits('update:modelValue', val)
+const refInput = ref<HTMLInputElement | null>(null)
+
+const autoFocus = () => {
+  refInput.value?.focus()
+}
+
+onMounted(() => {
+  if (props.autofocus) {
+    autoFocus()
   }
 })
 
 const elCls = computed(() => {
-  let clsState, clsSize
+  let clsState, clsSize, clsWidth
 
   if (props.validationtype) {
     clsState =
@@ -153,48 +76,59 @@ const elCls = computed(() => {
     clsSize = props.size === 'small' ? 'uk-form-small' : 'uk-form-large'
   }
 
-  return [clsState, clsSize]
+  if (props.width) {
+    switch (props.width) {
+      case 'xsmall':
+        clsWidth = 'uk-form-width-xsmall'
+        break
+      case 'small':
+        clsWidth = 'uk-form-width-small'
+        break
+      case 'medium':
+        clsWidth = 'uk-form-width-medium'
+        break
+      case 'large':
+        clsWidth = 'uk-form-width-large'
+        break
+      default:
+        clsWidth = ''
+    }
+  }
+
+  const radius = props.radius ? `uk-border-${props.radius}` : ''
+
+  return [clsState, clsSize, clsWidth, radius]
 })
 
 const isPassVisible = ref(false)
 
-const handleRightIconClick = () => {
-  if (props.rightIconClickable) emits('rightIconClick')
+const handleiconTrailingClick = () => {
+  if (props.iconTrailingClickable) emits('iconTrailingClick')
 }
-
-const slugify = useSlugify
 </script>
 
 <template>
   <div>
-    <au-label
-      :for="`id-${slugify(props.label)}`"
-      :label="props.label"
-      :required="props.required"
-      :sr-only="props.srOnly"
-      class="uk-display-block"
-    />
-
     <div class="uk-inline-block uk-width-1-1">
       <span
-        v-if="props.leftIcon"
+        v-if="props.iconLeading"
         class="uk-form-icon"
-        :data-uk-icon="props.leftIcon"
+        :data-uk-icon="props.iconLeading"
       />
 
       <input
         v-bind="$attrs"
-        :id="`id-${slugify(props.label)}`"
-        v-model="inputValue"
-        :name="slugify(props.label)"
+        ref="refInput"
         :placeholder="props.placeholder"
         :autocomplete="props.autocomplete"
-        :value="inputValue"
+        :value="props.modelValue"
         :type="!isPassVisible ? props.type : 'text'"
-        :disabled="props.disabled"
+        :disabled="props.disabled || props.loading"
         :required="props.required"
         :class="['uk-input', elCls]"
-        :aria-label="props.label"
+        @input="
+          emits('update:modelValue', ($event.target as HTMLInputElement).value)
+        "
         @focus="emits('focus')"
         @blur="emits('blur')"
       />
@@ -208,12 +142,12 @@ const slugify = useSlugify
       />
 
       <component
-        :is="props.rightIconClickable ? 'a' : 'span'"
-        v-if="props.type !== 'password' && props.rightIcon && !props.loading"
+        :is="props.iconTrailingClickable ? 'a' : 'span'"
+        v-if="props.type !== 'password' && props.iconTrailing && !props.loading"
         class="uk-form-icon uk-form-icon-flip"
-        :href="props.rightIconClickable"
-        :data-uk-icon="props.rightIcon"
-        @click.prevent="handleRightIconClick"
+        :href="props.iconTrailingClickable"
+        :data-uk-icon="props.iconTrailing"
+        @click.prevent="handleiconTrailingClick"
       />
 
       <span

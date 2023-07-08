@@ -6,20 +6,8 @@ defineOptions({
 })
 
 interface PropsAuSection {
-  /**
-   * @description section background
-   * @default undefined
-   */
   bgColor?: 'default' | 'primary' | 'secondary' | 'muted'
-  /**
-   * @description section size
-   * @default undefined
-   */
   size?: 'xsmall' | 'small' | 'large' | 'xlarge'
-  /**
-   * @description removes vertical padding
-   * @default false
-   */
   removeVerticalPadding?: boolean
 }
 

@@ -4,19 +4,8 @@ defineOptions({
 })
 
 interface PropsAuIcon {
-  /**
-   * @description uikit icon name
-   */
   name: string
-  /**
-   * @description icon ration
-   * @default 0.8
-   */
   ratio?: number
-  /**
-   * @description HTML tag
-   * @default span
-   */
   tag?: 'span' | 'a'
 }
 

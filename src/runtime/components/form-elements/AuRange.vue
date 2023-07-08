@@ -1,26 +1,12 @@
 <script setup lang="ts">
-import AuLabel from './AuLabel.vue'
+import { computed } from '#imports'
 
 defineOptions({
-  name: 'AuRange',
-  inheritAttrs: false
+  name: 'AuRange'
 })
 
 // TODO: validation msg && hints
 interface PropsAuRange {
-  /**
-   * @description label text
-   * */
-  label: string
-  /**
-   * @description label visibility, it hides the label for browsers and active for screen readers
-   * @default false
-   * */
-  srOnly?: boolean
-  /**
-   * @description unique input id, it is used as id and name attrs
-   * */
-  name?: string
   /**
    * @description hint message
    * @default undefined
@@ -53,10 +39,12 @@ interface PropsAuRange {
 }
 
 const props = withDefaults(defineProps<PropsAuRange>(), {
-  srOnly: false,
   min: 0,
   max: 10,
   step: 1,
+  hint: undefined,
+  validationMsg: undefined,
+  validationtype: undefined,
   disabled: false,
   required: false
 })
@@ -66,33 +54,28 @@ const emits = defineEmits<{
   (e: 'focus'): void
   (e: 'blur'): void
 }>()
+
+const value = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emits('update:modelValue', newValue)
+  }
+})
 </script>
 <template>
-  <div>
-    <au-label
-      :for="`id-${props.name}`"
-      :label="props.label"
-      :required="props.required"
-      :sr-only="props.srOnly"
-    />
-    <input
-      v-bind="$attrs"
-      :id="`id-${props.name}`"
-      :name="props.name"
-      type="range"
-      :value="props.modelValue"
-      :min="props.min"
-      :max="props.max"
-      :step="props.step"
-      :aria-label="props.label"
-      :required="props.required"
-      :disabled="props.disabled"
-      class="uk-range"
-      @change="
-        emits('update:modelValue', ($event.target as HTMLInputElement).value)
-      "
-      @focus="emits('focus')"
-      @blur="emits('blur')"
-    />
-  </div>
+  <input
+    v-model.number="value"
+    type="range"
+    :value="props.modelValue"
+    :min="props.min"
+    :max="props.max"
+    :step="props.step"
+    :required="props.required"
+    :disabled="props.disabled"
+    class="uk-range"
+    @focus="emits('focus')"
+    @blur="emits('blur')"
+  />
 </template>

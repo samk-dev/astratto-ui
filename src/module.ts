@@ -1,5 +1,6 @@
 import {
   addComponentsDir,
+  addImportsDir,
   createResolver,
   defineNuxtModule,
   installModule
@@ -20,7 +21,7 @@ export default defineNuxtModule<AuModuleOptions>({
   defaults: {
     prefix: 'au'
   },
-  async setup(options, nuxt) {
+  async setup(options, _nuxt) {
     const resolver = createResolver(import.meta.url)
 
     installModule('@samk-dev/nuxt-uikit3')
@@ -54,9 +55,17 @@ export default defineNuxtModule<AuModuleOptions>({
       transpile: true,
       global: false
     })
+
+    await addComponentsDir({
+      pathPrefix: false,
+      path: resolver.resolve('runtime/components', 'overlays'),
+      prefix: `${options.prefix}`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
+
+    await addImportsDir(resolver.resolve('runtime/composables'))
   }
 })
-
-function addTemplate(arg0: { filename: string; getContents: () => string }) {
-  throw new Error('Function not implemented.')
-}

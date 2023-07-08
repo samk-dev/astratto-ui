@@ -3,7 +3,7 @@
     <au-container>
       <h3>Section</h3>
 
-      <div class="au-grid-match au-child-width-1-3@m" au-grid>
+      <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
         <div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -30,7 +30,7 @@
     <au-container>
       <h3>Section</h3>
 
-      <div class="au-grid-match au-child-width-1-3@m" au-grid>
+      <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
         <div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
