@@ -21,6 +21,7 @@ interface PropsAuInput {
   type?: 'text' | 'email' | 'number' | 'password' | 'tel' | 'url' | 'search'
   size?: 'small' | 'large'
   width?: 'xsmall' | 'small' | 'medium' | 'large'
+  radius?: 'rounded'
   loading?: boolean
   modelValue: string | number
 }
@@ -41,6 +42,7 @@ const props = withDefaults(defineProps<PropsAuInput>(), {
   type: 'text',
   size: undefined,
   width: undefined,
+  radius: 'rounded',
   disabled: false,
   required: false,
   hint: undefined,
@@ -93,7 +95,9 @@ const elCls = computed(() => {
     }
   }
 
-  return [clsState, clsSize, clsWidth]
+  const radius = props.radius ? `uk-border-${props.radius}` : ''
+
+  return [clsState, clsSize, clsWidth, radius]
 })
 
 const isPassVisible = ref(false)

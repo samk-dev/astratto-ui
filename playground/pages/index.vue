@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { ref } from '#imports'
-import { AuInput } from '#components'
+// import { ref } from '#imports'
+// import { AuInput } from '#components'
 
-const formBuilder = ref([
-  {
-    id: 'asda3',
-    type: 'text',
-    label: 'Text Input',
-    placeholder: 'Enter some text',
-    modelValue: '',
-    component: () => AuInput
-  },
-  {
-    id: 'asda4',
-    type: 'number',
-    label: 'Number Input',
-    placeholder: 'Enter some numbers',
-    modelValue: '',
-    component: () => AuInput
-  }
-])
+// const formBuilder = ref([
+//   {
+//     id: 'asda3',
+//     type: 'text',
+//     label: 'Text Input',
+//     placeholder: 'Enter some text',
+//     modelValue: '',
+//     component: () => AuInput
+//   },
+//   {
+//     id: 'asda4',
+//     type: 'number',
+//     label: 'Number Input',
+//     placeholder: 'Enter some numbers',
+//     modelValue: '',
+//     component: () => AuInput
+//   }
+// ])
 </script>
 
 <template>
@@ -28,8 +28,7 @@ const formBuilder = ref([
       <section>
         <h1>Astratto UI Playground</h1>
       </section>
-
-      <form-elements />
+      <!-- <form-elements />
 
       <pre>
         <span v-for="value in formBuilder" :key="value.id">
@@ -45,7 +44,7 @@ const formBuilder = ref([
           :label="item.label"
           :placeholder="item.placeholder"
         />
-      </form>
+      </form> -->
     </div>
   </div>
 </template>

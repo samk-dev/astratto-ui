@@ -15,6 +15,7 @@ type Option = {
 interface PropsAuSelectBox {
   placeholder: string
   size?: 'small' | 'large' | 'xlarge'
+  radius?: 'rounded' | 'none'
   iconLeading?: string
   iconSelected?: string
   multiselect?: boolean
@@ -33,6 +34,7 @@ interface EmitsAuSelectBox {
 }
 const props = withDefaults(defineProps<PropsAuSelectBox>(), {
   size: undefined,
+  radius: 'rounded',
   iconLeading: undefined,
   iconSelected: 'check',
   multiselect: false,
@@ -110,7 +112,10 @@ const handleToggleSelectItem = (option: Option, index: number) => {
   <div class="uk-position-relative">
     <button
       type="button"
-      class="uk-flex uk-flex-between uk-flex-middle uk-button uk-button-default uk-width-1-1 uk-height-1-1"
+      :class="[
+        'uk-flex uk-flex-between uk-flex-middle uk-button uk-button-default uk-width-1-1 uk-height-1-1',
+        props.radius ? `uk-border-${props.radius}` : ''
+      ]"
       @click="open = !open"
     >
       <div class="uk-flex uk-flex-middle">
@@ -141,7 +146,12 @@ const handleToggleSelectItem = (option: Option, index: number) => {
         @icon-trailing-click="handleClearSearch"
       />
 
-      <ul role="listbox" tabindex="0" class="uk-list">
+      <ul
+        role="listbox"
+        tabindex="0"
+        :class="['uk-list', props.radius ? `uk-border-${props.radius}` : '']"
+        style="overflow-y: auto"
+      >
         <slot>
           <template v-for="(option, i) in filtredOptions" :key="option.id">
             <li

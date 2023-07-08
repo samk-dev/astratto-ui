@@ -10,7 +10,8 @@ export interface PropsBaseButton {
   label: string
   type?: 'button' | 'submit' | 'reset'
   theme?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' | 'link'
-  size?: string
+  size?: 'small' | 'large'
+  radius?: 'rounded' | 'pill'
   disabled?: boolean
   loading?: boolean
   leadingIcon?: string
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<PropsBaseButton>(), {
   type: 'button',
   theme: 'default',
   size: undefined,
+  radius: 'rounded',
   disabled: false,
   loading: false,
   leadingIcon: undefined,
@@ -30,6 +32,7 @@ const props = withDefaults(defineProps<PropsBaseButton>(), {
 const elCls = computed(() => {
   const theme = `uk-button-${props.theme}`
   const size = props.size ? `uk-button-${props.size}` : ''
+  const radius = props.radius ? `uk-border-${props.radius}` : ''
 
   let spinnerSize = 0.5
   if (props.size === 'small') {
@@ -45,7 +48,7 @@ const elCls = computed(() => {
     iconSize = 0.9
   }
 
-  return { theme, size, spinnerSize, iconSize }
+  return { theme, size, spinnerSize, iconSize, radius }
 })
 </script>
 
@@ -57,7 +60,8 @@ const elCls = computed(() => {
     :class="[
       'uk-button uk-flex-inline uk-flex-center uk-flex-middle',
       elCls.theme,
-      elCls.size
+      elCls.size,
+      elCls.radius
     ]"
   >
     <au-icon

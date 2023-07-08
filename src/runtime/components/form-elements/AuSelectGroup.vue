@@ -25,6 +25,7 @@ interface PropsAuSelectGroup {
   loading?: boolean
   validationMsg?: string
   validationtype?: 'danger' | 'success'
+  radius?: 'rounded' | 'none'
   placeholder: string
   options: GroupOptions[]
   modelValue: string
@@ -35,6 +36,7 @@ const props = withDefaults(defineProps<PropsAuSelectGroup>(), {
   hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
+  radius: 'rounded',
   loading: false,
   disabled: false,
   required: false
@@ -68,7 +70,7 @@ const elCls = computed(() => {
 
     <select
       v-bind="$attrs"
-      class="uk-select"
+      :class="['uk-select', props.radius ? `uk-border-${props.radius}` : '']"
       :style="elCls.styles"
       :disabled="props.disabled"
       :required="props.required"

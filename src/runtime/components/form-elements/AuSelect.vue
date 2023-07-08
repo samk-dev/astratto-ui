@@ -20,6 +20,7 @@ interface PropsAuSelect {
   loading?: boolean
   validationMsg?: string
   validationtype?: 'danger' | 'success'
+  radius?: 'rounded' | 'none'
   placeholder: string
   options: SelectOption[]
   modelValue: string
@@ -30,13 +31,14 @@ const props = withDefaults(defineProps<PropsAuSelect>(), {
   hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
+  radius: 'rounded',
   loading: false,
   disabled: false,
   required: false
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): string
+  (e: 'update:modelValue', value: string): void
   (e: 'focus'): void
   (e: 'blur'): void
 }>()
@@ -48,7 +50,8 @@ const elCls = computed(() => {
     styles = 'padding-left: 40px'
   }
 
-  return { styles }
+  const borderRadius = props.radius ? `uk-border-${props.radius}` : ''
+  return { styles, borderRadius }
 })
 </script>
 
@@ -62,7 +65,7 @@ const elCls = computed(() => {
     />
     <select
       v-bind="$attrs"
-      class="uk-select"
+      :class="['uk-select', elCls.borderRadius]"
       :style="elCls.styles"
       :disabled="props.disabled"
       :required="props.required"

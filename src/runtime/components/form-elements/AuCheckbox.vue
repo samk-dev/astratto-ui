@@ -7,7 +7,8 @@ defineOptions({
 })
 
 interface PropsAuCheckbox {
-  label: string
+  label?: string
+  radius?: 'rounded' | 'none'
   hint?: string
   required?: boolean
   disabled?: boolean
@@ -23,6 +24,8 @@ interface EmitsAuCheckbox {
 }
 
 const props = withDefaults(defineProps<PropsAuCheckbox>(), {
+  label: undefined,
+  radius: 'rounded',
   hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
@@ -47,7 +50,10 @@ const isChecked = computed<boolean>({
     <input
       v-bind="$attrs"
       v-model="isChecked"
-      class="uk-checkbox uk-margin-small-right"
+      :class="[
+        props.radius ? `uk-border-${props.radius}` : '',
+        'uk-checkbox uk-margin-small-right'
+      ]"
       type="checkbox"
       :checked="isChecked"
       :aria-label="props.label"

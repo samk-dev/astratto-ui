@@ -9,6 +9,7 @@ interface PropsAuTextArea {
   disabled?: boolean
   validationMsg?: string
   validationtype?: 'danger' | 'success'
+  radius?: 'rounded' | 'none'
   placeholder: string
   autofocus?: boolean
   cols?: number
@@ -27,7 +28,8 @@ const props = withDefaults(defineProps<PropsAuTextArea>(), {
   required: false,
   hint: undefined,
   validationMsg: undefined,
-  validationtype: undefined
+  validationtype: undefined,
+  radius: 'rounded'
 })
 
 const emits = defineEmits<{
@@ -45,7 +47,7 @@ const emits = defineEmits<{
     :rows="props.rows"
     :maxlength="props.maxLength"
     :wrap="props.wrap"
-    class="uk-textarea"
+    :class="['uk-textarea', props.radius ? `uk-border-${props.radius}` : '']"
     @input="
       emits('update:modelValue', ($event.target as HTMLTextAreaElement).value)
     "

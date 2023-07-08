@@ -6,11 +6,13 @@ defineOptions({
 export interface PropsAuLabel {
   for: string
   label: string
+  size?: 'small' | 'default' | 'large'
   srOnly?: boolean
   required?: boolean
 }
 
 const props = withDefaults(defineProps<PropsAuLabel>(), {
+  size: 'default',
   srOnly: false,
   required: false
 })
@@ -19,7 +21,10 @@ const props = withDefaults(defineProps<PropsAuLabel>(), {
 <template>
   <label
     :for="props.for"
-    :class="[props.srOnly ? 'uk-sr-only' : 'uk-form-label']"
+    :class="[
+      props.srOnly ? 'uk-sr-only' : '',
+      props.size ? `uk-text-${props.size}` : ''
+    ]"
     :aria-label="props.label"
     :aria-required="props.required"
   >
