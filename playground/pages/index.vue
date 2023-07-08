@@ -20,6 +20,23 @@
 //     component: () => AuInput
 //   }
 // ])
+// const handleClose = () => {
+//   console.log('closed')
+// }
+
+const accordion = [
+  {
+    id: '',
+    label: 'Item 1',
+    content: 'Hello',
+    open: true
+  },
+  {
+    id: '',
+    label: 'Item 2',
+    content: 'Hello 2'
+  }
+]
 </script>
 
 <template>
@@ -28,6 +45,34 @@
       <section>
         <h1>Astratto UI Playground</h1>
       </section>
+
+      <au-accordion :items="accordion" />
+
+      <!-- <button data-uk-toggle="target: #offcanvas-test">Open modal</button>
+
+      <au-offcanvas id="offcanvas-test"> hello </au-offcanvas> -->
+
+      <!--
+
+      <au-modal id="modal-test" @close="handleClose">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
+          obcaecati veritatis porro amet? Culpa sint ea harum iste, dolor, modi
+          fugiat officia quos eaque illum maxime laborum at quam laudantium.
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
+          obcaecati veritatis porro amet? Culpa sint ea harum iste, dolor, modi
+          fugiat officia quos eaque illum maxime laborum at quam laudantium.
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt
+          obcaecati veritatis porro amet? Culpa sint ea harum iste, dolor, modi
+          fugiat officia quos eaque illum maxime laborum at quam laudantium.
+        </p>
+      </au-modal> -->
       <!-- <form-elements />
 
       <pre>
