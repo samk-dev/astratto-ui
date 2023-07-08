@@ -1,5 +1,6 @@
 import {
   addComponentsDir,
+  addImportsDir,
   createResolver,
   defineNuxtModule,
   installModule
@@ -54,5 +55,17 @@ export default defineNuxtModule<AuModuleOptions>({
       transpile: true,
       global: false
     })
+
+    await addComponentsDir({
+      pathPrefix: false,
+      path: resolver.resolve('runtime/components', 'overlays'),
+      prefix: `${options.prefix}`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
+
+    await addImportsDir(resolver.resolve('runtime/composables'))
   }
 })
