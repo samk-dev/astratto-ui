@@ -131,7 +131,8 @@ const handleToggleSelectItem = (option: Option, index: number) => {
     <div
       ref="selectBox"
       data-uk-dropdown="mode: click"
-      class="uk-background-default uk-padding-small uk-width-1-1"
+      class="uk-background-default uk-padding-small uk-width-1-1 uk-height-max-medium"
+      style="overflow-y: auto"
     >
       <au-input
         v-model="searchQuery"
