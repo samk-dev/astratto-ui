@@ -45,8 +45,6 @@ const props = withDefaults(defineProps<PropsAuSelectBox>(), {
 })
 const emits = defineEmits<EmitsAuSelectBox>()
 
-const open = ref<boolean>(false)
-
 const searchQuery = ref<string>('')
 const searchLoading = ref<boolean>(false)
 
@@ -116,7 +114,6 @@ const handleToggleSelectItem = (option: Option, index: number) => {
         'uk-flex uk-flex-between uk-flex-middle uk-button uk-button-default uk-width-1-1 uk-height-1-1',
         props.radius ? `uk-border-${props.radius}` : ''
       ]"
-      @click="open = !open"
     >
       <div class="uk-flex uk-flex-middle">
         <span data-uk-icon="happy" class="uk-margin-small-right" />
@@ -154,7 +151,10 @@ const handleToggleSelectItem = (option: Option, index: number) => {
         style="overflow-y: auto"
       >
         <slot>
-          <template v-for="(option, i) in filtredOptions" :key="option.id">
+          <template
+            v-for="(option, i) in filtredOptions"
+            :key="`${option.id}-${i}`"
+          >
             <li
               tabindex="0"
               role="option"
