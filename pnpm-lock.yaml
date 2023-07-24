@@ -22,7 +22,7 @@ importers:
         version: 3.6.2(rollup@3.26.2)
       '@nuxt/module-builder':
         specifier: ^0.4.0
-        version: 0.4.0(@nuxt/kit@3.6.2)(nuxi@3.6.2)(sass@1.63.6)
+        version: 0.4.0(@nuxt/kit@3.6.2)(nuxi@3.6.5)(sass@1.63.6)
       '@nuxt/schema':
         specifier: ^3.6.2
         version: 3.6.2(rollup@3.26.2)
@@ -1327,8 +1327,8 @@ packages:
       nuxt: ^3.6.1
       vite: '*'
     dependencies:
-      '@nuxt/kit': 3.6.2(rollup@3.26.2)
-      '@nuxt/schema': 3.6.2(rollup@3.26.2)
+      '@nuxt/kit': 3.6.5(rollup@3.26.2)
+      '@nuxt/schema': 3.6.5(rollup@3.26.2)
       execa: 7.1.1
       nuxt: 3.6.2(@types/node@20.4.0)(eslint@8.44.0)(rollup@3.26.2)(sass@1.63.6)(typescript@5.1.6)
       vite: 4.4.2(@types/node@20.4.0)(sass@1.63.6)
@@ -1431,7 +1431,33 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/module-builder@0.4.0(@nuxt/kit@3.6.2)(nuxi@3.6.2)(sass@1.63.6):
+  /@nuxt/kit@3.6.5(rollup@3.26.2):
+    resolution: {integrity: sha512-uBI5I2Zx6sk+vRHU+nBmifwxg/nyXCGZ1g5hUKrUfgv1ZfiKB8JkN5T9iRoduDOaqbwM6XSnEl1ja73iloDcrw==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    dependencies:
+      '@nuxt/schema': 3.6.5(rollup@3.26.2)
+      c12: 1.4.2
+      consola: 3.2.3
+      defu: 6.1.2
+      globby: 13.2.2
+      hash-sum: 2.0.0
+      ignore: 5.2.4
+      jiti: 1.19.1
+      knitwork: 1.0.0
+      mlly: 1.4.0
+      pathe: 1.1.1
+      pkg-types: 1.0.3
+      scule: 1.0.0
+      semver: 7.5.4
+      unctx: 2.3.1
+      unimport: 3.0.14(rollup@3.26.2)
+      untyped: 1.3.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /@nuxt/module-builder@0.4.0(@nuxt/kit@3.6.2)(nuxi@3.6.5)(sass@1.63.6):
     resolution: {integrity: sha512-B+UAYgFV1Hkc2ZcD7GaiKZ3SNHhyxFlXzZoBWTc9ulE0Z/+rq6RTa9fNm13BZyGhVhDCl5FN/wF/yYa1O/D2iw==}
     hasBin: true
     peerDependencies:
@@ -1442,7 +1468,7 @@ packages:
       consola: 3.2.3
       mlly: 1.4.0
       mri: 1.2.0
-      nuxi: 3.6.2
+      nuxi: 3.6.5
       pathe: 1.1.1
       unbuild: 1.2.1(sass@1.63.6)
     transitivePeerDependencies:
@@ -1468,11 +1494,29 @@ packages:
       - supports-color
     dev: true
 
+  /@nuxt/schema@3.6.5(rollup@3.26.2):
+    resolution: {integrity: sha512-UPUnMB0W5TZ/Pi1fiF71EqIsPlj8LGZqzhSf8wOeh538KHwxbA9r7cuvEUU92eXRksOZaylbea3fJxZWhOITVw==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    dependencies:
+      defu: 6.1.2
+      hookable: 5.5.3
+      pathe: 1.1.1
+      pkg-types: 1.0.3
+      postcss-import-resolver: 2.0.0
+      std-env: 3.3.3
+      ufo: 1.1.2
+      unimport: 3.0.14(rollup@3.26.2)
+      untyped: 1.3.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
   /@nuxt/telemetry@2.3.1(rollup@3.26.2):
     resolution: {integrity: sha512-7kr2VDirYIXqyTHqaiWCrfQLgUjAa4qAHzykJOspMCFJWalHU9SVfnv+cTOKGqoXQ4TWOCd09tEd7sLlMFTEqw==}
     hasBin: true
     dependencies:
-      '@nuxt/kit': 3.6.2(rollup@3.26.2)
+      '@nuxt/kit': 3.6.5(rollup@3.26.2)
       chalk: 5.3.0
       ci-info: 3.8.0
       consola: 3.2.3
@@ -1578,6 +1622,7 @@ packages:
       - '@types/node'
       - eslint
       - less
+      - lightningcss
       - meow
       - optionator
       - rollup
@@ -1639,6 +1684,7 @@ packages:
       - '@types/node'
       - eslint
       - less
+      - lightningcss
       - meow
       - optionator
       - rollup
@@ -2029,7 +2075,7 @@ packages:
   /@types/http-proxy@1.17.11:
     resolution: {integrity: sha512-HC8G7c1WmaF2ekqpnFq626xd3Zz0uvaqFmBJNRZCGEZCXkvSdJoNFn/8Ygbd9fKNQj8UzLdCETaI0UWPAjK7IA==}
     dependencies:
-      '@types/node': 20.4.0
+      '@types/node': 20.4.1
     dev: true
 
   /@types/json-schema@7.0.12:
@@ -7359,6 +7405,14 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /nuxi@3.6.5:
+    resolution: {integrity: sha512-4XEXYz71UiWWiKC1/cJCzqRSUEImYRmjcvKpSsBKMU58ALYVSx5KIoas5SwLO8tEKO5BS4DAe4u7MYix7hfuHQ==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /nuxt@3.6.2(@types/node@18.15.12)(eslint@8.44.0)(rollup@3.26.2)(sass@1.63.6)(typescript@5.1.6):
     resolution: {integrity: sha512-nzxXEKyjBUjRIfP/vojFdZ9RbpaiVftatT+p5tzJGea8beocRB2XsZ0hcDtmMuOcF6glQjG3EIsVu2p9Ckz/Kg==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -7437,6 +7491,7 @@ packages:
       - encoding
       - eslint
       - less
+      - lightningcss
       - meow
       - optionator
       - rollup
@@ -7530,6 +7585,7 @@ packages:
       - encoding
       - eslint
       - less
+      - lightningcss
       - meow
       - optionator
       - rollup
@@ -10038,10 +10094,11 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.3.9(@types/node@18.15.12)(sass@1.63.6)
+      vite: 4.4.2(@types/node@18.15.12)(sass@1.63.6)
     transitivePeerDependencies:
       - '@types/node'
       - less
+      - lightningcss
       - sass
       - stylus
       - sugarss
@@ -10059,10 +10116,11 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.3.9(@types/node@20.4.0)(sass@1.63.6)
+      vite: 4.4.2(@types/node@20.4.0)(sass@1.63.6)
     transitivePeerDependencies:
       - '@types/node'
       - less
+      - lightningcss
       - sass
       - stylus
       - sugarss
@@ -10244,6 +10302,43 @@ packages:
     dependencies:
       '@types/node': 20.4.0
       esbuild: 0.17.19
+      postcss: 8.4.25
+      rollup: 3.26.2
+      sass: 1.63.6
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite@4.4.2(@types/node@18.15.12)(sass@1.63.6):
+    resolution: {integrity: sha512-zUcsJN+UvdSyHhYa277UHhiJ3iq4hUBwHavOpsNUGsTgjBeoBlK8eDt+iT09pBq0h9/knhG/SPrZiM7cGmg7NA==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 18.15.12
+      esbuild: 0.18.11
       postcss: 8.4.25
       rollup: 3.26.2
       sass: 1.63.6
