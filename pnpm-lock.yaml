@@ -1230,8 +1230,8 @@ packages:
       nuxt: ^3.6.1
       vite: '*'
     dependencies:
-      '@nuxt/kit': 3.6.2(rollup@3.27.0)
-      '@nuxt/schema': 3.6.2(rollup@3.27.0)
+      '@nuxt/kit': 3.6.5(rollup@3.27.0)
+      '@nuxt/schema': 3.6.5(rollup@3.27.0)
       execa: 7.2.0
       nuxt: 3.6.5(@types/node@20.4.5)(eslint@8.44.0)(rollup@3.27.0)(sass@1.64.1)(typescript@5.1.6)
       vite: 4.4.7(@types/node@20.4.5)(sass@1.64.1)
@@ -1349,6 +1349,7 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
 
   /@nuxt/kit@3.6.5(rollup@3.27.0):
     resolution: {integrity: sha512-uBI5I2Zx6sk+vRHU+nBmifwxg/nyXCGZ1g5hUKrUfgv1ZfiKB8JkN5T9iRoduDOaqbwM6XSnEl1ja73iloDcrw==}
@@ -1410,6 +1411,7 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
 
   /@nuxt/schema@3.6.5(rollup@3.27.0):
     resolution: {integrity: sha512-UPUnMB0W5TZ/Pi1fiF71EqIsPlj8LGZqzhSf8wOeh538KHwxbA9r7cuvEUU92eXRksOZaylbea3fJxZWhOITVw==}
