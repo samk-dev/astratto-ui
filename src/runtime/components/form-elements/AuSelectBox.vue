@@ -116,7 +116,11 @@ const handleToggleSelectItem = (option: Option, index: number) => {
       ]"
     >
       <div class="uk-flex uk-flex-middle">
-        <span data-uk-icon="happy" class="uk-margin-small-right" />
+        <span
+          v-if="props.iconLeading"
+          :data-uk-icon="props.iconLeading"
+          class="uk-margin-small-right"
+        />
         <span>
           {{ selectLabel }}
         </span>
@@ -191,7 +195,7 @@ const handleToggleSelectItem = (option: Option, index: number) => {
       :disabled="props.disabled"
       :required="props.required"
       tabindex="-1"
-      aria-hidden="true"
+      aria-hidden
     />
   </div>
 </template>

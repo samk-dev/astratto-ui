@@ -18,7 +18,7 @@ const uikitPath = path.join(buildPath, 'uikit')
 
 logger.info(`build dir: ${uikitPath}`)
 
-async function setupUIkit() {
+async function setupUIkit () {
   try {
     const spinner = ora('Checking existing UIkit directory').start()
     const uikitExists = await pathExists(uikitPath)

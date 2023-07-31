@@ -16,7 +16,12 @@ interface PropsAuTextArea {
   rows?: number
   maxLength?: number
   wrap?: 'hard' | 'soft'
-  modeValue: string
+  modelValue?: string | number
+}
+interface EmitsTextArea {
+  (e: 'update:modelValue', value: string): void
+  (e: 'focus'): void
+  (e: 'blur'): void
 }
 
 const props = withDefaults(defineProps<PropsAuTextArea>(), {
@@ -29,18 +34,16 @@ const props = withDefaults(defineProps<PropsAuTextArea>(), {
   hint: undefined,
   validationMsg: undefined,
   validationtype: undefined,
-  radius: 'rounded'
+  radius: 'rounded',
+  modelValue: ''
 })
 
-const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void
-  (e: 'focus'): void
-  (e: 'blur'): void
-}>()
+const emits = defineEmits<EmitsTextArea>()
 </script>
 
 <template>
   <textarea
+    :value="props.modelValue"
     :placeholder="props.placeholder"
     :autofocus="props.autofocus"
     :cols="props.cols"

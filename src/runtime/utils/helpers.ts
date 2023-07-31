@@ -41,4 +41,6 @@ export const useSlugify = (text: string): string => {
       .replace(/^-+/, '') // trim start
       .replace(/-+$/, '') // trim end
   }
+
+  return text
 }
