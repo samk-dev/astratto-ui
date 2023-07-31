@@ -1231,7 +1231,7 @@ packages:
       vite: '*'
     dependencies:
       '@nuxt/kit': 3.6.2(rollup@3.27.0)
-      '@nuxt/schema': 3.6.2(rollup@3.27.0)
+      '@nuxt/schema': 3.6.5(rollup@3.27.0)
       execa: 7.2.0
       nuxt: 3.6.5(@types/node@20.4.5)(eslint@8.44.0)(rollup@3.27.0)(sass@1.64.1)(typescript@5.1.6)
       vite: 4.4.7(@types/node@20.4.5)(sass@1.64.1)
