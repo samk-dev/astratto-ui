@@ -23,20 +23,6 @@
 // const handleClose = () => {
 //   console.log('closed')
 // }
-
-const accordion = [
-  {
-    id: '',
-    label: 'Item 1',
-    content: 'Hello',
-    open: true
-  },
-  {
-    id: '',
-    label: 'Item 2',
-    content: 'Hello 2'
-  }
-]
 </script>
 
 <template>
@@ -45,8 +31,6 @@ const accordion = [
       <section>
         <h1>Astratto UI Playground</h1>
       </section>
-
-      <au-accordion :items="accordion" />
 
       <!-- <button data-uk-toggle="target: #offcanvas-test">Open modal</button>
 

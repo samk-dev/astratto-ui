@@ -7,6 +7,7 @@ defineOptions({
 
 export interface PropsAuFieldset {
   legend?: string
+  legendStyle?: 'bold' | 'normal'
   icon?: string
   iconRatio?: string
   srOnly?: boolean
@@ -14,6 +15,7 @@ export interface PropsAuFieldset {
 
 const props = withDefaults(defineProps<PropsAuFieldset>(), {
   legend: undefined,
+  legendStyle: 'normal',
   icon: undefined,
   iconRatio: '1.3',
   srOnly: false
@@ -32,7 +34,10 @@ const props = withDefaults(defineProps<PropsAuFieldset>(), {
         <au-legend
           v-if="legend"
           :label="legend"
-          :class="[props.srOnly ? 'uk-sr-only' : '']"
+          :class="[
+            props.srOnly ? 'uk-sr-only' : '',
+            props.legendStyle === 'bold' ? 'uk-text-bold' : ''
+          ]"
         />
       </div>
     </slot>
