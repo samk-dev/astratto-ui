@@ -1,0 +1,3 @@
+[submodule "packages-external/uikit"]
+	path = packages-external/uikit
+	url = https://github.com/uikit/uikit.git

@@ -9,30 +9,6 @@ node_modules
 .tmp
 .cache
 
-# Yarn
-**/.yarn/cache
-**/.yarn/*state*
-
-# Generated dirs
-dist
-
-# Nuxt
-.nuxt
-.output
-.vercel_build_output
-.build-*
-.env
-.netlify
-
-# Env
-.env
-
-# Testing
-reports
-coverage
-*.lcov
-.nyc_output
-
 # VSCode
 .vscode/*
 !.vscode/settings.json
@@ -44,6 +20,9 @@ coverage
 # Intellij idea
 *.iml
 .idea
+
+# Neovim
+.neoconf.json
 
 # OSX
 .DS_Store
