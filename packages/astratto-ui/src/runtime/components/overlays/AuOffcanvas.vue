@@ -24,9 +24,9 @@ const emits = defineEmits<EmitsOffcanvas>()
 <template>
   <div
     :id="props.id"
-    :data-uk-offcanvas="`mode: ${props.animation}; overlay: true`"
+    :data-uk-offcanvas="`mode: ${props.animation}; overlay: true; flip: ${props.flip}`"
   >
-    <div class="uk-offcanvas-bar">
+    <div class="uk-offcanvas-bar uk-background-default uk-text-black">
       <button
         class="uk-offcanvas-close"
         type="button"

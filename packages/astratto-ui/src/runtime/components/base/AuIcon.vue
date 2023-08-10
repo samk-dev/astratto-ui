@@ -10,7 +10,7 @@ interface PropsAuIcon {
 }
 
 const props = withDefaults(defineProps<PropsAuIcon>(), {
-  ratio: 0.8,
+  ratio: 1,
   tag: 'span'
 })
 </script>

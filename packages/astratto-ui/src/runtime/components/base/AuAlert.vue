@@ -4,7 +4,7 @@ defineOptions({
 })
 
 interface PropsAuAlert {
-  title: string
+  title?: string
   message?: string
   closeBtn?: boolean
   theme?: 'primary' | 'success' | 'warning' | 'danger'
@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<PropsAuAlert>(), {
       <a v-show="props.closeBtn" class="uk-alert-close" uk-close />
     </slot>
     <slot name="title">
-      <h3>
+      <h3 v-if="props.title">
         {{ props.title }}
       </h3>
     </slot>

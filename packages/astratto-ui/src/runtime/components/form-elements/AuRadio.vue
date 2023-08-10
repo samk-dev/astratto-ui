@@ -15,6 +15,8 @@ interface PropsRadio {
   validationMsg?: string
   validationtype?: 'danger' | 'success'
   options: any
+  clsWrapper?: string
+  clsLabel?: string
   modelValue: string | number | boolean
 }
 
@@ -46,10 +48,14 @@ const slugify = useSlugify
 </script>
 
 <template>
-  <div class="uk-grid-small uk-child-width-auto uk-grid" role="radiogroup">
+  <div
+    :class="['uk-grid-small uk-child-width-auto uk-grid', props.clsWrapper]"
+    role="radiogroup"
+  >
     <label v-for="(option, i) of options" :key="i">
       <input
         :id="`${slugify(option.value)}-${i}`"
+        v-bind="$attrs"
         v-model="selectedVal"
         :name="slugify(option.value)"
         :value="option.value"
@@ -59,7 +65,14 @@ const slugify = useSlugify
         @blur="emit('blur')"
       />
       <slot>
-        {{ option.value }}
+        <span :class="props.clsLabel">{{ option.value }}</span>
+        <span
+          v-if="option.description"
+          class="uk-text-small uk-display-block"
+          style="padding-left: 26px; margin-top: 0.4rem"
+        >
+          {{ option.description }}
+        </span>
       </slot>
     </label>
   </div>

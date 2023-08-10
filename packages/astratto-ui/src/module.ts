@@ -24,7 +24,20 @@ export default defineNuxtModule<AuModuleOptions>({
   async setup(options, _nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    installModule('@samk-dev/nuxt-uikit3')
+    installModule('@samk-dev/nuxt-uikit3', {
+      // css: {
+      //   coreCss: false,
+      //   coreTheme: false,
+      //   build: {
+      //     preprocessor: 'scss',
+      //     stylesPath: resolver.resolve('runtime/assets/scss/astratto-ui.scss'),
+      //     variablesPath: resolver.resolve(
+      //       'runtime/assets/scss/_variables.scss'
+      //     ),
+      //     mixinsPath: resolver.resolve('runtime/assets/scss/_mixins.scss')
+      //   }
+      // }
+    })
 
     await addComponentsDir({
       pathPrefix: false,

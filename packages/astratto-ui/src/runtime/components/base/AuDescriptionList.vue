@@ -21,11 +21,15 @@ const props = withDefaults(defineProps<PropsAuDescriptionList>(), {
   >
     <template v-for="(item, i) in props.items" :key="i">
       <dt>
-        {{ item.term }}
+        <slot name="title">
+          {{ item.term }}
+        </slot>
       </dt>
 
       <dd>
-        {{ item.description }}
+        <slot>
+          {{ item.description }}
+        </slot>
       </dd>
     </template>
   </dl>

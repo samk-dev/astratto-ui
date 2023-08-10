@@ -31,7 +31,13 @@
       <section>
         <h1>Astratto UI Playground</h1>
       </section>
-
+      <AuButton
+        label="Default Button"
+        label-sr-only
+        theme="primary"
+        icon-leading="heart"
+        icon-trailing="check"
+      />
       <!-- <button data-uk-toggle="target: #offcanvas-test">Open modal</button>
 
       <au-offcanvas id="offcanvas-test"> hello </au-offcanvas> -->
