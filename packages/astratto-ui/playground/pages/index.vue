@@ -34,10 +34,39 @@
       <AuButton
         label="Default Button"
         label-sr-only
-        theme="primary"
+        theme="secondary"
         icon-leading="heart"
         icon-trailing="check"
       />
+
+      <span data-uk-icon="wallet" />
+
+      <AuAccordion
+        :items="[
+          { label: 'Accordion demo', content: 'Accordion content demo' }
+        ]"
+      />
+
+      <AuAccordion
+        :items="[
+          { label: 'Accordion demo', content: 'Accordion content demo' }
+        ]"
+      >
+        <template #header> Custom title </template>
+      </AuAccordion>
+
+      <AuAccordion
+        :items="[
+          {
+            label: 'Accordion demo',
+            content: 'Accordion content demo',
+            open: true
+          }
+        ]"
+      >
+        <template #header> Custom title with open option set to true </template>
+        With custom content
+      </AuAccordion>
       <!-- <button data-uk-toggle="target: #offcanvas-test">Open modal</button>
 
       <au-offcanvas id="offcanvas-test"> hello </au-offcanvas> -->

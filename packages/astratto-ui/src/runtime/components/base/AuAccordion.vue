@@ -1,26 +1,33 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import { useSlugify } from '../../utils/'
+import type { PropType } from '#imports'
+
 defineOptions({
   name: 'AuAccordion'
 })
 
 type AccordionItem = {
-  id: string | number
   label?: string
   content?: string
   component?: Component
   open?: boolean
 }
-interface PropsAccordion {
-  items: AccordionItem[]
-}
 
-const props = defineProps<PropsAccordion>()
+defineProps({
+  items: {
+    type: Array as PropType<AccordionItem[]>,
+    required: true
+  }
+})
 </script>
 
 <template>
   <ul data-uk-accordion>
-    <template v-for="(item, i) in props.items" :key="i">
+    <template
+      v-for="(item, i) in items"
+      :key="`${useSlugify(item.label)}-${i}`"
+    >
       <li :class="item.open ? 'uk-open' : ''">
         <a class="uk-accordion-title" href="#">
           <slot name="header">
