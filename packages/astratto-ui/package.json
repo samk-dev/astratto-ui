@@ -34,6 +34,7 @@
     "dev": "PORT=4666 nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "generate:icons": "node ./src/scripts/build-icons.mjs && npx prettier --write ./src/runtime/assets/js/au-icons.ts",
     "uikit:prefix": "node ./src/scripts/prefix-uikit.mjs",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
@@ -42,19 +43,19 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.7.2",
+    "@nuxt/devtools": "^0.8.0",
     "@nuxt/kit": "^3.6.2",
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.2",
-    "@nuxt/test-utils": "^3.6.2",
-    "@samk-dev/nuxt-uikit3": "^1.1.4",
-    "@types/node": "^20.4.5",
+    "@nuxt/test-utils": "^3.6.5",
+    "@types/node": "^20.4.10",
+    "@types/uikit": "^3.14.0",
     "changelogen": "^0.5.4",
     "fs-extra": "^11.1.1",
     "nuxt": "^3.6.5",
-    "sass": "^1.64.1",
+    "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.1"
   },
   "lint-staged": {
     "**/*.{.js,ts,vue,tsx}": [
@@ -67,5 +68,8 @@
     "*.md": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "uikit": "3.16.24"
   }
 }

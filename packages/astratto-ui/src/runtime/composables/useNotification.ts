@@ -1,10 +1,10 @@
 import type { UseNotification } from '../../types'
-import { useUIkit3 } from '#imports'
+import { useUIkit } from './useUikit'
+
+const uikit = useUIkit()
 
 export const useNotification = () => {
   const showNotification = (options: UseNotification) => {
-    const uikit = useUIkit3()
-
     uikit?.notification({
       message: options.message,
       group: options.group || undefined,
@@ -15,7 +15,7 @@ export const useNotification = () => {
   }
 
   const closeAllNotifications = () => {
-    const uikit = useUIkit3()
+    // @ts-ignore
     uikit?.notification.closeAll()
   }
 
