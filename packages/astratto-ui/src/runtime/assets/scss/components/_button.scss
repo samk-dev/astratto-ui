@@ -1,0 +1,170 @@
+// $button-padding-horizontal ;
+// $button-line-height;
+
+// default
+$button-default-background: var(--au-global-color-bg-default) !default;
+$button-default-color: var(--au-global-color-text) !default;
+
+$button-default-hover-background: color-mix(in srgb, var(--au-global-color-bg-default), #000 25%) !default;
+$button-default-hover-color: var(--au-global-color-text-emphasis) !default;
+
+$button-default-active-background: color-mix(in srgb, var(--au-global-color-bg-default), #000 10%) !default;
+$button-default-active-color: var(--au-global-color-text-emphasis) !default;
+
+// primary
+$button-primary-background: var(--au-global-color-bg-primary) !default;
+$button-primary-color: var(--au-global-color-text-light) !default;
+
+$button-primary-hover-background: color-mix(in srgb, var(--au-global-color-bg-primary), #000 50%) !default;
+$button-primary-color: var(--au-global-color-text-light-emphasis) !default;
+
+$button-primary-active-background:  color-mix(in srgb, var(--au-global-color-bg-primary), #000 10%) !default;
+$button-primary-color: var(--au-global-color-text-light-emphasis) !default;
+// secondary
+$button-secondary-background: var(--au-global-color-bg-secondary) !default;
+$button-secondary-color: var(--au-global-color-text-light) !default;
+
+$button-secondary-hover-background: color-mix(in srgb, var(--au-global-color-bg-secondary), #000 5%) !default;
+$button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
+
+$button-secondary-active-background: color-mix(in srgb, var(--au-global-color-bg-secondary), #000 10%) !default;
+$button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
+// disabled
+// $button-link-disabled-color: '';
+
+// /*
+// * Secondary
+// */
+
+// .uk-button-secondary {
+//   background-color: $button-secondary-background;
+//   color: $button-secondary-color;
+//   @if(mixin-exists(hook-button-secondary)) {@include hook-button-secondary();}
+// }
+
+// /* Hover */
+// .uk-button-secondary:hover {
+//   background-color: $button-secondary-hover-background;
+//   color: $button-secondary-hover-color;
+//   @if(mixin-exists(hook-button-secondary-hover)) {@include hook-button-secondary-hover();}
+// }
+
+// /* OnClick + Active */
+// .uk-button-secondary:active,
+// .uk-button-secondary.uk-active {
+//   background-color: $button-secondary-active-background;
+//   color: $button-secondary-active-color;
+//   @if(mixin-exists(hook-button-secondary-active)) {@include hook-button-secondary-active();}
+// }
+
+// /*
+// * Danger
+// */
+
+// .uk-button-danger {
+//   background-color: $button-danger-background;
+//   color: $button-danger-color;
+//   @if(mixin-exists(hook-button-danger)) {@include hook-button-danger();}
+// }
+
+// /* Hover */
+// .uk-button-danger:hover {
+//   background-color: $button-danger-hover-background;
+//   color: $button-danger-hover-color;
+//   @if(mixin-exists(hook-button-danger-hover)) {@include hook-button-danger-hover();}
+// }
+
+// /* OnClick + Active */
+// .uk-button-danger:active,
+// .uk-button-danger.uk-active {
+//   background-color: $button-danger-active-background;
+//   color: $button-danger-active-color;
+//   @if(mixin-exists(hook-button-danger-active)) {@include hook-button-danger-active();}
+// }
+
+// /*
+// * Disabled
+// * The same for all style modifiers
+// */
+
+// .uk-button-default:disabled,
+// .uk-button-primary:disabled,
+// .uk-button-secondary:disabled,
+// .uk-button-danger:disabled {
+//   background-color: $button-disabled-background;
+//   color: $button-disabled-color;
+//   @if(mixin-exists(hook-button-disabled)) {@include hook-button-disabled();}
+// }
+
+
+// /* Size modifiers
+// ========================================================================== */
+
+// .uk-button-small {
+//   padding: 0 $button-small-padding-horizontal;
+//   line-height: $button-small-line-height;
+//   font-size: $button-small-font-size;
+//   @if(mixin-exists(hook-button-small)) {@include hook-button-small();}
+// }
+
+// .uk-button-large {
+//   padding: 0 $button-large-padding-horizontal;
+//   line-height: $button-large-line-height;
+//   font-size: $button-large-font-size;
+//   @if(mixin-exists(hook-button-large)) {@include hook-button-large();}
+// }
+
+
+// /* Text modifiers
+// ========================================================================== */
+
+// /*
+// * Text
+// * 1. Reset
+// * 2. Style
+// */
+
+// .uk-button-text {
+//   /* 1 */
+//   padding: 0;
+//   line-height: $button-text-line-height;
+//   background: none;
+//   /* 2 */
+//   color: $button-text-color;
+//   @if(mixin-exists(hook-button-text)) {@include hook-button-text();}
+// }
+
+// /* Hover */
+// .uk-button-text:hover {
+//   color: $button-text-hover-color;
+//   @if(mixin-exists(hook-button-text-hover)) {@include hook-button-text-hover();}
+// }
+
+// /* Disabled */
+// .uk-button-text:disabled {
+//   color: $button-text-disabled-color;
+//   @if(mixin-exists(hook-button-text-disabled)) {@include hook-button-text-disabled();}
+// }
+
+// /*
+// * Link
+// * 1. Reset
+// * 2. Style
+// */
+
+// .uk-button-link {
+//   /* 1 */
+//   padding: 0;
+//   line-height: $button-link-line-height;
+//   background: none;
+//   /* 2 */
+//   color: $button-link-color;
+//   @if(mixin-exists(hook-button-link)) {@include hook-button-link();}
+// }
+
+// /* Hover */
+// .uk-button-link:hover {
+//   color: $button-link-hover-color;
+//   text-decoration: $button-link-hover-text-decoration;
+// }
+

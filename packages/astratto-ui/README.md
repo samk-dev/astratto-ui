@@ -51,14 +51,6 @@ That's it! You can now use Astratto UI in your Nuxt app ✨
 
 ## Development
 
-Clone the repository and initialize submodules
-
-```bash
-git clone --recursive https://github.com/samk-dev/astratto-ui
-```
-
-then
-
 ```bash
 # Install dependencies
 pnpm install

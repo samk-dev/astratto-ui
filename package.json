@@ -1,21 +1,7 @@
 {
-  "name": "@samk-dev/astratto-ui",
-  "version": "1.0.0-dev-6.4",
-  "description": "Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt",
+  "name": "samk-dev",
+  "description": "",
   "license": "MIT",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
-  "files": [
-    "dist"
-  ],
   "repository": "samk-dev/astratto-ui",
   "author": {
     "name": "Sam K",
@@ -25,47 +11,28 @@
   "keywords": [
     "nuxt",
     "nuxtjs",
-    "nuxt3",
     "nuxt-module",
     "uikit3",
-    "yoothemes",
     "ui-library"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
-    "dev": "PORT=4666 nuxi dev playground",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "uikit:prefix": "node ./src/scripts/prefix-uikit.mjs",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
-    "prepare": "husky install",
     "lint": "eslint .",
-    "test": "vitest run",
-    "test:watch": "vitest watch"
+    "format": "prettier --write \"**/*.{ts,tsx,vue,json}\""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
     "@commitlint/config-conventional": "^17.6.7",
-    "@nuxt/devtools": "^0.7.2",
-    "@nuxt/kit": "^3.6.2",
-    "@nuxt/module-builder": "^0.4.0",
-    "@nuxt/schema": "^3.6.2",
-    "@nuxt/test-utils": "^3.6.2",
     "@samk-dev/eslint-config": "^1.0.3",
     "@samk-dev/prettier-config": "^1.0.1",
-    "@types/node": "^20.4.5",
-    "changelogen": "^0.5.4",
-    "eslint": "^8.44.0",
-    "fs-extra": "^11.1.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "nuxt": "^3.6.5",
-    "sass": "^1.64.1",
-    "sass-loader": "^13.3.2",
-    "vitest": "^0.33.0"
+    "lint-staged": "^13.2.3"
   },
   "lint-staged": {
-    "**/*.{.js,ts,vue,tsx}": [
+    "packages/**/*.{.js,ts,vue,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "docs/**/*.{.js,ts,vue,tsx}": [
       "eslint --fix",
       "prettier --write"
     ],
@@ -75,8 +42,5 @@
     "*.md": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "@samk-dev/nuxt-uikit3": "^1.1.2"
   }
 }
