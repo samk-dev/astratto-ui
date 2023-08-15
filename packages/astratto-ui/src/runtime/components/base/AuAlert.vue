@@ -1,46 +1,80 @@
 <script setup lang="ts">
+import type { UiKitTheme } from '../../../types'
+import type { PropType } from '#imports'
+import { computed } from '#imports'
+
 defineOptions({
   name: 'AuAlert'
 })
 
-interface PropsAuAlert {
-  title?: string
-  message?: string
-  closeBtn?: boolean
-  theme?: 'primary' | 'success' | 'warning' | 'danger'
-  radius?: 'rounded' | 'pill'
-  animation?: boolean
-  duration?: number
-}
+const props = defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  message: {
+    type: String,
+    default: ''
+  },
+  closeBtn: {
+    type: Boolean,
+    default: true
+  },
+  theme: {
+    type: String as PropType<UiKitTheme>,
+    default: 'default'
+  },
+  animation: {
+    type: Boolean,
+    default: true
+  },
+  animationDuration: {
+    type: Number,
+    default: 150
+  },
+  clsTitle: {
+    type: String,
+    default: ''
+  },
+  clsMessage: {
+    type: String,
+    default: ''
+  },
+  clsClose: {
+    type: String,
+    default: ''
+  }
+})
 
-const props = withDefaults(defineProps<PropsAuAlert>(), {
-  message: undefined,
-  closeBtn: true,
-  theme: undefined,
-  radius: 'rounded',
-  animation: true,
-  duration: 150
+const emits = defineEmits<{
+  (e: 'close'): void
+}>()
+
+const uikitAttrs = computed(() => {
+  return `animation: ${props.animation}; duration: ${props.animationDuration}`
 })
 </script>
 
 <template>
   <div
-    :data-uk-alert="`animation: ${props.animation}; duration: ${props.duration}`"
-    :class="[
-      props.theme ? `uk-alert-${props.theme}` : '',
-      props.radius ? `uk-border-${props.radius}` : ''
-    ]"
+    :uk-alert="uikitAttrs"
+    :class="[props.theme ? `uk-alert-${props.theme}` : '']"
   >
     <slot name="close">
-      <a v-show="props.closeBtn" class="uk-alert-close" uk-close />
+      <a
+        v-show="props.closeBtn"
+        :class="['uk-alert-close', props.clsClose]"
+        uk-close
+        @click.prevent="emits('close')"
+      />
     </slot>
     <slot name="title">
-      <h3 v-if="props.title">
+      <h3 v-if="props.title" :class="props.clsTitle">
         {{ props.title }}
       </h3>
     </slot>
     <slot>
-      <p v-if="props.message">
+      <p v-if="props.message" :class="props.clsMessage">
         {{ props.message }}
       </p>
     </slot>

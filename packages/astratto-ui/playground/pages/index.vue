@@ -70,6 +70,8 @@
         <template #header> Custom title with open option set to true </template>
         With custom content
       </AuAccordion>
+
+      <AuAlert title="Alert Title" message="Alert Message" />
       <!-- <button data-uk-toggle="target: #offcanvas-test">Open modal</button>
 
       <au-offcanvas id="offcanvas-test"> hello </au-offcanvas> -->

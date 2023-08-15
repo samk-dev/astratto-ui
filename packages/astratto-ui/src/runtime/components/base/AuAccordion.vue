@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSlugify } from '../../utils/'
-import { computed } from '#imports'
 import type { PropType } from '#imports'
+import { computed } from '#imports'
 
 defineOptions({
   name: 'AuAccordion'
