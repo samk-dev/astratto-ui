@@ -31,6 +31,7 @@
       <section>
         <h1>Astratto UI Playground</h1>
       </section>
+
       <AuButton
         label="Default Button"
         label-sr-only
@@ -43,8 +44,10 @@
 
       <AuAccordion
         :items="[
-          { label: 'Accordion demo', content: 'Accordion content demo' }
+          { label: 'Accordion demo', content: 'Accordion content demo' },
+          { label: 'Accordion demo 2', content: 'Accordion content demo' }
         ]"
+        @item-click="(e) => console.log(e)"
       />
 
       <AuAccordion
