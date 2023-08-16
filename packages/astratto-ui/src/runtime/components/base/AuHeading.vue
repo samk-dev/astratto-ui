@@ -1,21 +1,33 @@
 <script setup lang="ts">
+import type { PropType } from '#imports'
+
 defineOptions({
   name: 'AuHeading'
 })
 
-interface PropsAuHeading {
-  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  text?: string
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'
-  divider?: boolean
-  bullet?: boolean
-}
-
-const props = withDefaults(defineProps<PropsAuHeading>(), {
-  text: undefined,
-  size: 'medium',
-  divider: false,
-  bullet: false
+const props = defineProps({
+  tag: {
+    type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>,
+    required: true
+  },
+  text: {
+    type: String,
+    default: ''
+  },
+  size: {
+    type: String as PropType<
+      'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'
+    >,
+    default: 'medium'
+  },
+  divider: {
+    type: Boolean,
+    default: false
+  },
+  bullet: {
+    type: Boolean,
+    default: false
+  }
 })
 </script>
 
