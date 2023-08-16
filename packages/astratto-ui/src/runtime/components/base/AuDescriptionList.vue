@@ -1,14 +1,28 @@
 <script setup lang="ts">
+import { useSlugify } from '../../utils'
+import type { PropType } from '#imports'
+
 defineOptions({
   name: 'AuDescriptionList'
 })
 
-interface PropsAuDescriptionList {
-  divider?: boolean
-  items: any
-}
-const props = withDefaults(defineProps<PropsAuDescriptionList>(), {
-  divider: true
+const props = defineProps({
+  divider: {
+    type: Boolean,
+    default: true
+  },
+  items: {
+    type: Array as PropType<any>,
+    required: true
+  },
+  clsLabel: {
+    type: String,
+    default: ''
+  },
+  clsContent: {
+    type: String,
+    default: ''
+  }
 })
 </script>
 
@@ -19,14 +33,14 @@ const props = withDefaults(defineProps<PropsAuDescriptionList>(), {
       props.divider ? 'uk-description-list-divider' : ''
     ]"
   >
-    <template v-for="(item, i) in props.items" :key="i">
-      <dt>
-        <slot name="title">
-          {{ item.term }}
+    <template v-for="item in props.items" :key="useSlugify(item.label)">
+      <dt :class="props.clsLabel">
+        <slot name="label">
+          {{ item.label }}
         </slot>
       </dt>
 
-      <dd>
+      <dd :class="props.clsContent">
         <slot>
           {{ item.description }}
         </slot>
