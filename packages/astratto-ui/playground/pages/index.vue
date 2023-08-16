@@ -38,6 +38,7 @@
         theme="secondary"
         icon-leading="heart"
         icon-trailing="check"
+        size="small"
       />
 
       <span data-uk-icon="wallet" />

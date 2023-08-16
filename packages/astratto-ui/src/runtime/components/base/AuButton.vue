@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { UiKitThemeButton, UiKitSizeButton } from '../../../types'
-import AuIcon from './AuIcon.vue'
-import { computed } from '#imports'
 import type { PropType } from '#imports'
+import { computed } from '#imports'
 
 defineOptions({
   name: 'AuButton'
@@ -44,11 +43,22 @@ const props = defineProps({
   loading: {
     type: Boolean,
     default: false
+  },
+  clsIconLeading: {
+    type: String,
+    default: ''
+  },
+  clsIconTrailing: {
+    type: String,
+    default: ''
+  },
+  clsIconSpinner: {
+    type: String,
+    default: ''
   }
 })
 
 const elCls = computed(() => {
-  const theme = `uk-button-${props.theme}`
   const size = props.size ? `uk-button-${props.size}` : ''
 
   let spinnerSize = 0.5
@@ -65,7 +75,7 @@ const elCls = computed(() => {
     iconSize = 1.5
   }
 
-  return { theme, size, spinnerSize, iconSize }
+  return { size, spinnerSize, iconSize }
 })
 </script>
 
@@ -76,15 +86,13 @@ const elCls = computed(() => {
     :disabled="props.disabled"
     :class="[
       'uk-button uk-flex-inline uk-flex-center uk-flex-middle',
-      elCls.theme,
+      `uk-button-${props.theme}`,
       elCls.size
     ]"
   >
-    <au-icon
-      v-if="props.iconLeading"
-      :name="props.iconLeading"
-      :ratio="elCls.iconSize"
-      style="margin-right: 0.5rem"
+    <span
+      :uk-icon="`icon: ${props.iconLeading}; ratio: ${elCls.iconSize}`"
+      :class="props.clsIconLeading"
     />
 
     <span>
@@ -92,19 +100,17 @@ const elCls = computed(() => {
         <span v-if="!props.loading">
           {{ props.label }}
         </span>
-        <span v-else :data-uk-spinner="`ratio: ${elCls.spinnerSize}`" />
+        <span
+          v-else
+          :uk-spinner="`ratio: ${elCls.spinnerSize}`"
+          :class="props.clsIconSpinner"
+        />
       </slot>
     </span>
 
-    <au-icon
-      v-if="props.iconTrailing"
-      :name="props.iconTrailing"
-      :ratio="elCls.iconSize"
-      style="margin-left: 0.5rem"
+    <span
+      :uk-icon="`icon: ${props.iconTrailing}; ratio: ${elCls.iconSize}`"
+      :class="props.clsIconTrailing"
     />
   </button>
 </template>
-
-<style scoped lang="scss">
-$button-default-background: red;
-</style>
