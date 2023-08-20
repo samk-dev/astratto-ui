@@ -1,17 +1,23 @@
 <script setup lang="ts">
+import type { PropType } from '#imports'
+
 defineOptions({
   name: 'AuIcon'
 })
 
-interface PropsAuIcon {
-  name: string
-  ratio?: number
-  tag?: 'span' | 'a'
-}
-
-const props = withDefaults(defineProps<PropsAuIcon>(), {
-  ratio: 1,
-  tag: 'span'
+const props = defineProps({
+  name: {
+    type: String,
+    required: true
+  },
+  ratio: {
+    type: Number,
+    default: 1
+  },
+  tag: {
+    type: String as PropType<'span' | 'a'>,
+    default: 'span'
+  }
 })
 </script>
 

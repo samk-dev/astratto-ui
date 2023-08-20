@@ -1,2 +1,4 @@
 $card-default-background: var(--au-global-color-bg);
-$card-default-hover-background: color-mix(in srgb, var(--au-global-color-bg-default), #000 5%) !default;
+$card-default-hover-background: var(--au-global-color-muted-100) !default;
+$card-primary-hover-background: var(--au-glonal-color-primary-100);
+$card-secondary-hover-background: var(--au-global-color-secondary-hover);

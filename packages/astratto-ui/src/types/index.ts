@@ -7,6 +7,14 @@ export type UiKitTheme =
   | 'success'
   | 'warning'
   | 'danger'
+
+export type UiKitThemeStates =
+  | 'default'
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
 export type UiKitThemeButton = UiKitTheme | 'text' | 'link'
 export type UiKitSizeButton = 'small' | 'large'
 

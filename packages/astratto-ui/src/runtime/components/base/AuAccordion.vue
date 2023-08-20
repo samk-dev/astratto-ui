@@ -40,7 +40,7 @@ const props = defineProps({
     default: false
   },
   items: {
-    type: Array as PropType<AccordionItem[]>,
+    type: (Array as PropType<AccordionItem[]>) || Number,
     required: true
   },
   clsItem: {
@@ -75,12 +75,12 @@ const uikitAttrs = computed(() => {
           href="#"
           @click.prevent="emits('itemClick', item)"
         >
-          <slot name="header">
+          <slot name="label" :item="item">
             {{ item.label }}
           </slot>
         </a>
         <div :class="['uk-accordion-content', props.clsContent]">
-          <slot>
+          <slot :item="item">
             {{ item.content }}
           </slot>
         </div>

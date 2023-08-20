@@ -9,12 +9,14 @@ interface PropsAuSection {
   bgColor?: 'default' | 'primary' | 'secondary' | 'muted'
   size?: 'xsmall' | 'small' | 'large' | 'xlarge'
   removeVerticalPadding?: boolean
+  removeHorizontalPadding?: boolean
 }
 
 const props = withDefaults(defineProps<PropsAuSection>(), {
   bgColor: undefined,
   size: undefined,
-  removeVerticalPadding: false
+  removeVerticalPadding: false,
+  removeHorizontalPadding: false
 })
 
 const elCls = computed(() => {
@@ -23,6 +25,9 @@ const elCls = computed(() => {
     elSize: props.size ? `uk-section-${props.size}` : '',
     elRemoveVerticalPadding: props.removeVerticalPadding
       ? 'uk-padding-remove-vertical'
+      : '',
+    elRemoveHorizontalPadding: props.removeHorizontalPadding
+      ? 'uk-padding-remove-horizontal'
       : ''
   }
 })

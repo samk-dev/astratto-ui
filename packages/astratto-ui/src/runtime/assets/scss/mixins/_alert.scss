@@ -1,0 +1,24 @@
+@mixin hook-alert() {
+  position: relative;
+  margin: 0;
+  padding: $alert-padding $alert-padding-right $alert-padding $alert-padding;
+  background: $alert-background;
+  color: $alert-color;
+  border-radius: $alert-border-radius;
+  display: flex;
+  flex-direction: column;
+  gap: $alert-children-gap;
+
+  > * {
+    margin: 0;
+  }
+
+  .uk-alert-title {
+    font-size: $alert-title-font-size;
+    margin: 0;
+  }
+
+  .uk-alert-message {
+    font-size: $alert-message-font-size;
+  }
+}

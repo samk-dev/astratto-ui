@@ -1,6 +1,6 @@
-import { defineNuxtPlugin } from '#app'
 import type { UIkitPlugin } from '../../types/module'
 import { auIcons } from '../assets/js/au-icons'
+import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const UIkit = (await import('uikit').then(

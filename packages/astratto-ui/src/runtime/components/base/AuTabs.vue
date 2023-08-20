@@ -1,29 +1,37 @@
 <script setup lang="ts">
-type PropsTab = {
+import { useSlugify } from '../../utils'
+import type { PropType } from '#imports'
+
+interface PropsTab {
   label: string
-  icon: string
+  icon?: string
 }
-interface PropsTabs {
-  tabs: PropsTab[]
-  activeItem: string
-}
-interface EmitsTabs {
-  (e: 'tabClick', value: any): void
-}
-const props = defineProps<PropsTabs>()
-const emits = defineEmits<EmitsTabs>()
+
+const props = defineProps({
+  tabs: {
+    type: Array as PropType<PropsTab[]>,
+    required: true
+  },
+  activeTab: {
+    type: String,
+    required: true
+  }
+})
+const emits = defineEmits<{
+  (e: 'tabClick', value: PropsTab): void
+}>()
 </script>
 
 <template>
   <ul class="uk-tab" role="tablist">
-    <template v-for="item in props.tabs" :key="item.label">
+    <template v-for="item in props.tabs" :key="useSlugify(item.label)">
       <li
-        :class="[props.activeItem === item.label ? 'uk-active' : '']"
+        :class="[props.activeTab === item.label ? 'uk-active' : '']"
         role="presentation"
       >
         <slot>
           <a href="#" @click.prevent="emits('tabClick', item)">
-            <span :uk-icon="item.icon" />
+            <span v-show="item.icon" :uk-icon="item.icon" />
             <span>{{ item.label }}</span>
           </a>
         </slot>

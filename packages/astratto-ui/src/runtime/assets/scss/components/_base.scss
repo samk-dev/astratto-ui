@@ -1,7 +1,42 @@
-$global-background: #EFEFEF;
-$global-muted-background: #F9F9F9;
-$global-primary-background: #00DC82;
+$base-body-color: var(--au-global-color-text) !default;
+$base-heading-color: var(--au-global-color-heading) !default;
 
-// $global-background: var(--au-global-color-bg);
-// $global-muted-background: var(--au-global-color-bg-default);
-// $global-primary-background: #00DC82;
+$base-body-font-family: var(--au-global-font-default) !default;
+$base-heading-font-family: var(--au-global-font-primary) !default;
+
+$base-heading-font-weight: bold;
+
+$base-ins-background: #fef08a;
+$base-ins-color: #131313;
+
+$base-mark-background: #fcd34d;
+$base-mark-color: #131313;
+
+p,
+a,
+abbr,
+b,
+cite,
+code,
+del,
+dfn,
+em,
+i,
+ins,
+kbd,
+mark,
+q,
+s,
+samp,
+small,
+span,
+strong,
+sub,
+u,
+var,
+address,
+li,
+dd,
+dl {
+  letter-spacing: .5px;
+}

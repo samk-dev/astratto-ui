@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { UiKitTheme } from '../../../types'
+import type { UiKitThemeStates } from '../../../types'
 import type { PropType } from '#imports'
 import { computed } from '#imports'
 
@@ -21,7 +21,7 @@ const props = defineProps({
     default: true
   },
   theme: {
-    type: String as PropType<UiKitTheme>,
+    type: String as PropType<UiKitThemeStates>,
     default: 'default'
   },
   animation: {
@@ -69,12 +69,12 @@ const uikitAttrs = computed(() => {
       />
     </slot>
     <slot name="title">
-      <h3 v-if="props.title" :class="props.clsTitle">
+      <h3 v-if="props.title" :class="['uk-alert-title', props.clsTitle]">
         {{ props.title }}
       </h3>
     </slot>
     <slot>
-      <p v-if="props.message" :class="props.clsMessage">
+      <p v-if="props.message" :class="[props.clsMessage]">
         {{ props.message }}
       </p>
     </slot>

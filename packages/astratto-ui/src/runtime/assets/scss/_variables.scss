@@ -1,10 +1,15 @@
-@import "./root-variables";
+// @import "./custom-properties";
 
-
+@import "./components/global";
 @import './components/base';
+@import './components/accordion';
+@import './components/alert';
 @import './components/form';
 @import "./components/button";
+@import './components/icon';
+@import "./components/search";
 @import "./components/card";
+@import "./components/utils";
 
 
 @import "uikit/src/scss/variables.scss";

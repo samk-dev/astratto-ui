@@ -1,0 +1,49 @@
+:root {
+  --au-global-color-bg: #FFF;
+
+  --au-global-color-light: #FFF;
+  --au-global-color-dark: #000;
+
+  --au-global-color-muted-50: #f9fafb;
+  --au-global-color-muted: #e5e7eb;
+  --au-global-color-muted-100: #d1d5db;
+  --au-global-color-muted-150: #9ca3af;
+  --au-global-color-muted-200: #6b7280;
+
+  --au-global-color-primary-50: #dbeafe;
+  --au-global-color-primary: #004BD6;
+  --au-global-color-primary-100: #012d9c;
+  --au-global-color-primary-150: #001d6c;
+  --au-global-color-primary-200: #1E40AF;
+
+  --au-global-color-secondary-50: #1f2937;
+  --au-global-color-secondary: #111827;
+  --au-global-color-secondary-100: #334155;
+  --au-global-color-secondary-150: #1c1917;
+  --au-global-color-secondary-200: #030712;
+
+  --au-global-color-success-50: #dcfce7;
+  --au-global-color-success: #22c55e;
+  --au-global-color-success-100: #15803d;
+  --au-global-color-success-150: #166534;
+  --au-global-color-success-200: #052e16;
+
+  --au-global-color-warning-50: #ffedd5;
+  --au-global-color-warning: #FF943D;
+  --au-global-color-warning-100: #ea580c;
+  --au-global-color-warning-150: #c2410c;
+  --au-global-color-warning-200: #912F0F;
+
+  --au-global-color-danger-50: #fee2e2;
+  --au-global-color-danger: #AE1A22;
+  --au-global-color-danger-100: #dc2626;
+  --au-global-color-danger-150: #991b1b;
+  --au-global-color-danger-200: #981010;
+
+  --au-global-color-text: #111827;
+  --au-global-color-text-emphasis: #111;
+  --au-global-color-heading: var(--au-global-color-text);
+
+  --au-global-color-text-light: #F3F3F3;
+  --au-global-color-text-light-emphasis: #FFF;
+}

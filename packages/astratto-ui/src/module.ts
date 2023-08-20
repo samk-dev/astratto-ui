@@ -99,27 +99,13 @@ export default defineNuxtModule<AuModuleOptions>({
       mode: 'client'
     })
 
-    nuxt.hook('nitro:config', (nitroConfig) => {
-      nitroConfig.publicAssets ||= []
-      nitroConfig.publicAssets.push({
-        dir: resolver.resolve('runtime/public'),
-        maxAge: 60 * 60 * 24 * 365 // 1 year
-      })
-    })
-
     nuxtOptions.build.transpile ||= []
     nuxtOptions.build.transpile.push('uikit')
-    nuxtOptions.build.transpile.push(
-      resolver.resolve('runtime/public/assets/js/uikit-icons.mjs')
-    )
 
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
       config.optimizeDeps.include.push('uikit')
-      config.optimizeDeps.include.push(
-        resolver.resolve('runtime/public/assets/js/uikit-icons.mjs')
-      )
     })
 
     await addComponentsDir({

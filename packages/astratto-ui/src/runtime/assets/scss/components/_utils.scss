@@ -3,3 +3,13 @@
 //     border-radius: var(--au-global-border-radius-default);
 //   }
 // }
+
+.uk-border {
+  &-small {
+    border-width: 1px;
+    border-style: solid;
+  }
+  &-default {
+    border-color: var(--au-global-color-muted);
+  }
+}

@@ -1,6 +1,6 @@
 # Astratto UI
 
-⚠️ Library still under development ⚠️
+⚠️ Library still under heavy development development ⚠️
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -49,6 +49,11 @@ export default defineNuxtConfig({
 
 That's it! You can now use Astratto UI in your Nuxt app ✨
 
+## ⚒️ Todos
+
+- [] Storybook documentation?? || Nuxt content??
+- [] Components unit tests
+
 ## Development
 
 ```bash
@@ -74,6 +79,19 @@ pnpm run test:watch
 # Release new version
 pnpm run release
 ```
+
+### Credits
+
+icons some are built inhouse and the other 90% from Untitled UI Icons Pack: <https://www.untitledui.com/icons>
+
+images and videos:
+
+- Photo by Nada Ghannam: <https://www.pexels.com/photo/old-in-damascus-11233594/>
+- Photo by Martijn Adegeest: <https://www.pexels.com/photo/moulin-pouge-shop-facade-587840/>
+- Photo by mark gorman: <https://www.pexels.com/photo/grand-canal-venice-623843/>
+- Photo by Mati Angulo: <https://www.pexels.com/photo/people-gathering-near-plaza-930595/>
+- Photo by Sonny Vermeer: <https://www.pexels.com/photo/farol-de-leca-lighthouse-on-the-coast-of-porto-portugal-17445970/>
+- Video by Nicky: <https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=166720>
 
 <!-- Badges -->
 

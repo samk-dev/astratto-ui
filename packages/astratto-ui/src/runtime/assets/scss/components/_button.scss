@@ -2,33 +2,100 @@
 // $button-line-height;
 
 // default
-$button-default-background: var(--au-global-color-bg-default) !default;
+$button-default-background: var(--au-global-color-muted) !default;
 $button-default-color: var(--au-global-color-text) !default;
 
-$button-default-hover-background: color-mix(in srgb, var(--au-global-color-bg-default), #000 25%) !default;
+$button-default-hover-background: var(--au-global-color-muted-100) !default;
 $button-default-hover-color: var(--au-global-color-text-emphasis) !default;
 
-$button-default-active-background: color-mix(in srgb, var(--au-global-color-bg-default), #000 10%) !default;
+$button-default-active-background: var(--au-global-color-muted-activ) !default;
 $button-default-active-color: var(--au-global-color-text-emphasis) !default;
 
 // primary
-$button-primary-background: var(--au-global-color-bg-primary) !default;
+$button-primary-background: var(--au-global-color-primary) !default;
 $button-primary-color: var(--au-global-color-text-light) !default;
 
-$button-primary-hover-background: color-mix(in srgb, var(--au-global-color-bg-primary), #000 50%) !default;
+$button-primary-hover-background: var(--au-global-color-primary-100) !default;
 $button-primary-color: var(--au-global-color-text-light-emphasis) !default;
 
-$button-primary-active-background:  color-mix(in srgb, var(--au-global-color-bg-primary), #000 10%) !default;
+$button-primary-active-background:  var(--au-global-color-primary-150) !default;
 $button-primary-color: var(--au-global-color-text-light-emphasis) !default;
+
 // secondary
-$button-secondary-background: var(--au-global-color-bg-secondary) !default;
+$button-secondary-background: var(--au-global-color-secondary) !default;
 $button-secondary-color: var(--au-global-color-text-light) !default;
 
-$button-secondary-hover-background: color-mix(in srgb, var(--au-global-color-bg-secondary), #000 5%) !default;
+$button-secondary-hover-background: var(--au-global-color-secondary-100) !default;
 $button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
 
-$button-secondary-active-background: color-mix(in srgb, var(--au-global-color-bg-secondary), #000 10%) !default;
+$button-secondary-active-background: var(--au-global-color-secondary-200) !default;
 $button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
+
+// success
+$button-success-background: var(--au-global-color-success) !default;
+$button-success-color: var(--au-global-color-text) !default;
+
+$button-success-hover-background: var(--au-global-color-success-100) !default;
+$button-success-hover-color: var(--au-global-color-text) !default;
+
+$button-success-active-background: var(--au-global-color-success-200) !default;
+$button-success-active-color: var(--au-global-color-text) !default;
+
+// warning
+$button-warning-background: var(--au-global-color-warning) !default;
+$button-warning-color: var(-au-global-color-warning-200) !default;
+
+$button-warning-hover-background: var(--au-global-color-warning-50) !default;
+$button-warning-hover-color: var(-au-global-color-warning-100) !default;
+
+$button-warning-active-background: var(--au-global-color-warning-200) !default;
+$button-warning-active-color: var(-au-global-color-warning-200) !default;
+
+// danger
+$button-danger-background: var(--au-global-color-danger) !default;
+$button-danger-color: var(--au-global-color-danger-50) !default;
+$button-danger-hover-background: var(--au-global-color-danger-100) !default;
+$button-danger-active-background: var(--au-global-color-danger-150) !default;
+
+.uk-button {
+  &-success {
+    background-color: $button-success-background;
+    color: $button-success-color;
+    @if(mixin-exists(hook-button-success)) {@include hook-button-success();}
+
+    &:hover {
+      background-color: $button-success-hover-background;
+      color: $button-success-hover-color;
+      @if(mixin-exists(hook-button-success-hover)) {@include hook-button-success-hover();}
+    }
+
+    &:active,
+    .uk-button-success.uk-active {
+      background-color: $button-success-active-background;
+      color: $button-success-active-color;
+      @if(mixin-exists(hook-button-success-active)) {@include hook-button-success-active();}
+    }
+  }
+
+  &-warning {
+    background-color: $button-warning-background;
+    color: $button-warning-color;
+    @if(mixin-exists(hook-button-warning)) {@include hook-button-warning();}
+
+    &:hover {
+      background-color: $button-warning-hover-background;
+      color: $button-warning-hover-color;
+      @if(mixin-exists(hook-button-warning-hover)) {@include hook-button-warning-hover();}
+    }
+
+    &:active,
+    .uk-button-warning.uk-active {
+      background-color: $button-warning-active-background;
+      color: $button-warning-active-color;
+      @if(mixin-exists(hook-button-warning-active)) {@include hook-button-warning-active();}
+    }
+  }
+}
 // disabled
 // $button-link-disabled-color: '';
 

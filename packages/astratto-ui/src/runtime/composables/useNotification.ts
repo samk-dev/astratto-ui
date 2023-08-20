@@ -1,9 +1,9 @@
 import type { UseNotification } from '../../types'
 import { useUIkit } from './useUikit'
 
-const uikit = useUIkit()
-
 export const useNotification = () => {
+  const uikit = useUIkit()
+
   const showNotification = (options: UseNotification) => {
     uikit?.notification({
       message: options.message,
