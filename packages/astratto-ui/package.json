@@ -55,7 +55,7 @@
     "nuxt": "^3.6.5",
     "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.2"
   },
   "lint-staged": {
     "**/*.{.js,ts,vue,tsx}": [
