@@ -8,30 +8,37 @@
       velit esse cillum.
     </p>
 
+    <blockquote cite="#">
+      <p class="uk-margin-small-bottom">
+        Dance first. Think later. It's the natural order.
+      </p>
+      <footer>
+        <cite>
+          <a
+            href="https://www.goodreads.com/quotes/123103-dance-first-think-later-it-s-the-natural-order"
+          >
+            Samuel Beckett. 1906 - 1989
+          </a>
+        </cite>
+      </footer>
+    </blockquote>
     <pre>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</pre
     >
 
     <p>This is preformatted text with a code element.</p>
 
-    <pre><code>// Code example
-&lt;div id="myid" class="myclass" hidden&gt;
-Lorem ipsum &lt;strong&gt;dolor&lt;/strong&gt; sit amet, consectetur adipiscing elit.
-&lt;/div&gt;</code></pre>
+    <pre>
+      <code>
+        // Code example
+        &lt;div id="myid" class="myclass" hidden&gt;
+        Lorem ipsum &lt;strong&gt;dolor&lt;/strong&gt; sit amet, consectetur adipiscing elit.
+        &lt;/div&gt;
+      </code>
+    </pre>
 
     <blockquote>
       This is a short block quote — look Ma, no paragraph tags!
-    </blockquote>
-
-    <blockquote cite="#">
-      <p class="uk-margin-small-bottom">
-        The blockquote element represents content that is quoted from another
-        source, optionally with a citation which must be within a footer or cite
-        element.
-      </p>
-      <footer>
-        Someone famous in <cite><a href="">Source Title</a></cite>
-      </footer>
     </blockquote>
 
     <ul class="uk-list">

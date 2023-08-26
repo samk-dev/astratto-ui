@@ -24,21 +24,38 @@
 // }   type: 'text',
 //
 
-const { showNotification } = useNotification()
-const handleNotification = () => {
-  showNotification({
-    message: 'my-message!',
-    status: 'primary',
-    pos: 'top-right',
-    timeout: 5000
-  })
-}
+// const { showNotification } = useNotification()
+// const handleNotification = () => {
+//   showNotification({
+//     message: 'my-message!',
+//     status: 'primary',
+//     pos: 'top-right',
+//     timeout: 5000
+//   })
+// }
+const items = [
+  {
+    title: 'Accordion demo',
+    icon: 'rocket',
+    content: 'Accordion content demo'
+  },
+  {
+    title: 'Accordion demo 2',
+    icon: 'life-buoy',
+    content: 'Accordion content demo'
+  },
+  {
+    title: 'Accordion demo 3',
+    icon: 'beaker',
+    content: 'Accordion content demo with open option set to true'
+  }
+]
 </script>
 
 <template>
   <div>
     <div>
-      <AuSection uk-margin class="uk-margin-medium">
+      <!-- <AuSection uk-margin class="uk-margin-medium">
         <AuContainer>
           <h1>Astratto UI Playground</h1>
         </AuContainer>
@@ -75,28 +92,60 @@ const handleNotification = () => {
             </div>
           </div>
         </AuContainer>
+      </AuSection> -->
+
+      <AuSection>
+        <AuContainer>
+          <h3>small</h3>
+
+          <AuAccordion
+            id="some-accordion-small"
+            size="small"
+            :items="items"
+            @item-open="(e) => console.log(e)"
+            @hidden="(e) => console.log(e)"
+          />
+
+          <h3>default</h3>
+
+          <AuAccordion
+            id="some-accordion"
+            :items="items"
+            @item-open="(e) => console.log(e)"
+            @hidden="(e) => console.log(e)"
+          />
+        </AuContainer>
       </AuSection>
 
-      <AuAccordion
-        :items="[
-          { label: 'Accordion demo', content: 'Accordion content demo' },
-          { label: 'Accordion demo 2', content: 'Accordion content demo' },
-          {
-            label: 'Accordion demo 3',
-            content: 'Accordion content demo with open option set to true',
-            open: true
-          }
-        ]"
-        @item-click="(e) => console.log(e)"
+      <!-- <AuAlert
+        title="A new software update is available. See what’s new in version 1.1.1"
+        icon="info-circle"
+        theme="default"
       />
+      <AuAlert
+        title="New arrivals in our gift store"
+        icon="gift"
+        theme="primary"
+      />
+      <AuAlert
+        title="Product created successfully"
+        icon="check"
+        theme="success"
+      />
+      <AuAlert
+        title="You have no credits left!"
+        message="Please renew your account before 19/12/2023"
+        icon="alert-triangle"
+        theme="warning"
+      />
+      <AuAlert
+        title="403 Access Denied"
+        message="You don't have permissions to access this data. Please contact your sys admin."
+        icon="ban"
+        theme="danger"
+      /> -->
 
-      <AuAlert title="Alert Title" message="Alert Message" theme="default" />
-      <AuAlert message="Alert Message" theme="primary" />
-      <AuAlert title="Alert Title" theme="success" />
-      <AuAlert title="Alert Title" message="Alert Message" theme="warning" />
-      <AuAlert title="Alert Title" message="Alert Message" theme="danger" />
-
-      <span class="uk-label">Default</span>
+      <!-- <span class="uk-label">Default</span>
 
       <span class="uk-label uk-label-success">Success</span>
 
@@ -104,169 +153,7 @@ const handleNotification = () => {
 
       <span class="uk-label uk-label-danger">Danger</span>
 
-      <span class="uk-badge">100</span>
-
-      <div class="uk-child-width-1-2@s uk-text-center" uk-grid>
-        <div>
-          <div class="uk-background-default uk-padding uk-panel">
-            <p class="uk-h4">Default</p>
-          </div>
-        </div>
-        <div>
-          <div class="uk-background-muted uk-padding uk-panel">
-            <p class="uk-h4">Muted</p>
-          </div>
-        </div>
-        <div>
-          <div class="uk-background-primary uk-light uk-padding uk-panel">
-            <p class="uk-h4">Primary</p>
-          </div>
-        </div>
-        <div>
-          <div class="uk-background-secondary uk-light uk-padding uk-panel">
-            <p class="uk-h4">Secondary</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
-        <div>
-          <div class="uk-card uk-card-default uk-card-body">
-            <h3 class="uk-card-title">Default</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-        </div>
-        <div>
-          <div class="uk-card uk-card-primary uk-card-body">
-            <h3 class="uk-card-title">Primary</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-        </div>
-        <div>
-          <div class="uk-card uk-card-secondary uk-card-body">
-            <h3 class="uk-card-title">Secondary</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="uk-margin">
-        <input
-          class="uk-input uk-form-danger uk-form-width-medium"
-          type="text"
-          placeholder="form-danger"
-          aria-label="form-danger"
-          value="form-danger"
-        />
-      </div>
-
-      <div class="uk-margin">
-        <input
-          class="uk-input uk-form-success uk-form-width-medium"
-          type="text"
-          placeholder="form-success"
-          aria-label="form-success"
-          value="form-success"
-        />
-      </div>
-
-      <div class="uk-margin">
-        <input
-          class="uk-input uk-form-width-medium"
-          type="text"
-          placeholder="disabled"
-          aria-label="disabled"
-          value="disabled"
-          disabled
-        />
-      </div>
-
-      <div class="uk-section uk-section-default">
-        <div class="uk-container">
-          <h3>Section Default</h3>
-
-          <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="uk-section uk-section-muted">
-        <div class="uk-container">
-          <h3>Section Muted</h3>
-
-          <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="uk-section uk-section-primary uk-light">
-        <div class="uk-container">
-          <h3>Section Primary</h3>
-
-          <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="uk-section uk-section-secondary uk-light">
-        <div class="uk-container">
-          <h3>Section Secondary</h3>
-        </div>
-      </div>
+      <span class="uk-badge">100</span> -->
     </div>
   </div>
 </template>

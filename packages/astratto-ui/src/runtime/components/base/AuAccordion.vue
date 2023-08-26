@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSlugify } from '../../utils/'
+import { useUIkit } from '../../composables/useUikit'
 import type { PropType } from '#imports'
 import { computed } from '#imports'
 
@@ -8,13 +9,22 @@ defineOptions({
 })
 
 interface AccordionItem {
-  label?: string
-  content?: string
-  component?: Component
+  title: string
+  icon?: string
+  content?: any
   open?: boolean
+  [key: string]: any
 }
 
 const props = defineProps({
+  id: {
+    type: String,
+    default: null
+  },
+  size: {
+    type: String as PropType<'default' | 'small'>,
+    default: 'default'
+  },
   animation: {
     type: Boolean,
     default: true
@@ -40,7 +50,7 @@ const props = defineProps({
     default: false
   },
   items: {
-    type: (Array as PropType<AccordionItem[]>) || Number,
+    type: Array as PropType<AccordionItem[]>,
     required: true
   },
   clsItem: {
@@ -51,6 +61,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  clsIcon: {
+    type: String,
+    default: ''
+  },
   clsContent: {
     type: String,
     default: ''
@@ -58,29 +72,88 @@ const props = defineProps({
 })
 
 const emits = defineEmits<{
-  (e: 'itemClick', value: AccordionItem): void
+  (e: 'itemOpen', value: AccordionItem): void
+  (e: 'beforeshow', event: Event): void
+  (e: 'show', event: Event): void
+  (e: 'shown', event: Event): void
+  (e: 'beforehide', event: Event): void
+  (e: 'hide', event: Event): void
+  (e: 'hidden', event: Event): void
 }>()
 
 const uikitAttrs = computed(() => {
   return `collapsible: ${props.collapsible}; multiple: ${props.multiple}; offset: ${props.offset}; animation: ${props.animation}; duration: ${props.animationDuration}; transition: ${props.transition}`
 })
+
+// TODO: check why .util is not being found in uikit types
+
+if (props.id) {
+  const uikit = useUIkit()
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'beforeshow', (e: Event) => {
+    emits('beforeshow', e)
+  })
+
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'show', (e: Event) => {
+    emits('show', e)
+  })
+
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'shown', (e: Event) => {
+    emits('shown', e)
+  })
+
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'beforehide', (e: Event) => {
+    emits('beforehide', e)
+  })
+
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'hide', (e: Event) => {
+    emits('hide', e)
+  })
+
+  // @ts-ignore
+  uikit?.util.on(`#${props.id}`, 'hidden', (e: Event) => {
+    emits('hidden', e)
+  })
+}
 </script>
 
 <template>
-  <ul :uk-accordion="uikitAttrs">
-    <template v-for="item in props.items" :key="useSlugify(item.label)">
+  <ul
+    :id="props.id"
+    :uk-accordion="uikitAttrs"
+    :class="[props.size ? `uk-accordion-${props.size}` : '']"
+  >
+    <template
+      v-for="(item, index) in props.items"
+      :key="useSlugify(`${item.label}-${index}`)"
+    >
       <li :class="[item.open ? 'uk-open' : '', props.clsItem]">
         <a
-          :class="['uk-accordion-title', clsTitle]"
+          :class="['uk-accordion-title', props.clsTitle]"
           href="#"
-          @click.prevent="emits('itemClick', item)"
+          @click.prevent="emits('itemOpen', item)"
         >
-          <slot name="label" :item="item">
-            {{ item.label }}
-          </slot>
+          <span class="uk-flex uk-flex-middle">
+            <slot name="icon" :item="item" :index="index">
+              <AuIcon
+                v-if="item.icon"
+                :name="item.icon"
+                :class="['uk-accordion-icon', props.clsIcon]"
+              />
+            </slot>
+
+            <slot name="label" :item="item" :index="index">
+              <span>{{ item.title }}</span>
+            </slot>
+          </span>
         </a>
+
         <div :class="['uk-accordion-content', props.clsContent]">
-          <slot :item="item">
+          <slot :item="item" :index="index">
             {{ item.content }}
           </slot>
         </div>

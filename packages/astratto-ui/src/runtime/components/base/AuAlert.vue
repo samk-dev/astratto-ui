@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { UiKitThemeStates } from '../../../types'
+import AuIcon from './AuIcon.vue'
 import type { PropType } from '#imports'
 import { computed } from '#imports'
 
@@ -13,6 +14,10 @@ const props = defineProps({
     default: ''
   },
   message: {
+    type: String,
+    default: ''
+  },
+  icon: {
     type: String,
     default: ''
   },
@@ -40,6 +45,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  clsIcon: {
+    type: String,
+    default: ''
+  },
   clsClose: {
     type: String,
     default: ''
@@ -56,10 +65,7 @@ const uikitAttrs = computed(() => {
 </script>
 
 <template>
-  <div
-    :uk-alert="uikitAttrs"
-    :class="[props.theme ? `uk-alert-${props.theme}` : '']"
-  >
+  <div :uk-alert="uikitAttrs" :class="[`uk-alert-${props.theme}`]">
     <slot name="close">
       <a
         v-show="props.closeBtn"
@@ -68,13 +74,24 @@ const uikitAttrs = computed(() => {
         @click.prevent="emits('close')"
       />
     </slot>
-    <slot name="title">
-      <h3 v-if="props.title" :class="['uk-alert-title', props.clsTitle]">
-        {{ props.title }}
-      </h3>
-    </slot>
+
+    <div class="uk-flex uk-flex-middle">
+      <slot name="icon">
+        <AuIcon
+          v-if="props.icon"
+          :name="props.icon"
+          :class="['uk-alert-icon uk-margin-small-right', props.clsIcon]"
+        />
+      </slot>
+
+      <slot name="title">
+        <h3 v-if="props.title" :class="['uk-alert-title', props.clsTitle]">
+          {{ props.title }}
+        </h3>
+      </slot>
+    </div>
     <slot>
-      <p v-if="props.message" :class="[props.clsMessage]">
+      <p v-if="props.message" :class="['uk-alert-message', props.clsMessage]">
         {{ props.message }}
       </p>
     </slot>

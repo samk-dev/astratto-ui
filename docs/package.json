@@ -9,8 +9,10 @@
   },
   "devDependencies": {
     "@nuxt/content": "^2.7.2",
+    "@samk-dev/astratto-ui": "workspace:*",
     "@types/node": "^18.15.12",
     "nuxt": "^3.6.5",
-    "@samk-dev/astratto-ui": "workspace:*"
+    "sass": "^1.65.1",
+    "sass-loader": "^13.3.2"
   }
 }

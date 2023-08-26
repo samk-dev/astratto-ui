@@ -75,7 +75,19 @@ const theme = [
           class="uk-width-1-2 uk-width-1-3@s uk-width-1-5@m uk-height-small"
           style="margin-top: 0"
         >
-          <ColorBox :cls-color="variation" />
+          <div
+            :class="[
+              `uk-background-${variation}`,
+              'uk-width-1-1 uk-height-1-1 uk-position-relative uk-border-small uk-border-default'
+            ]"
+          >
+            <span
+              class="uk-position-small uk-position-bottom-left uk-background-muted-50 uk-text-small uk-border-rounded"
+              style="padding: 0.3rem"
+            >
+              {{ variation }}
+            </span>
+          </div>
         </li>
       </ul>
 
