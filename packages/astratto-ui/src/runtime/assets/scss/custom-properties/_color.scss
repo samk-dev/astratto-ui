@@ -1,8 +1,6 @@
 :root {
-  --au-global-color-bg: #FFF;
-
-  --au-global-color-light: #FFF;
-  --au-global-color-dark: #000;
+  --au-global-color-light: #f8fafc;
+  --au-global-color-dark: #374151;
 
   --au-global-color-muted-50: #f9fafb;
   --au-global-color-muted: #e5e7eb;
@@ -11,13 +9,13 @@
   --au-global-color-muted-200: #6b7280;
 
   --au-global-color-primary-50: #dbeafe;
-  --au-global-color-primary: #004BD6;
+  --au-global-color-primary: #004bd6;
   --au-global-color-primary-100: #012d9c;
   --au-global-color-primary-150: #001d6c;
-  --au-global-color-primary-200: #1E40AF;
+  --au-global-color-primary-200: #1e40af;
 
   --au-global-color-secondary-50: #1f2937;
-  --au-global-color-secondary: #111827;
+  --au-global-color-secondary: #1f2937;
   --au-global-color-secondary-100: #334155;
   --au-global-color-secondary-150: #1c1917;
   --au-global-color-secondary-200: #030712;
@@ -29,21 +27,24 @@
   --au-global-color-success-200: #052e16;
 
   --au-global-color-warning-50: #ffedd5;
-  --au-global-color-warning: #FF943D;
+  --au-global-color-warning: #ff943d;
   --au-global-color-warning-100: #ea580c;
   --au-global-color-warning-150: #c2410c;
-  --au-global-color-warning-200: #912F0F;
+  --au-global-color-warning-200: #912f0f;
 
   --au-global-color-danger-50: #fee2e2;
-  --au-global-color-danger: #AE1A22;
+  --au-global-color-danger: #ae1a22;
   --au-global-color-danger-100: #dc2626;
   --au-global-color-danger-150: #991b1b;
   --au-global-color-danger-200: #981010;
+
+  --au-global-color-bg: var(--au-global-color-light);
 
   --au-global-color-text: #111827;
   --au-global-color-text-emphasis: #111;
   --au-global-color-heading: var(--au-global-color-text);
 
-  --au-global-color-text-light: #F3F3F3;
-  --au-global-color-text-light-emphasis: #FFF;
+  --au-global-color-text-light: #f3f3f3;
+  --au-global-color-text-light-emphasis: #fff;
+  --au-global-color-heading-light: var(--au-global-color-text-light);
 }

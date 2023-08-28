@@ -18,17 +18,21 @@ $button-primary-color: var(--au-global-color-text-light) !default;
 $button-primary-hover-background: var(--au-global-color-primary-100) !default;
 $button-primary-color: var(--au-global-color-text-light-emphasis) !default;
 
-$button-primary-active-background:  var(--au-global-color-primary-150) !default;
+$button-primary-active-background: var(--au-global-color-primary-150) !default;
 $button-primary-color: var(--au-global-color-text-light-emphasis) !default;
 
 // secondary
 $button-secondary-background: var(--au-global-color-secondary) !default;
 $button-secondary-color: var(--au-global-color-text-light) !default;
 
-$button-secondary-hover-background: var(--au-global-color-secondary-100) !default;
+$button-secondary-hover-background: var(
+  --au-global-color-secondary-100
+) !default;
 $button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
 
-$button-secondary-active-background: var(--au-global-color-secondary-200) !default;
+$button-secondary-active-background: var(
+  --au-global-color-secondary-200
+) !default;
 $button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
 
 // success
@@ -57,42 +61,62 @@ $button-danger-color: var(--au-global-color-danger-50) !default;
 $button-danger-hover-background: var(--au-global-color-danger-100) !default;
 $button-danger-active-background: var(--au-global-color-danger-150) !default;
 
+@mixin hook-button() {
+  font-family: var(--au-global-font-primary);
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  border-radius: var(--au-global-border-radius-default);
+  transition: background 350ms linear;
+}
+
 .uk-button {
   &-success {
     background-color: $button-success-background;
     color: $button-success-color;
-    @if(mixin-exists(hook-button-success)) {@include hook-button-success();}
+    @if (mixin-exists(hook-button-success)) {
+      @include hook-button-success();
+    }
 
     &:hover {
       background-color: $button-success-hover-background;
       color: $button-success-hover-color;
-      @if(mixin-exists(hook-button-success-hover)) {@include hook-button-success-hover();}
+      @if (mixin-exists(hook-button-success-hover)) {
+        @include hook-button-success-hover();
+      }
     }
 
     &:active,
     .uk-button-success.uk-active {
       background-color: $button-success-active-background;
       color: $button-success-active-color;
-      @if(mixin-exists(hook-button-success-active)) {@include hook-button-success-active();}
+      @if (mixin-exists(hook-button-success-active)) {
+        @include hook-button-success-active();
+      }
     }
   }
 
   &-warning {
     background-color: $button-warning-background;
     color: $button-warning-color;
-    @if(mixin-exists(hook-button-warning)) {@include hook-button-warning();}
+    @if (mixin-exists(hook-button-warning)) {
+      @include hook-button-warning();
+    }
 
     &:hover {
       background-color: $button-warning-hover-background;
       color: $button-warning-hover-color;
-      @if(mixin-exists(hook-button-warning-hover)) {@include hook-button-warning-hover();}
+      @if (mixin-exists(hook-button-warning-hover)) {
+        @include hook-button-warning-hover();
+      }
     }
 
     &:active,
     .uk-button-warning.uk-active {
       background-color: $button-warning-active-background;
       color: $button-warning-active-color;
-      @if(mixin-exists(hook-button-warning-active)) {@include hook-button-warning-active();}
+      @if (mixin-exists(hook-button-warning-active)) {
+        @include hook-button-warning-active();
+      }
     }
   }
 }
@@ -163,7 +187,6 @@ $button-danger-active-background: var(--au-global-color-danger-150) !default;
 //   @if(mixin-exists(hook-button-disabled)) {@include hook-button-disabled();}
 // }
 
-
 // /* Size modifiers
 // ========================================================================== */
 
@@ -180,7 +203,6 @@ $button-danger-active-background: var(--au-global-color-danger-150) !default;
 //   font-size: $button-large-font-size;
 //   @if(mixin-exists(hook-button-large)) {@include hook-button-large();}
 // }
-
 
 // /* Text modifiers
 // ========================================================================== */
@@ -234,4 +256,3 @@ $button-danger-active-background: var(--au-global-color-danger-150) !default;
 //   color: $button-link-hover-color;
 //   text-decoration: $button-link-hover-text-decoration;
 // }
-

@@ -1,12 +1,5 @@
 @import 'uikit/src/scss/mixins.scss';
 @import 'uikit/src/scss/mixins-theme.scss';
-@import './mixins/accordion';
-@import './mixins/alert';
-
-@mixin hook-button() {
-  font-family: var(--au-global-font-primary);
-  font-weight: bold;
-  letter-spacing: 0.7px;
-  border-radius: var(--au-global-border-radius-default);
-  transition: background 350ms linear;
-}
+@import './components/accordion';
+@import './components/alert';
+@import './components/button';

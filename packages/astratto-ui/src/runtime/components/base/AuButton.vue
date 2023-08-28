@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { UiKitThemeButton, UiKitSizeButton } from '../../../types'
-import type { PropType } from '#imports'
+import AuIcon from './AuIcon.vue'
 import { computed } from '#imports'
+import type { PropType } from '#imports'
 
 defineOptions({
   name: 'AuButton'
@@ -46,15 +47,15 @@ const props = defineProps({
   },
   clsIconLeading: {
     type: String,
-    default: ''
+    default: null
   },
   clsIconTrailing: {
     type: String,
-    default: ''
+    default: null
   },
   clsIconSpinner: {
     type: String,
-    default: ''
+    default: null
   }
 })
 
@@ -90,27 +91,31 @@ const elCls = computed(() => {
       elCls.size
     ]"
   >
-    <span
-      :uk-icon="`icon: ${props.iconLeading}; ratio: ${elCls.iconSize}`"
-      :class="props.clsIconLeading"
+    <AuIcon
+      v-if="!props.loading && props.iconLeading"
+      :name="props.iconLeading"
+      :ratio="elCls.iconSize"
+      :class="['uk-button-icon-leading', props.clsIconLeading]"
     />
 
     <span>
       <slot>
-        <span v-if="!props.loading">
+        <span v-if="!props.loading" :class="['uk-button-title']">
           {{ props.label }}
         </span>
         <span
           v-else
           :uk-spinner="`ratio: ${elCls.spinnerSize}`"
-          :class="props.clsIconSpinner"
+          :class="['uk-button-spinner', props.clsIconSpinner]"
         />
       </slot>
     </span>
 
-    <span
-      :uk-icon="`icon: ${props.iconTrailing}; ratio: ${elCls.iconSize}`"
-      :class="props.clsIconTrailing"
+    <AuIcon
+      v-if="!props.loading && props.iconTrailing"
+      :name="props.iconTrailing"
+      :ratio="elCls.iconSize"
+      :class="['uk-button-icon-trailing', props.clsIconTrailing]"
     />
   </button>
 </template>

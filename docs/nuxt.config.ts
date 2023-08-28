@@ -1,6 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@samk-dev/astratto-ui'],
+  modules: ['@nuxt/content', '../packages/astratto-ui/src/module'],
   css: ['~/assets/app.scss'],
   content: {
     documentDriven: true,

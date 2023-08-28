@@ -21,6 +21,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  size: {
+    type: String as PropType<'default' | 'small'>,
+    default: ''
+  },
   closeBtn: {
     type: Boolean,
     default: true
@@ -75,25 +79,34 @@ const uikitAttrs = computed(() => {
       />
     </slot>
 
-    <div class="uk-flex uk-flex-middle">
+    <div class="uk-flex uk-flex-top">
       <slot name="icon">
         <AuIcon
           v-if="props.icon"
           :name="props.icon"
-          :class="['uk-alert-icon uk-margin-small-right', props.clsIcon]"
+          :class="[
+            'uk-alert-icon uk-margin-small-right uk-flex-none',
+            props.clsIcon
+          ]"
         />
       </slot>
 
-      <slot name="title">
-        <h3 v-if="props.title" :class="['uk-alert-title', props.clsTitle]">
-          {{ props.title }}
-        </h3>
-      </slot>
+      <div class="uk-alert-content">
+        <slot name="title">
+          <h3 v-if="props.title" :class="['uk-alert-title', props.clsTitle]">
+            {{ props.title }}
+          </h3>
+        </slot>
+
+        <slot>
+          <p
+            v-if="props.message"
+            :class="['uk-alert-message', props.clsMessage]"
+          >
+            {{ props.message }}
+          </p>
+        </slot>
+      </div>
     </div>
-    <slot>
-      <p v-if="props.message" :class="['uk-alert-message', props.clsMessage]">
-        {{ props.message }}
-      </p>
-    </slot>
   </div>
 </template>

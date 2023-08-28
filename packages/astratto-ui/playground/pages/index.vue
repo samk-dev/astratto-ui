@@ -1,159 +1,186 @@
-<script setup lang="ts">
-// import { ref } from '#imports'
-// import { AuInput } from '#components'
-
-// const formBuilder = ref([
-//   {
-//     id: 'asda3',
-//    label: 'Text Input',
-//     placeholder: 'Enter some text',
-//     modelValue: '',
-//     component: () => AuInput
-//   },
-//   {
-//     id: 'asda4',
-//     type: 'number',
-//     label: 'Number Input',
-//     placeholder: 'Enter some numbers',
-//     modelValue: '',
-//     component: () => AuInput
-//   }
-// ])
-// const handleClose = () => {
-//   console.log('closed')
-// }   type: 'text',
-//
-
-// const { showNotification } = useNotification()
-// const handleNotification = () => {
-//   showNotification({
-//     message: 'my-message!',
-//     status: 'primary',
-//     pos: 'top-right',
-//     timeout: 5000
-//   })
-// }
-const items = [
-  {
-    title: 'Accordion demo',
-    icon: 'rocket',
-    content: 'Accordion content demo'
-  },
-  {
-    title: 'Accordion demo 2',
-    icon: 'life-buoy',
-    content: 'Accordion content demo'
-  },
-  {
-    title: 'Accordion demo 3',
-    icon: 'beaker',
-    content: 'Accordion content demo with open option set to true'
-  }
-]
-</script>
-
 <template>
-  <div>
-    <div>
-      <!-- <AuSection uk-margin class="uk-margin-medium">
-        <AuContainer>
-          <h1>Astratto UI Playground</h1>
-        </AuContainer>
+  <AuSection>
+    <AuContainer>
+      <Backgrounds />
 
-        <AuContainer>
-          <h3>Buttons</h3>
-          <div uk-grid>
-            <div>
-              <AuButton label="Default Button" />
-            </div>
+      <div uk-grid>
+        <div><AuButton label="Default Button" /></div>
 
-            <div>
-              <AuButton
-                label="Primary Button"
-                theme="primary"
-                @click="handleNotification"
-              />
-            </div>
+        <div><AuButton label="Primary Button" theme="primary" /></div>
 
-            <div>
-              <AuButton label="Secondary Button" theme="secondary" />
-            </div>
+        <div><AuButton label="Secondary Button" theme="secondary" /></div>
 
-            <div>
-              <AuButton label="Success Button" theme="success" />
-            </div>
+        <div><AuButton label="Warning Button" theme="warning" /></div>
 
-            <div>
-              <AuButton label="Warning Button" theme="warning" />
-            </div>
+        <div><AuButton label="Danger Button" theme="danger" /></div>
 
-            <div>
-              <AuButton label="Danger Button" theme="danger" />
-            </div>
-          </div>
-        </AuContainer>
-      </AuSection> -->
+        <div><AuButton label="Success Button" theme="success" /></div>
 
-      <AuSection>
-        <AuContainer>
-          <h3>small</h3>
+        <div><AuButton label="Icon Leading Button" icon-leading="plus" /></div>
 
-          <AuAccordion
-            id="some-accordion-small"
+        <div>
+          <AuButton label="Icon Trainling Button" icon-trailing="plus" />
+        </div>
+
+        <div>
+          <AuButton
+            label="Icons Button"
+            icon-leading="plus"
+            icon-trailing="minus"
+          />
+        </div>
+
+        <div><AuButton label="Icon Leading Button" :loading="true" /></div>
+        <div><AuButton label="Icon Leading Button" :disabled="true" /></div>
+      </div>
+
+      <div uk-grid>
+        <div><AuButton label="Default Button" size="small" /></div>
+
+        <div>
+          <AuButton label="Primary Button" theme="primary" size="small" />
+        </div>
+
+        <div>
+          <AuButton label="Secondary Button" theme="secondary" size="small" />
+        </div>
+
+        <div>
+          <AuButton label="Warning Button" theme="warning" size="small" />
+        </div>
+
+        <div>
+          <AuButton label="Danger Button" theme="danger" size="small" />
+        </div>
+
+        <div>
+          <AuButton label="Success Button" theme="success" size="small" />
+        </div>
+
+        <div>
+          <AuButton
+            label="Icon Leading Button"
+            icon-leading="plus"
             size="small"
-            :items="items"
-            @item-open="(e) => console.log(e)"
-            @hidden="(e) => console.log(e)"
           />
+        </div>
 
-          <h3>default</h3>
-
-          <AuAccordion
-            id="some-accordion"
-            :items="items"
-            @item-open="(e) => console.log(e)"
-            @hidden="(e) => console.log(e)"
+        <div>
+          <AuButton
+            label="Icon Trainling Button"
+            icon-trailing="plus"
+            size="small"
           />
-        </AuContainer>
-      </AuSection>
+        </div>
 
-      <!-- <AuAlert
-        title="A new software update is available. See what’s new in version 1.1.1"
-        icon="info-circle"
-        theme="default"
-      />
+        <div>
+          <AuButton
+            label="Icons Button"
+            icon-leading="plus"
+            icon-trailing="minus"
+            size="small"
+          />
+        </div>
+
+        <div>
+          <AuButton label="Icon Leading Button" :loading="true" size="small" />
+        </div>
+        <div>
+          <AuButton label="Icon Leading Button" :disabled="true" size="small" />
+        </div>
+      </div>
+
+      <div uk-grid>
+        <div><AuButton label="Default Button" size="large" /></div>
+
+        <div>
+          <AuButton label="Primary Button" theme="primary" size="large" />
+        </div>
+
+        <div>
+          <AuButton label="Secondary Button" theme="secondary" size="large" />
+        </div>
+
+        <div>
+          <AuButton label="Warning Button" theme="warning" size="large" />
+        </div>
+
+        <div>
+          <AuButton label="Danger Button" theme="danger" size="large" />
+        </div>
+
+        <div>
+          <AuButton label="Success Button" theme="success" size="large" />
+        </div>
+
+        <div>
+          <AuButton
+            label="Icon Leading Button"
+            icon-leading="plus"
+            size="large"
+          />
+        </div>
+
+        <div>
+          <AuButton
+            label="Icon Trainling Button"
+            icon-trailing="plus"
+            size="large"
+          />
+        </div>
+
+        <div>
+          <AuButton
+            label="Icons Button"
+            icon-leading="plus"
+            icon-trailing="minus"
+            size="large"
+          />
+        </div>
+
+        <div>
+          <AuButton label="Icon Leading Button" :loading="true" size="large" />
+        </div>
+        <div>
+          <AuButton label="Icon Leading Button" :disabled="true" size="large" />
+        </div>
+      </div>
+
+      <!-- <AuAlert title="New software update available" />
+
       <AuAlert
-        title="New arrivals in our gift store"
-        icon="gift"
+        title="New products in our gift shop"
+        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum."
         theme="primary"
+        icon="gift"
       />
+
       <AuAlert
-        title="Product created successfully"
-        icon="check"
-        theme="success"
-      />
-      <AuAlert
-        title="You have no credits left!"
-        message="Please renew your account before 19/12/2023"
-        icon="alert-triangle"
+        title="Attention needed"
+        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum."
         theme="warning"
+        icon="alert-triangle"
       />
+
       <AuAlert
-        title="403 Access Denied"
-        message="You don't have permissions to access this data. Please contact your sys admin."
-        icon="ban"
+        title="There were 2 errors with your submission"
         theme="danger"
+        icon="ban"
+      >
+        <ul>
+          <li>Your password must be at least 8 characters</li>
+          <li>
+            Your password must include at least one pro wrestling finishing move
+          </li>
+        </ul>
+      </AuAlert>
+
+      <AuAlert
+        title="Order completed"
+        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam."
+        theme="success"
+        icon="check"
       /> -->
-
-      <!-- <span class="uk-label">Default</span>
-
-      <span class="uk-label uk-label-success">Success</span>
-
-      <span class="uk-label uk-label-warning">Warning</span>
-
-      <span class="uk-label uk-label-danger">Danger</span>
-
-      <span class="uk-badge">100</span> -->
-    </div>
-  </div>
+    </AuContainer>
+  </AuSection>
 </template>

@@ -1,21 +1,22 @@
 :root {
   --au-accordion-divider-color: var(--au-global-color-muted);
   --au-accordion-title-color: var(--au-global-color-text);
+  --au-accordion-title-font-size: 1.25rem;
+  --au-accordion-title-font-size-small: 1rem;
   --au-accordion-title-font-weight: normal;
   --au-accordion-icon-color: var(--au-accordion-title-color);
 }
 
 $accordion-item-margin-top: var(--au-global-spacing-default) !default;
 $accordion-item-margin-top-small: var(--au-global-spacing-small) !default;
-$accordion-item-margin-top-large: var(--au-global-spacing-medium) !default;
 
-$accordion-title-font-size: 1.25rem !default;
-$accordion-title-font-size-small: 1rem !default;
-$accordion-title-font-size-large: 1.75rem !default;
+$accordion-title-font-size: var(--au-accordion-title-font-size) !default;
+$accordion-title-font-size-small: var(
+  --au-accordion-title-font-size-small
+) !default;
 
 $accordion-title-line-height: 1.4 !default;
 $accordion-title-line-height-small: 1.2 !default;
-$accordion-title-line-height-large: 2 !default;
 
 $accordion-title-color: var(--au-accordion-title-color) !default;
 $accordion-title-hover-color: var(--au-global-color-text-emphasis) !default;
@@ -25,3 +26,44 @@ $accordion-icon-color: var(--au-accordion-icon-color) !default;
 $internal-accordion-close-image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgOUwxMiAxNUwxOCA5IiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=' !default;
 
 $internal-accordion-open-image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE4IDE1TDEyIDlMNiAxNSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K' !default;
+
+@mixin hook-accordion() {
+  &-title {
+    padding-bottom: $accordion-item-margin-top;
+    border-bottom: 1px solid var(--au-global-color-muted);
+  }
+  &-icon {
+    display: inline-flex;
+    margin-right: var(--au-global-spacing-small);
+  }
+
+  &-small {
+    li a {
+    }
+    .uk-accordion-title {
+      font-size: $accordion-title-font-size-small;
+      line-height: $accordion-title-line-height-small;
+      padding-bottom: $accordion-item-margin-top-small;
+
+      &::before {
+        width: ($accordion-title-line-height * 1rem);
+        height: ($accordion-title-line-height * 1rem);
+      }
+
+      .uk-open > &::before {
+        @include svg-fill(
+          $internal-accordion-open-image,
+          '#000',
+          $accordion-icon-color
+        );
+      }
+    }
+    .uk-accordion-icon {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+    .uk-accordion-content {
+      margin-top: $accordion-item-margin-top-small;
+    }
+  }
+}

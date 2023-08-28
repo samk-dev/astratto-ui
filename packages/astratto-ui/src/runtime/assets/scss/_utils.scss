@@ -1,0 +1,31 @@
+// $colors: light, dark, success, warning, danger;
+
+// $color-variants: (
+//   muted: (50, 100, 150, 200),
+//   primary: (50, 100, 150, 200),
+//   secondary: (50, 100, 150, 200),
+//   success: (50, 100, 150, 200),
+//   warning: (50, 100, 150, 200),
+//   danger: (50, 100, 150, 200)
+// );
+
+// @each $color, $variants in $color-variants {
+//   @each $variant in $variants {
+//     .uk-background-#{$color}-#{$variant} {
+//       background-color: var(--au-global-color-#{$color}-#{$variant});
+//     }
+//   }
+// }
+
+$colors: light, dark, success, warning, danger;
+$variations: 50, 100, 150, 200;
+
+@mixin color-gen($clrs, $vars) {
+  @each $color, $variants in $color-variants {
+  @each $variant in $variants {
+    .uk-background-#{$color}-#{$variant} {
+      background-color: $global;
+    }
+  }
+}
+}
