@@ -50,7 +50,7 @@
     "@nuxt/test-utils": "^3.6.5",
     "@types/node": "^20.4.10",
     "@types/uikit": "^3.14.0",
-    "changelogen": "^0.5.4",
+    "changelogen": "^0.5.5",
     "fs-extra": "^11.1.1",
     "nuxt": "^3.6.5",
     "sass": "^1.65.1",
