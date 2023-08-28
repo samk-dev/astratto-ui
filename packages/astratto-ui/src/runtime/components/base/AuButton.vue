@@ -69,11 +69,11 @@ const elCls = computed(() => {
     spinnerSize = 0.65
   }
 
-  let iconSize = 1
+  let iconSize = 0.8
   if (props.size === 'small') {
-    iconSize = 0.9
+    iconSize = 0.7
   } else if (props.size === 'large') {
-    iconSize = 1.5
+    iconSize = 1
   }
 
   return { size, spinnerSize, iconSize }

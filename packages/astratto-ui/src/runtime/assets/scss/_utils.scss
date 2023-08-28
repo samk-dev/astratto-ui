@@ -1,31 +1,38 @@
-// $colors: light, dark, success, warning, danger;
+$color-variants: (
+  muted: (50, 0, 100, 150, 200),
+  primary: (50, 0, 100, 150, 200),
+  secondary: (50, 0, 100, 150, 200),
+  success: (50, 0, 100, 150, 200),
+  warning: (50, 0, 100, 150, 200),
+  danger: (50, 0, 100, 150, 200)
+);
 
-// $color-variants: (
-//   muted: (50, 100, 150, 200),
-//   primary: (50, 100, 150, 200),
-//   secondary: (50, 100, 150, 200),
-//   success: (50, 100, 150, 200),
-//   warning: (50, 100, 150, 200),
-//   danger: (50, 100, 150, 200)
-// );
-
-// @each $color, $variants in $color-variants {
-//   @each $variant in $variants {
-//     .uk-background-#{$color}-#{$variant} {
-//       background-color: var(--au-global-color-#{$color}-#{$variant});
-//     }
-//   }
-// }
-
-$colors: light, dark, success, warning, danger;
-$variations: 50, 100, 150, 200;
-
-@mixin color-gen($clrs, $vars) {
-  @each $color, $variants in $color-variants {
+// backgrounds
+@each $color, $variants in $color-variants {
   @each $variant in $variants {
-    .uk-background-#{$color}-#{$variant} {
-      background-color: $global;
+    @if ($variant == 0) {
+      .uk-background-#{$color} {
+        background-color: var(--au-global-color-#{$color});
+      }
+    } @else {
+      .uk-background-#{$color}-#{$variant} {
+        background-color: var(--au-global-color-#{$color}-#{$variant});
+      }
     }
   }
 }
+
+// text
+@each $color, $variants in $color-variants {
+  @each $variant in $variants {
+    @if ($variant == 0) {
+      .uk-text-#{$color} {
+        color: var(--au-global-color-#{$color});
+      }
+    } @else {
+      .uk-text-#{$color}-#{$variant} {
+        color: var(--au-global-color-#{$color}-#{$variant});
+      }
+    }
+  }
 }

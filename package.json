@@ -16,14 +16,17 @@
     "ui-library"
   ],
   "scripts": {
+    "dev:ui": "pnpm --filter @samk-dev/astratto-ui dev",
+    "dev:prepare:ui": "pnpm --filter @samk-dev/astratto-ui dev:prepare",
+    "build:ui": "pnpm --filter @samk-dev/astratto-ui prepack",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,vue,json}\""
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@samk-dev/eslint-config": "^1.0.3",
-    "@samk-dev/prettier-config": "^1.0.1",
+    "@samk-dev/eslint-config": "^1.0.4",
+    "@samk-dev/prettier-config": "^1.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1"
   },
