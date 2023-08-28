@@ -25,7 +25,7 @@
     "@samk-dev/eslint-config": "^1.0.3",
     "@samk-dev/prettier-config": "^1.0.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3"
+    "lint-staged": "^14.0.1"
   },
   "lint-staged": {
     "packages/**/*.{.js,ts,vue,tsx}": [
