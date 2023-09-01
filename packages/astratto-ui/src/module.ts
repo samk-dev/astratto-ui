@@ -79,13 +79,13 @@ export default defineNuxtModule<AuModuleOptions>({
     nuxtOptions.vite.css.preprocessorOptions.scss ||= {}
     nuxtOptions.vite.css.preprocessorOptions.scss = {
       additionalData: `@import "${resolver.resolve(
-        'runtime/assets/scss/_variables.scss'
+        'runtime/assets/scss/variables.scss'
       )}";`
     }
 
     nuxtOptions.vite.css.preprocessorOptions.scss = {
       additionalData: `@import "${resolver.resolve(
-        'runtime/assets/scss/_mixins.scss'
+        'runtime/assets/scss/mixins.scss'
       )}";`
     }
 

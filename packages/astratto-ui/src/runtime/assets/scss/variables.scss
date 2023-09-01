@@ -1,3 +1,14 @@
+$color-variants: (
+  light: (0),
+  dark: (0),
+  muted: (50, 0, 100, 150, 200),
+  primary: (50, 0, 100, 150, 200),
+  secondary: (50, 0, 100, 150, 200),
+  success: (50, 0, 100, 150, 200),
+  warning: (50, 0, 100, 150, 200),
+  danger: (50, 0, 100, 150, 200)
+);
+
 // background
 $global-background: var(--au-global-color-bg) !default;
 // muted
@@ -75,3 +86,5 @@ $global-danger-text: var(--au-global-color-danger) !default;
 $global-danger-text-100: var(--au-global-color-danger-100) !default;
 $global-danger-text-150: var(--au-global-color-danger-150) !default;
 $global-danger-text-200: var(--au-global-color-danger-200) !default;
+
+@import "uikit/src/scss/variables.scss";

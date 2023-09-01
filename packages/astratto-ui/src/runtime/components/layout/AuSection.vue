@@ -6,7 +6,14 @@ defineOptions({
 })
 
 interface PropsAuSection {
-  bgColor?: 'default' | 'primary' | 'secondary' | 'muted'
+  bgColor?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'muted'
+    | 'warning'
+    | 'success'
+    | 'danger'
   size?: 'xsmall' | 'small' | 'large' | 'xlarge'
   removeVerticalPadding?: boolean
   removeHorizontalPadding?: boolean

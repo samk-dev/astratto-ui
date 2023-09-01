@@ -1,0 +1,368 @@
+:root {
+  --au-button-margin: 0;
+  --au-button-padding: 0 30px;
+  --au-button-padding-small: 0 15;
+  --au-button-padding-large: 0 40px;
+  --au-button-border: none;
+  --au-button-border-radius: 0;
+  --au-button-overflow: hidden;
+  --au-button-font: inherit;
+  --au-button-color: inherit;
+  --au-button-text-transform: none;
+  --au-button-display: inline-flex;
+  --au-button-vertical-align: middle;
+  --au-button-font-size: 1rem;
+  --au-button-font-size-small: 0.875rem;
+  --au-button-font-size-large: 1.25rem;
+  --au-button-line-height: 40px;
+  --au-button-line-height-small: 30px;
+  --au-button-line-height-large: 50px;
+  --au-button-text-align: center;
+  --au-button-text-decoration: none;
+  --au-button-text-decoration-hover: none;
+  --au-button-cursor: pointer;
+
+  --au-button-default-bg: var(--au-global-color-muted);
+  --au-button-default-color: var(--au-global-color-text);
+  --au-button-default-bg-hover: var(--au-global-color-muted-100);
+  --au-button-default-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-default-bg-active: var(--au-global-color-muted-150);
+  --au-button-default-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-primary-bg: var(--au-global-color-primary);
+  --au-button-primary-color: var(--au-global-color-text);
+  --au-button-primary-bg-hover: var(--au-global-color-primary-100);
+  --au-button-primary-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-primary-bg-active: var(--au-global-color-primary-150);
+  --au-button-primary-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-secondary-bg: var(--au-global-color-secondary);
+  --au-button-secondary-color: var(--au-global-color-text);
+  --au-button-secondary-bg-hover: var(--au-global-color-secondary-100);
+  --au-button-secondary-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-secondary-bg-active: var(--au-global-color-secondary-150);
+  --au-button-secondary-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-warning-bg: var(--au-global-color-warning);
+  --au-button-warning-color: var(--au-global-color-text);
+  --au-button-warning-bg-hover: var(--au-global-color-warning-100);
+  --au-button-warning-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-warning-bg-active: var(--au-global-color-warning-150);
+  --au-button-warning-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-danger-bg: var(--au-global-color-danger);
+  --au-button-danger-color: var(--au-global-color-text);
+  --au-button-danger-bg-hover: var(--au-global-color-danger-100);
+  --au-button-danger-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-danger-bg-active: var(--au-global-color-danger-150);
+  --au-button-danger-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-success-bg: var(--au-global-color-success);
+  --au-button-success-color: var(--au-global-color-text);
+  --au-button-success-bg-hover: var(--au-global-color-success-100);
+  --au-button-success-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-success-bg-active: var(--au-global-color-success-150);
+  --au-button-success-color-active: var(--au-global-color-text-emphasis);
+
+  --au-button-disabled-bg: var(--au-global-color-muted-50);
+  --au-button-disabled-color: #999;
+
+  --au-button-text-padding: 0;
+  --au-button-text-line-height: 1.5;
+  --au-button-text-background: none;
+  --au-button-text-color: var(--au-global-color-text);
+  --au-button-text-color-hover: var(--au-global-color-text-emphasis);
+  --au-button-text-color-disabled: var(--au-global-color-muted-50);
+
+  --au-button-link-padding: 0;
+  --au-button-link-line-height: 1.5;
+  --au-button-link-background: none;
+  --au-button-link-color: var(--au-global-color-primary);
+  --au-button-link-color-hover: var(--au-global-color-primary-150);
+  --au-button-link-color-disabled: var(--au-global-color-muted-50);
+  --au-button-link-text-decoration: underline;
+  --au-button-link-text-decoration-hover: underline;
+  --au-button-link-text-decoration-disabled: none;
+}
+
+.uk-button {
+  margin: var(--au-button-margin);
+  border: var(--au-button-border);
+  overflow: var(--au-button-overflow);
+  font: var(--au-button-font);
+  color: var(--au-button-color);
+  text-transform: var(--au-button-text-transform);
+  -webkit-appearance: none;
+  border-radius: var(-au-button-border-radius);
+  display: var(--au-button-display);
+  box-sizing: border-box;
+  padding: var(--au-button-padding);
+  vertical-align: var(--au-button-vertical-align);
+  font-size: var(--au-button-font-size);
+  line-height: var(--au-button-line-height);
+  text-align: var(--au-button-text-align);
+  text-decoration: var(--au-button-text-decoration);
+  @if(mixin-exists(hook-button)) {@include hook-button();}
+
+  &:not(:disabled) { cursor: var(--au-button-cursor); }
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &:hover {
+    text-decoration: var(--au-button-text-decoration-hover);
+    @if(mixin-exists(hook-button-hover)) {@include hook-button-hover();}
+  }
+
+  &:active,
+  &.uk-active {
+    @if(mixin-exists(hook-button-active)) {@include hook-button-active();}
+  }
+
+  &-default {
+    background-color: var(--au-button-default-bg);
+    color: var(--au-button-default-color);
+    @if(mixin-exists(hook-button-default)) {@include hook-button-default();}
+
+    &:hover {
+      background-color: var(--au-button-default-bg-hover);
+      color: var(--au-button-default-color-hover);
+      @if(mixin-exists(hook-button-default-hover)) {@include hook-button-default-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-default-bg-active);
+      color: var(--au-button-default-color-active);
+      @if(mixin-exists(hook-button-default-active)) {@include hook-button-default-active();}
+    }
+  }
+
+  &-primary {
+    background-color: var(--au-button-primary-bg);
+    color: var(--au-button-primary-color);
+    @if(mixin-exists(hook-button-primary)) {@include hook-button-primary();}
+
+    &:hover {
+      background-color: var(--au-button-primary-bg-hover);
+      color: var(--au-button-primary-color);
+      @if(mixin-exists(hook-button-primary-hover)) {@include hook-button-primary-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-primary-bg-active);
+      color: var(--au-button-primary-color);
+      @if(mixin-exists(hook-button-primary-active)) {@include hook-button-primary-active();}
+    }
+  }
+
+  &-secondary {
+    background-color: var(--au-button-secondary-bg);
+    color: var(--au-button-secondary-color);
+    @if(mixin-exists(hook-button-secondary)) {@include hook-button-secondary();}
+
+    &:hover {
+      background-color: var(--au-button-secondary-bg-hover);
+      color: var(--au-button-secondary-color);
+      @if(mixin-exists(hook-button-secondary-hover)) {@include hook-button-secondary-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-secondary-bg-active);
+      color: var(--au-button-secondary-color);
+      @if(mixin-exists(hook-button-secondary-active)) {@include hook-button-secondary-active();}
+    }
+  }
+
+  &-warning {
+    background-color: var(--au-button-warning-bg);
+    color: var(--au-button-warning-color);
+    @if(mixin-exists(hook-button-warning)) {@include hook-button-warning();}
+
+    &:hover {
+      background-color: var(--au-button-warning-bg-hover);
+      color: var(--au-button-warning-color);
+      @if(mixin-exists(hook-button-warning-hover)) {@include hook-button-warning-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-warning-bg-active);
+      color: var(--au-button-warning-color);
+      @if(mixin-exists(hook-button-warning-active)) {@include hook-button-warning-active();}
+    }
+  }
+
+  &-danger {
+    background-color: var(--au-button-danger-bg);
+    color: var(--au-button-danger-color);
+    @if(mixin-exists(hook-button-danger)) {@include hook-button-danger();}
+
+    &:hover {
+      background-color: var(--au-button-danger-bg-hover);
+      color: var(--au-button-danger-color);
+      @if(mixin-exists(hook-button-danger-hover)) {@include hook-button-danger-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-danger-bg-active);
+      color: var(--au-button-danger-color);
+      @if(mixin-exists(hook-button-danger-active)) {@include hook-button-danger-active();}
+    }
+  }
+
+  &-success {
+    background-color: var(--au-button-success-bg);
+    color: var(--au-button-success-color);
+    @if(mixin-exists(hook-button-success)) {@include hook-button-success();}
+
+    &:hover {
+      background-color: var(--au-button-success-bg-hover);
+      color: var(--au-button-success-color);
+      @if(mixin-exists(hook-button-success-hover)) {@include hook-button-success-hover();}
+    }
+
+    &:active,
+    &.uk-active {
+      background-color: var(--au-button-success-bg-active);
+      color: var(--au-button-success-color);
+      @if(mixin-exists(hook-button-success-active)) {@include hook-button-success-active();}
+    }
+  }
+
+  &-default:disabled,
+  &-primary:disabled,
+  &-secondary:disabled,
+  &-danger:disabled {
+    background-color: var(--au-button-disabled-bg);
+    color: var(--au-button-disabled-color);
+    @if(mixin-exists(hook-button-disabled)) {@include hook-button-disabled();}
+  }
+
+  &-small {
+    padding: var(--au-button-padding-small);
+    line-height: var(--au-button-line-height-small);
+    font-size: var(--au-button-font-size-small);
+    @if(mixin-exists(hook-button-small)) {@include hook-button-small();}
+  }
+
+  &-large {
+    padding: var(--au-button-padding-large);
+    line-height: var(--au-button-line-height-large);
+    font-size: var(--au-button-font-size-large);
+    @if(mixin-exists(hook-button-large)) {@include hook-button-large();}
+  }
+
+  &-text {
+    padding: var(--au-button-text-padding);
+    line-height: var(--au-button-text-line-height);
+    background: var(--au-button-text-background);
+    color: var(--au-button-text-color);
+    @if(mixin-exists(hook-button-text)) {@include hook-button-text();}
+
+    &:hover {
+      color: var(--au-button-text-color-hover);
+      @if(mixin-exists(hook-button-text-hover)) {@include hook-button-text-hover();}
+    }
+
+    &:disabled {
+      color: var(--au-button-text-color-disabled);
+      @if(mixin-exists(hook-button-text-disabled)) {@include hook-button-text-disabled();}
+    }
+  }
+
+  &-link {
+    padding: var(--au-button-link-padding);
+    line-height: var(--au-button-link-line-height);
+    background: var(--au-button-link-background);
+    color: var(--au-button-link-color);
+    text-decoration: var(--au-button-link-text-decoration);
+    @if(mixin-exists(hook-button-link)) {@include hook-button-link();}
+
+    &:hover {
+      color: var(--au-button-link-color-hover);
+      text-decoration: var(--au-button-link-text-decoration-hover);
+      @if(mixin-exists(hook-button-link-hover)) {@include hook-button-link-hover();}
+    }
+
+    &:disabled {
+      color: var(--au-button-link-color-disabled);
+      text-decoration: var(--au-button-link-text-decoration-disabled);
+      @if(mixin-exists(hook-button-link-disabled)) {@include hook-button-link-disabled();}
+    }
+  }
+
+  &-group {
+    display: inline-flex;
+    vertical-align: middle;
+    position: relative;
+  }
+}
+
+@if(mixin-exists(hook-button-misc)) {@include hook-button-misc();}
+
+// TODO: Remove when porting
+// default
+$button-default-background: var(--au-global-color-muted) !default;
+$button-default-color: var(--au-global-color-text) !default;
+
+$button-default-hover-background: var(--au-global-color-muted-100) !default;
+$button-default-hover-color: var(--au-global-color-text-emphasis) !default;
+
+$button-default-active-background: var(--au-global-color-muted-activ) !default;
+$button-default-active-color: var(--au-global-color-text-emphasis) !default;
+
+// primary
+$button-primary-background: var(--au-global-color-primary) !default;
+$button-primary-color: var(--au-global-color-text-light) !default;
+
+$button-primary-hover-background: var(--au-global-color-primary-100) !default;
+$button-primary-color: var(--au-global-color-text-light-emphasis) !default;
+
+$button-primary-active-background: var(--au-global-color-primary-150) !default;
+$button-primary-color: var(--au-global-color-text-light-emphasis) !default;
+
+// secondary
+$button-secondary-background: var(--au-global-color-secondary) !default;
+$button-secondary-color: var(--au-global-color-text-light) !default;
+
+$button-secondary-hover-background: var(
+  --au-global-color-secondary-100
+) !default;
+$button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
+
+$button-secondary-active-background: var(
+  --au-global-color-secondary-200
+) !default;
+$button-secondary-color: var(--au-global-color-text-light-emphasis) !default;
+
+// success
+$button-success-background: var(--au-global-color-success) !default;
+$button-success-color: var(--au-global-color-text) !default;
+
+$button-success-hover-background: var(--au-global-color-success-100) !default;
+$button-success-hover-color: var(--au-global-color-text) !default;
+
+$button-success-active-background: var(--au-global-color-success-200) !default;
+$button-success-active-color: var(--au-global-color-text) !default;
+
+// warning
+$button-warning-background: var(--au-global-color-warning) !default;
+$button-warning-color: var(-au-global-color-warning-200) !default;
+
+$button-warning-hover-background: var(--au-global-color-warning-50) !default;
+$button-warning-hover-color: var(-au-global-color-warning-100) !default;
+
+$button-warning-active-background: var(--au-global-color-warning-200) !default;
+$button-warning-active-color: var(-au-global-color-warning-200) !default;
+
+// danger
+$button-danger-background: var(--au-global-color-danger) !default;
+$button-danger-color: var(--au-global-color-danger-50) !default;
+$button-danger-hover-background: var(--au-global-color-danger-100) !default;
+$button-danger-active-background: var(--au-global-color-danger-150) !default;

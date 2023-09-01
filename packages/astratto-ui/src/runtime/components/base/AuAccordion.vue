@@ -21,10 +21,6 @@ const props = defineProps({
     type: String,
     default: null
   },
-  size: {
-    type: String as PropType<'default' | 'small'>,
-    default: 'default'
-  },
   animation: {
     type: Boolean,
     default: true
@@ -53,6 +49,14 @@ const props = defineProps({
     type: Array as PropType<AccordionItem[]>,
     required: true
   },
+  iconOpen: {
+    type: String,
+    default: 'chevron-down'
+  },
+  iconClose: {
+    type: String,
+    default: 'chevron-up'
+  },
   clsItem: {
     type: String,
     default: ''
@@ -62,6 +66,14 @@ const props = defineProps({
     default: ''
   },
   clsIcon: {
+    type: String,
+    default: ''
+  },
+  clsIconOpen: {
+    type: String,
+    default: ''
+  },
+  clsIconClose: {
     type: String,
     default: ''
   },
@@ -122,18 +134,23 @@ if (props.id) {
 </script>
 
 <template>
-  <ul
-    :id="props.id"
-    :uk-accordion="uikitAttrs"
-    :class="[props.size ? `uk-accordion-${props.size}` : '']"
-  >
+  <ul :id="props.id" :uk-accordion="uikitAttrs">
     <template
       v-for="(item, index) in props.items"
       :key="useSlugify(`${item.label}-${index}`)"
     >
-      <li :class="[item.open ? 'uk-open' : '', props.clsItem]">
+      <li
+        :class="[
+          item.open ? 'uk-open' : '',
+          'uk-accordion-item',
+          props.clsItem
+        ]"
+      >
         <a
-          :class="['uk-accordion-title', props.clsTitle]"
+          :class="[
+            'uk-accordion-title uk-flex uk-flex-middle uk-flex-between',
+            props.clsTitle
+          ]"
           href="#"
           @click.prevent="emits('itemOpen', item)"
         >
@@ -142,7 +159,10 @@ if (props.id) {
               <AuIcon
                 v-if="item.icon"
                 :name="item.icon"
-                :class="['uk-accordion-icon', props.clsIcon]"
+                :class="[
+                  'uk-accordion-icon uk-accordion-icon-leading',
+                  props.clsIcon
+                ]"
               />
             </slot>
 
@@ -150,6 +170,17 @@ if (props.id) {
               <span>{{ item.title }}</span>
             </slot>
           </span>
+
+          <slot name="icon-trailing">
+            <AuIcon
+              :name="props.iconOpen"
+              :class="['uk-accordion-icon-open', props.clsIconOpen]"
+            />
+            <AuIcon
+              :name="props.iconClose"
+              :class="['uk-accordion-icon-close', props.clsIconClose]"
+            />
+          </slot>
         </a>
 
         <div :class="['uk-accordion-content', props.clsContent]">

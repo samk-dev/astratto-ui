@@ -1,9 +1,13 @@
+<script setup lang="ts"></script>
+
 <template>
   <AuSection>
     <AuContainer>
       <Backgrounds />
 
       <div uk-grid>
+        <button class="uk-button uk-button-text">Just a text button</button>
+        <button class="uk-button uk-button-link">Just a link button</button>
         <div><AuButton label="Default Button" /></div>
 
         <div><AuButton label="Primary Button" theme="primary" /></div>

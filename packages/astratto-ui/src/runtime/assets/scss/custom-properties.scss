@@ -1,4 +1,16 @@
 :root {
+  // breakpoints
+  --au-global-breakpoint-small: 640px;
+  --au-global-breakpoint-medium: 960px;
+  --au-global-breakpoint-large: 1200px;
+  --au-global-breakpoint-xlarge: 1600px;
+  // typography
+  --au-global-font-primary: Helvetica, Arial, Roboto, sans-serif;
+  --au-global-font-default: Helvetica, Arial, Roboto, sans-serif;
+  --au-global-font-size: 16px;
+  --au-global-font-weight: normal;
+  --au-global-font-line-height: 1.4;
+  // color
   --au-global-color-light: #f8fafc;
   --au-global-color-dark: #374151;
 
@@ -38,6 +50,7 @@
   --au-global-color-danger-150: #991b1b;
   --au-global-color-danger-200: #981010;
 
+  --au-global-background: var(--au-global-color-light);
   --au-global-color-bg: var(--au-global-color-light);
 
   --au-global-color-text: #111827;
@@ -47,4 +60,18 @@
   --au-global-color-text-light: #f3f3f3;
   --au-global-color-text-light-emphasis: #fff;
   --au-global-color-heading-light: var(--au-global-color-text-light);
+  // spacing
+  --au-global-spacing-default: 1.25rem;
+  --au-global-spacing-xsmall: 0.5rem;
+  --au-global-spacing-small: 0.75rem;
+  --au-global-spacing-medium: 1.75rem;
+  --au-global-spacing-large: 2rem;
+  --au-global-spacing-xlarge: 2.25rem;
+  --au-global-spacing-2xlarge: 2.5rem;
+  // radius
+  --au-global-border-radius-default: 7px;
+  --au-global-border-radius-sm: 4px;
+  --au-global-border-radius-md: 10px;
+  --au-global-border-radius-lg: 25px;
+  --au-global-border-radius-full: 500px;
 }
