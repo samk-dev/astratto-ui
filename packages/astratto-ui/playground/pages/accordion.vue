@@ -2,13 +2,11 @@
 const items = [
   {
     title: 'Accordion Items 01',
-    content: 'lorem ipsum',
-    icon: 'home'
+    content: 'lorem ipsum'
   },
   {
     title: 'Accordion Items 02',
-    content: 'lorem ipsum',
-    icon: 'happy'
+    content: 'lorem ipsum'
   }
 ]
 </script>

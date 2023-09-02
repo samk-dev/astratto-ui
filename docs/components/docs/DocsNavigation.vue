@@ -20,12 +20,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <AuAccordion
-    :items="props.navTree"
-    size="small"
-    multiple
-    cls-title="uk-text-bold"
-  >
+  <AuAccordion :items="props.navTree" multiple cls-title="uk-text-bold">
     <template #label="{ item }">
       {{ item.titleAlt ? item.titleAlt : item.title }}
     </template>

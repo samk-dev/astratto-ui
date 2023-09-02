@@ -1,7 +1,5 @@
 @import './custom-properties.scss';
 @import './variables.scss';
 @import './utils.scss';
-@import './mixins.scss';
+@import './components/_import.scss';
 
-// TODO: remove when porting is completed
-@import 'uikit/src/scss/uikit.scss';

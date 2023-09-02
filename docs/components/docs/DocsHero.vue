@@ -41,12 +41,13 @@ const props = defineProps({
         {{ props.title }}
       </h1>
       <div>
-        <NuxtLink
-          :to="props.ukDocsUrl"
+        <AuButton
+          label="UIKit Docs"
+          theme="primary"
+          icon-leading="uikit"
           class="uk-button uk-button-default uk-button-small"
-        >
-          {{ props.ukDocsLabel }}
-        </NuxtLink>
+          @click="navigateTo(props.ukDocsUrl)"
+        />
       </div>
     </div>
 

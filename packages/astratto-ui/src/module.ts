@@ -74,20 +74,20 @@ export default defineNuxtModule<AuModuleOptions>({
     //   src: '/assets/uikit-icons.js',
     //   defer: true
     // })
-    nuxtOptions.vite.css ||= {}
-    nuxtOptions.vite.css.preprocessorOptions ||= {}
-    nuxtOptions.vite.css.preprocessorOptions.scss ||= {}
-    nuxtOptions.vite.css.preprocessorOptions.scss = {
-      additionalData: `@import "${resolver.resolve(
-        'runtime/assets/scss/variables.scss'
-      )}";`
-    }
+    // nuxtOptions.vite.css ||= {}
+    // nuxtOptions.vite.css.preprocessorOptions ||= {}
+    // nuxtOptions.vite.css.preprocessorOptions.scss ||= {}
+    // nuxtOptions.vite.css.preprocessorOptions.scss = {
+    //   additionalData: `@import "${resolver.resolve(
+    //     'runtime/assets/scss/variables.scss'
+    //   )}";`
+    // }
 
-    nuxtOptions.vite.css.preprocessorOptions.scss = {
-      additionalData: `@import "${resolver.resolve(
-        'runtime/assets/scss/mixins.scss'
-      )}";`
-    }
+    // nuxtOptions.vite.css.preprocessorOptions.scss = {
+    //   additionalData: `@import "${resolver.resolve(
+    //     'runtime/assets/scss/mixins.scss'
+    //   )}";`
+    // }
 
     nuxtOptions.css ||= []
     nuxtOptions.css.push(
