@@ -1,84 +1,43 @@
 <script setup lang="ts">
-import type { PropType } from '#imports'
-
-interface NavItem {
-  title: string
-  _path: string
-}
-interface NavTree {
-  title: string
-  icon: string
-  open: boolean
-  children: NavItem[]
-}
-const props = defineProps({
-  navTree: {
-    type: Array as PropType<NavTree[]>,
-    required: true
-  }
-})
+const { navigation } = useContent()
 </script>
 
 <template>
-  <AuAccordion :items="props.navTree" multiple cls-title="uk-text-bold">
-    <template #label="{ item }">
-      {{ item.titleAlt ? item.titleAlt : item.title }}
-    </template>
+  <ul class="uk-nav-default uk-nav-divider uk-docs-nav" uk-nav="multiple: true">
+    <li
+      v-for="item in navigation[0].children"
+      :key="JSON.stringify(item)"
+      :class="[item.children.length ? 'uk-parent' : '', 'uk-open']"
+    >
+      <a href="#" class="uk-docs-nav-title">
+        {{ item.title }}
+        <span uk-nav-parent-icon> </span>
+      </a>
 
-    <template #default="{ item }">
-      <DocsNavigationTree :items="item.children" />
-    </template>
-  </AuAccordion>
+      <ul class="uk-nav-sub uk-docs-subnav">
+        <li v-for="subItem in item.children" :key="subItem._path">
+          <NuxtLink :to="subItem._path" active-class="uk-active">
+            {{ subItem.title }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </template>
 
-<style scoped lang="scss">
-.docs-nav,
-.docs-subnav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.docs-subnav,
-.docs-nav {
-  &-item,
-  &-link {
-    width: 100%;
-  }
-
-  &-item {
-    line-height: 1;
-    padding-left: 1.75rem;
-
-    &:not(:last-child) {
-      margin-bottom: 0.8rem;
-    }
-  }
-
-  &-link {
-    color: var(--au-global-color-text);
-
-    &:hover {
-      color: var(--au-global-color-primary);
-    }
-  }
-
-  &-link-active {
-    color: var(--au-global-color-primary);
-  }
-}
-
-.docs-subnav {
+<style lang="scss">
+/* TODO: Remove important */
+.uk-docs-nav {
   &-title {
-    display: block;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    color: var(--au-global-color-text) !important;
   }
-  &-item {
-    padding-left: 1rem;
+}
+.uk-docs-subnav {
+  a {
+    padding-left: 0.5rem;
   }
-  &-link {
-    font-size: 0.9rem;
+  .uk-active {
+    border-left: 2px solid var(--au-global-color-primary);
   }
 }
 </style>

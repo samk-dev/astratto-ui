@@ -1,10 +1,67 @@
 $color-variants: (
-  light: (0),
-  dark: (0),
-  muted: (50, 0, 100, 150, 200),
-  primary: (50, 0, 100, 150, 200),
-  secondary: (50, 0, 100, 150, 200),
-  success: (50, 0, 100, 150, 200),
-  warning: (50, 0, 100, 150, 200),
-  danger: (50, 0, 100, 150, 200)
+  light: (
+    0
+  ),
+  dark: (
+    0
+  ),
+  muted: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  primary: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  secondary: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  info: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  success: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  warning: (
+    0,
+    50,
+    100,
+    150,
+    200
+  ),
+  danger: (
+    0,
+    50,
+    100,
+    150,
+    200
+  )
 );
+
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 960px !default;
+$breakpoint-large: 1200px !default;
+$breakpoint-xlarge: 1600 !default;
+
+$breakpoint-xsmall-max: ($breakpoint-small - 1) !default;
+$breakpoint-small-max: ($breakpoint-medium - 1) !default;
+$breakpoint-medium-max: ($breakpoint-large - 1) !default;
+$breakpoint-large-max: ($breakpoint-xlarge - 1) !default;

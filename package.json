@@ -1,6 +1,5 @@
 {
   "name": "samk-dev",
-  "description": "",
   "license": "MIT",
   "repository": "samk-dev/astratto-ui",
   "author": {
@@ -12,10 +11,12 @@
     "nuxt",
     "nuxtjs",
     "nuxt-module",
+    "uikit",
     "uikit3",
     "ui-library"
   ],
   "scripts": {
+    "dev:docs": "pnpm --filter docs dev",
     "dev:ui": "pnpm --filter @samk-dev/astratto-ui dev",
     "dev:prepare:ui": "pnpm --filter @samk-dev/astratto-ui dev:prepare",
     "build:ui": "pnpm --filter @samk-dev/astratto-ui prepack",
@@ -25,8 +26,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@samk-dev/eslint-config": "^1.0.4",
-    "@samk-dev/prettier-config": "^1.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1"
   },

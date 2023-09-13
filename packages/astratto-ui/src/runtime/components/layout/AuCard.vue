@@ -1,30 +1,96 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+import type { PropType } from '#imports'
+
 const props = defineProps({
-  badge: {
-    type: Boolean,
-    default: false
+  as: {
+    type: String,
+    default: 'div'
+  },
+  asHeader: {
+    type: String,
+    default: 'div'
+  },
+  asBody: {
+    type: String,
+    default: 'div'
+  },
+  asFooter: {
+    type: String,
+    default: 'div'
+  },
+  theme: {
+    type: String as PropType<'muted' | 'primary' | 'secondary'>,
+    default: null
+  },
+  size: {
+    type: String as PropType<'small' | 'large'>,
+    default: null
   },
   badgeText: {
     type: String,
-    default: ''
+    default: null
   },
-  badgeTheme: {
+  clsHeader: {
     type: String,
-    default: ''
+    default: null
+  },
+  clsBadge: {
+    type: String,
+    default: null
+  },
+  clsTitle: {
+    type: String,
+    default: null
+  },
+  clsBody: {
+    type: String,
+    default: null
+  },
+  clsFooter: {
+    type: String,
+    default: null
   }
 })
+
+const elCls = computed(() => {
+  const elTheme = props.theme ? `uk-card-${props.theme}` : ''
+  const elSize = props.size ? `uk-card-${props.size}` : ''
+
+  return `${elTheme} ${elSize}`
+})
+
+const slots = useSlots()
 </script>
 
 <template>
-  <div class="uk-card uk-card-body">
-    <div v-if="props.badge" class="uk-card-badge uk-label">
+  <Component :is="props.as" :class="['uk-card', elCls]">
+    <div v-if="props.badgeText" :class="['uk-card-badge', clsBadge]">
       {{ props.badgeText }}
     </div>
 
-    <h3 class="uk-card-title">Title</h3>
-    <p>
-      Lorem ipsum color sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-  </div>
+    <Component
+      :is="props.asHeader"
+      v-if="slots.header"
+      :class="['uk-card-header', clsHeader]"
+    >
+      <slot name="header" />
+    </Component>
+
+    <Component
+      :is="props.asBody"
+      v-if="slots.default"
+      :class="['uk-card-body', clsBody]"
+    >
+      <slot />
+    </Component>
+
+    <Component
+      :is="props.asFooter"
+      v-if="slots.footer"
+      :class="['uk-card-footer', clsFooter]"
+    >
+      <slot name="footer" />
+    </Component>
+  </Component>
 </template>

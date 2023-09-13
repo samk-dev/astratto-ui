@@ -1,23 +1,31 @@
 <script setup lang="ts">
+import { computed } from '#imports'
+import type { PropType } from '#imports'
 defineOptions({
   name: 'AuContainer'
 })
 
-interface PropsAuContainer {
-  tag?: string
-  size?: 'xsmall' | 'small' | 'large' | 'xlarge' | 'expand'
-}
-const props = withDefaults(defineProps<PropsAuContainer>(), {
-  tag: 'div',
-  size: undefined
+const props = defineProps({
+  tag: {
+    type: String,
+    default: 'div'
+  },
+  size: {
+    type: String as PropType<
+      'default' | 'xsmall' | 'small' | 'large' | 'xlarge' | 'expand'
+    >,
+    default: null
+  }
+})
+
+const elCls = computed(() => {
+  const elSize = props.size ? `uk-container-${props.size}` : ''
+  return `${elSize}`
 })
 </script>
 
 <template>
-  <component
-    :is="props.tag"
-    :class="['uk-container', props.size ? `uk-container-${props.size}` : '']"
-  >
+  <component :is="props.tag" :class="['uk-container', elCls]">
     <slot />
   </component>
 </template>

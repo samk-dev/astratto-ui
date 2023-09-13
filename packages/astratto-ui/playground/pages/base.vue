@@ -261,7 +261,7 @@ Lorem ipsum &lt;strong&gt;dolor&lt;/strong&gt; sit amet, consectetur adipiscing 
 
           <figure>
             <img
-              src="images/pexels-sonny-vermeer-17445970.jpg"
+              src="/images/pexels-sonny-vermeer-17445970.jpg"
               width="1800"
               height="1200"
               alt=""
@@ -335,7 +335,7 @@ Lorem ipsum &lt;strong&gt;dolor&lt;/strong&gt; sit amet, consectetur adipiscing 
           <div class="uk-grid-small uk-child-width-1-4" uk-grid>
             <figure>
               <img
-                src="images/pexels-nada-ghannam-11233594.jpg"
+                src="/images/pexels-nada-ghannam-11233594.jpg"
                 width="1800"
                 height="1200"
                 alt=""
@@ -360,7 +360,7 @@ Lorem ipsum &lt;strong&gt;dolor&lt;/strong&gt; sit amet, consectetur adipiscing 
             </figure>
             <figure>
               <video
-                src="images/20eed91a8424d62daf540b51499289b8.mp4"
+                src="/images/20eed91a8424d62daf540b51499289b8.mp4"
                 width="1920"
                 height="1080"
               ></video>

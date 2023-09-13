@@ -1,73 +1,58 @@
 <script setup lang="ts">
 import { computed } from '#imports'
+import type { PropType } from '#imports'
 
 defineOptions({
   name: 'AuGrid'
 })
 
-interface PropsAuGrid {
-  /**
-   * @description grid html tag
-   * @default div
-   */
-  tag?: string
-  /**
-   * @description space between grid cells
-   * @default undefined
-   */
-  gap?: 'small' | 'medium' | 'large' | 'collapse'
-  /**
-   * @description match the height of the direct child of each cell
-   * @default false
-   */
-  matchHeight?: boolean
-  /**
-   * @description if grid cells have different heights, a layout free of gaps can be created
-   * @default false
-   */
-  masonry?: boolean
-  /**
-   * @description move single columns of a grid at different speeds while scrolling
-   * @default false
-   */
-  parallax?: number
-  /**
-   * @description separate grid cells with lines
-   * @default false
-   */
-  divider?: boolean
-}
-
-const props = withDefaults(defineProps<PropsAuGrid>(), {
-  tag: 'div',
-  gap: undefined,
-  matchHeight: false,
-  masonry: false,
-  parallax: undefined,
-  divider: false
+const props = defineProps({
+  as: {
+    type: String,
+    default: 'div'
+  },
+  gap: {
+    type: String as PropType<
+      'default' | 'small' | 'medium' | 'large' | 'collapse'
+    >,
+    default: null
+  },
+  matchHeight: {
+    type: Boolean,
+    default: false
+  },
+  masonry: {
+    type: Boolean,
+    default: false
+  },
+  parallax: {
+    type: Number,
+    default: null
+  },
+  divider: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const elCls = computed(() => {
-  return {
-    elGap: props.gap ? `uk-grid-${props.gap}` : '',
-    elMatchHeight: props.matchHeight ? 'uk-grid-match' : '',
-    elDivider: props.divider ? 'uk-grid-divider' : ''
-  }
+  const elGap = props.gap ? `uk-grid-${props.gap}` : ''
+  const elMatchHeight = props.matchHeight ? 'uk-grid-match' : ''
+  const elDivider = props.divider ? 'uk-grid-divider' : ''
+
+  return `${elGap} ${elMatchHeight} ${elDivider}`
 })
 
 const elAttrs = computed(() => {
   const attrsMassonry = `masonry: ${props.masonry}`
   const attrsParallax = props.parallax ? `;parallax: ${props.parallax}` : ''
+
   return `${attrsMassonry}${attrsParallax}`
 })
 </script>
 
 <template>
-  <component
-    :is="props.tag"
-    :data-uk-grid="elAttrs"
-    :class="['uk-grid', elCls.elGap, elCls.elDivider, elCls.elMatchHeight]"
-  >
+  <component :is="props.as" :uk-grid="elAttrs" :class="['uk-grid', elCls]">
     <slot />
   </component>
 </template>

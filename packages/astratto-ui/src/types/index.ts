@@ -8,6 +8,8 @@ export type UiKitTheme =
   | 'warning'
   | 'danger'
 
+export type AuBaseTheme = 'muted' | 'primary' | 'secondary'
+
 export type UiKitThemeStates =
   | 'default'
   | 'primary'

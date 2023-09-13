@@ -120,6 +120,16 @@ export default defineNuxtModule<AuModuleOptions>({
 
     await addComponentsDir({
       pathPrefix: false,
+      path: resolver.resolve('runtime/components', 'data'),
+      prefix: `${options.prefix}`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
+
+    await addComponentsDir({
+      pathPrefix: false,
       path: resolver.resolve('runtime/components', 'form-elements'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',

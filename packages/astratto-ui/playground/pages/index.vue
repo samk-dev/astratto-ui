@@ -3,188 +3,171 @@
 <template>
   <AuSection>
     <AuContainer>
-      <Backgrounds />
-
-      <div uk-grid>
-        <button class="uk-button uk-button-text">Just a text button</button>
-        <button class="uk-button uk-button-link">Just a link button</button>
-        <div><AuButton label="Default Button" /></div>
-
-        <div><AuButton label="Primary Button" theme="primary" /></div>
-
-        <div><AuButton label="Secondary Button" theme="secondary" /></div>
-
-        <div><AuButton label="Warning Button" theme="warning" /></div>
-
-        <div><AuButton label="Danger Button" theme="danger" /></div>
-
-        <div><AuButton label="Success Button" theme="success" /></div>
-
-        <div><AuButton label="Icon Leading Button" icon-leading="plus" /></div>
-
+      <AuGrid class="uk-child-width-1-3@s uk-text-center" gap="small" masonry>
         <div>
-          <AuButton label="Icon Trainling Button" icon-trailing="plus" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <p>
+              Content Slot, amet consectetur adipisicing elit. Mollitia
+              veritatis ea enim ullam fugit impedit quam quibusdam ducimus
+              tempore eos ut, deserunt perferendis. Praesentium nisi quaerat
+              molestiae? Quasi, sequi molestiae.
+            </p>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton
-            label="Icons Button"
-            icon-leading="plus"
-            icon-trailing="minus"
-          />
-        </div>
-
-        <div><AuButton label="Icon Leading Button" :loading="true" /></div>
-        <div><AuButton label="Icon Leading Button" :disabled="true" /></div>
-      </div>
-
-      <div uk-grid>
-        <div><AuButton label="Default Button" size="small" /></div>
-
-        <div>
-          <AuButton label="Primary Button" theme="primary" size="small" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <template #header> Header Slot </template>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton label="Secondary Button" theme="secondary" size="small" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <template #footer> <p>Footer Slot</p> </template>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton label="Warning Button" theme="warning" size="small" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <p>
+              "Clear thinking at the wrong moment can stifle creativity." -
+              <small>Karl Lagerfeld</small>
+            </p>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton label="Danger Button" theme="danger" size="small" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <template #header>
+              <h3>
+                Clear thinking at the wrong moment can stifle inspiration. -
+                <small>Karl Lagerfeld</small>
+              </h3>
+            </template>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton label="Success Button" theme="success" size="small" />
+          <AuCard style="border: 1px solid var(--au-global-color-muted)">
+            <AuIcon name="quote-right" :ratio="2" />
+            <p class="uk-margin-small-top">
+              Clear thinking at the wrong moment can stifle imagination.
+            </p>
+
+            <template #footer> <p>Karl Lagerfeld</p> </template>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton
-            label="Icon Leading Button"
-            icon-leading="plus"
+          <AuCard
+            theme="primary"
+            badge-text="Badge"
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Primary Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
+        </div>
+
+        <div>
+          <AuCard
+            badge-text="Badge"
+            theme="secondary"
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Secondary Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
+        </div>
+
+        <div>
+          <AuCard
+            badge-text="Badge"
+            theme="muted"
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Muted Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
+        </div>
+
+        <div>
+          <AuCard
+            badge-text="Badge"
+            theme="default"
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Default Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
+        </div>
+
+        <div>
+          <AuCard
+            badge-text="Badge"
+            theme="default"
             size="small"
-          />
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Default Small Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
         </div>
 
         <div>
-          <AuButton
-            label="Icon Trainling Button"
-            icon-trailing="plus"
-            size="small"
-          />
-        </div>
-
-        <div>
-          <AuButton
-            label="Icons Button"
-            icon-leading="plus"
-            icon-trailing="minus"
-            size="small"
-          />
-        </div>
-
-        <div>
-          <AuButton label="Icon Leading Button" :loading="true" size="small" />
-        </div>
-        <div>
-          <AuButton label="Icon Leading Button" :disabled="true" size="small" />
-        </div>
-      </div>
-
-      <div uk-grid>
-        <div><AuButton label="Default Button" size="large" /></div>
-
-        <div>
-          <AuButton label="Primary Button" theme="primary" size="large" />
-        </div>
-
-        <div>
-          <AuButton label="Secondary Button" theme="secondary" size="large" />
-        </div>
-
-        <div>
-          <AuButton label="Warning Button" theme="warning" size="large" />
-        </div>
-
-        <div>
-          <AuButton label="Danger Button" theme="danger" size="large" />
-        </div>
-
-        <div>
-          <AuButton label="Success Button" theme="success" size="large" />
-        </div>
-
-        <div>
-          <AuButton
-            label="Icon Leading Button"
-            icon-leading="plus"
+          <AuCard
+            badge-text="Badge"
+            theme="default"
             size="large"
-          />
+            style="border: 1px solid var(--au-global-color-muted)"
+          >
+            <template #header> <h3>Default Large Kitchen Sink</h3> </template>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              soluta officiis accusantium iure architecto? Ipsum nesciunt,
+              soluta, a nemo quaerat, iste deserunt labore est animi itaque iure
+              nostrum laudantium architecto.
+            </p>
+
+            <template #footer> <p>Footer</p> </template>
+          </AuCard>
         </div>
-
-        <div>
-          <AuButton
-            label="Icon Trainling Button"
-            icon-trailing="plus"
-            size="large"
-          />
-        </div>
-
-        <div>
-          <AuButton
-            label="Icons Button"
-            icon-leading="plus"
-            icon-trailing="minus"
-            size="large"
-          />
-        </div>
-
-        <div>
-          <AuButton label="Icon Leading Button" :loading="true" size="large" />
-        </div>
-        <div>
-          <AuButton label="Icon Leading Button" :disabled="true" size="large" />
-        </div>
-      </div>
-
-      <!-- <AuAlert title="New software update available" />
-
-      <AuAlert
-        title="New products in our gift shop"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum."
-        theme="primary"
-        icon="gift"
-      />
-
-      <AuAlert
-        title="Attention needed"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam quo totam eius aperiam dolorum."
-        theme="warning"
-        icon="alert-triangle"
-      />
-
-      <AuAlert
-        title="There were 2 errors with your submission"
-        theme="danger"
-        icon="ban"
-      >
-        <ul>
-          <li>Your password must be at least 8 characters</li>
-          <li>
-            Your password must include at least one pro wrestling finishing move
-          </li>
-        </ul>
-      </AuAlert>
-
-      <AuAlert
-        title="Order completed"
-        message="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam."
-        theme="success"
-        icon="check"
-      /> -->
+      </AuGrid>
     </AuContainer>
   </AuSection>
 </template>

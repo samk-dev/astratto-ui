@@ -1,18 +1,17 @@
 :root {
   // breakpoints
-  --au-global-breakpoint-small: 640px;
-  --au-global-breakpoint-medium: 960px;
-  --au-global-breakpoint-large: 1200px;
-  --au-global-breakpoint-xlarge: 1600px;
-  // typography
-  --au-global-font-primary: Helvetica, Arial, Roboto, sans-serif;
-  --au-global-font-default: Helvetica, Arial, Roboto, sans-serif;
-  --au-global-font-size: 16px;
-  --au-global-font-weight: normal;
-  --au-global-font-line-height: 1.4;
+  --au-breakpoint-small: #{$breakpoint-small};
+  --au-breakpoint-medium: #{$breakpoint-medium};
+  --au-breakpoint-large: #{$breakpoint-large};
+  --au-breakpoint-xlarge: #{$breakpoint-xlarge};
+
+  --au-breakpoint-xsmall-max: #{$breakpoint-xsmall-max};
+  --au-breakpoint-small-max: #{$breakpoint-small-max};
+  --au-breakpoint-medium-max: #{$breakpoint-medium-max};
+  --au-breakpoint-large-max: #{$breakpoint-large-max};
   // color
-  --au-global-color-light: #f8fafc;
-  --au-global-color-dark: #374151;
+  --au-global-color-light: #fff;
+  --au-global-color-dark: #666;
 
   --au-global-color-muted-50: #f9fafb;
   --au-global-color-muted: #e5e7eb;
@@ -20,23 +19,23 @@
   --au-global-color-muted-150: #9ca3af;
   --au-global-color-muted-200: #6b7280;
 
-  --au-global-color-primary-50: #dbeafe;
-  --au-global-color-primary: #004bd6;
+  --au-global-color-primary-50: #c7d2fe;
+  --au-global-color-primary: #4338ca;
   --au-global-color-primary-100: #012d9c;
   --au-global-color-primary-150: #001d6c;
   --au-global-color-primary-200: #1e40af;
+
+  --au-global-color-info-50: #dcfce7;
+  --au-global-color-info: #22c55e;
+  --au-global-color-info-100: #15803d;
+  --au-global-color-info-150: #166534;
+  --au-global-color-info-200: #052e16;
 
   --au-global-color-secondary-50: #1f2937;
   --au-global-color-secondary: #1f2937;
   --au-global-color-secondary-100: #334155;
   --au-global-color-secondary-150: #1c1917;
   --au-global-color-secondary-200: #030712;
-
-  --au-global-color-success-50: #dcfce7;
-  --au-global-color-success: #22c55e;
-  --au-global-color-success-100: #15803d;
-  --au-global-color-success-150: #166534;
-  --au-global-color-success-200: #052e16;
 
   --au-global-color-warning-50: #ffedd5;
   --au-global-color-warning: #ff943d;
@@ -50,28 +49,98 @@
   --au-global-color-danger-150: #991b1b;
   --au-global-color-danger-200: #981010;
 
-  --au-global-background: var(--au-global-color-light);
-  --au-global-color-bg: var(--au-global-color-light);
+  --au-global-color-success-50: #dcfce7;
+  --au-global-color-success: #22c55e;
+  --au-global-color-success-100: #15803d;
+  --au-global-color-success-150: #166534;
+  --au-global-color-success-200: #052e16;
 
-  --au-global-color-text: #111827;
-  --au-global-color-text-emphasis: #111;
-  --au-global-color-heading: var(--au-global-color-text);
+  --au-global-text-color-default: #111827;
+  --au-global-text-color-emphasis: #000;
+  --au-global-text-color-default-inverse: #f3f3f3;
+  --au-global-text-color-emphasis-inverse: #fff;
 
+  --au-color-text-default: #111827;
+  --au-color-text-emphasis: #000;
   --au-global-color-text-light: #f3f3f3;
   --au-global-color-text-light-emphasis: #fff;
+
+  --au-global-link-color: var(--au-global-color-primary);
+  --au-global-link-hover-color: var(--au-global-color-primary-100);
+  --au-global-link-active-color: var(--au-global-color-primary-150);
+  --au-global-link-focused-color: var(--au-global-color-primary-200);
+
+  --au-global-color-heading: var(--au-global-color-text);
   --au-global-color-heading-light: var(--au-global-color-text-light);
+  // typography
+  --au-global-font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --au-global-font-default: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --au-global-font-code: Consolas, monaco, monospace;
+
+  --au-global-font-size: 1rem;
+  --au-global-font-weight: normal;
+  --au-global-font-line-height: 1.4;
+
+  --au-global-h1-font-size: 2.625rem;
+  --au-global-h1-line-height: 1.2;
+  --au-global-h1-font-size-m: calc(var(--au-global-h1-font-size) * 0.85);
+  --au-global-h1-line-height-m: var(--au-global-h1-line-height);
+
+  --au-global-h2-font-size: 2rem;
+  --au-global-h2-line-height: 1.3;
+  --au-global-h2-font-size-m: calc(var(--au-global-h2-font-size) * 0.85);
+  --au-global-h2-line-height-m: var(--au-global-h2-line-height);
+
+  --au-global-h3-font-size: 1.5rem;
+  --au-global-h3-line-height: 1.4;
+
+  --au-global-h4-font-size: 1.25rem;
+  --au-global-h4-line-height: 1.4;
+
+  --au-global-h5-font-size: 1rem;
+  --au-global-h5-line-height: 1.4;
+
+  --au-global-h5-font-size: 0.875rem;
+  --au-global-h5-line-height: 1.4;
+
+  --au-global-small-font-size: 0.875rem;
+  --au-globa-large-font-size: 1.5rem;
   // spacing
   --au-global-spacing-default: 1.25rem;
   --au-global-spacing-xsmall: 0.5rem;
-  --au-global-spacing-small: 0.75rem;
-  --au-global-spacing-medium: 1.75rem;
-  --au-global-spacing-large: 2rem;
-  --au-global-spacing-xlarge: 2.25rem;
-  --au-global-spacing-2xlarge: 2.5rem;
+  --au-global-spacing-small: 0.625rem;
+  --au-global-spacing-medium: 2.5rem;
+  --au-global-spacing-large: 4.375rem;
+  --au-global-spacing-xlarge: 8.75rem;
+
+  --au-global-gutter-default: 1.875rem;
+  --au-global-gutter-xsmall: 046875rem;
+  --au-global-gutter-small: 0.9375rem;
+  --au-global-gutter-medium: 2.5rem;
+  --au-global-gutter-large: 4.375rem;
+  --au-global-gutter-xlarge: 4.6875rem;
   // radius
   --au-global-border-radius-default: 7px;
   --au-global-border-radius-sm: 4px;
   --au-global-border-radius-md: 10px;
   --au-global-border-radius-lg: 25px;
   --au-global-border-radius-full: 500px;
+  // border
+  --au-global-border-width: 1px;
+  --au-global-border-style: solid;
+  --au-global-border-color: var(--au-global-color-muted);
+  --au-global-border-radius: var(--au-global-border-radius-default);
+  // width
+  --au-global-width: 75rem;
+  --au-global-width-xsmall: 46.875rem;
+  --au-global-width-small: 56.25rem;
+  --au-global-width-large: 87.5rem;
+  --au-global-width-xlarge: 100rem;
+  // animation
+  --au-global-transition-duration: 0.1s;
+  --au-global-transition: ease;
 }

@@ -1,4 +1,395 @@
-$card-default-background: var(--au-global-color-bg);
-$card-default-hover-background: var(--au-global-color-muted-100) !default;
-$card-primary-hover-background: var(--au-glonal-color-primary-100);
-$card-secondary-hover-background: var(--au-global-color-secondary-hover);
+:root {
+  --au-card-position: relative;
+  --au-card-box-sizing: border-box;
+
+  --au-card-header-display: flow-root;
+  --au-card-header-padding: 0.9375rem 1.875rem;
+  --au-card-header-padding-l: 1.25rem 2.5rem;
+
+  --au-card-footer-display: flow-root;
+  --au-card-footer-padding: 0.9375rem 1.875rem;
+  --au-card-footer-padding-l: 1.25rem 2.5rem;
+
+  --au-card-body-padding: var(--au-global-gutter-default)
+    var(--au-global-gutter-default);
+  --au-card-body-padding-l: var(--au-global-gutter-medium)
+    var(--au-global-gutter-medium);
+
+  --au-card-is-last-child-margin: 0;
+
+  --au-card-title-font-size: var(--au-globa-large-font-size);
+  --au-card-title-line-height: 1.4;
+
+  --au-card-badge-position: absolute;
+  --au-card-badge-top: 15px;
+  --au-card-badge-right: 15px;
+  --au-card-badge-zindex: 1;
+  --au-card-badge-height: 22px;
+  --au-card-badge-padding: 0 10px;
+  --au-card-badge-background: var(--au-global-color-primary);
+  --au-card-badge-color: var(--au-global-color-light);
+  --au-card-badge-font-size: var(--au-global-small-font-size);
+  --au-card-badge-display: flex;
+  --au-card-badge-justify-content: center;
+  --au-card-badge-align-item: center;
+  --au-card-badge-line-height: 0;
+  --au-card-badge-first-child-mt: calc(1.5 * 0.95rem);
+
+  --au-card-default-background: var(--au-background-default);
+  --au-card-default-background-hover: var(--au-background-muted-50);
+  --au-card-default-color: var(--au-global-text-color-default);
+  --au-card-default-title-color: var(--au-card-default-color);
+
+  --au-card-muted-background: var(--au-background-muted);
+  --au-card-muted-background-hover: var(--au-background-muted-100);
+  --au-card-muted-color: var(--au-global-color-text-default);
+  --au-card-muted-title-color: var(--au-card-muted-color);
+
+  --au-card-primary-background: var(--au-background-primary);
+  --au-card-primary-background-hover: var(--au-background-primary-100);
+  --au-card-primary-color: var(--au-global-color-text-light);
+  --au-card-primary-title-color: var(--au-card-primary-color);
+
+  --au-card-secondary-background: var(--au-background-secondary);
+  --au-card-secondary-background-hover: var(--au-background-secondary-100);
+  --au-card-secondary-color: var(--au-global-color-text-light);
+  --au-card-secondary-title-color: var(--au-card-secondary-color);
+
+  --au-card-small-body-padding: var(--au-margin) var(--au-margin);
+  --au-card-small-header-padding: 0.8333375rem 0.8333375rem;
+  --au-card-small-footer-padding: 0.8333375rem 0.8333375rem;
+
+  --au-card-large-body-padding: var(--au-global-gutter-large)
+    var(--au-global-gutter-large);
+  --au-card-large-header-padding: 2.1875rem 2.1875rem;
+  --au-card-large-footer-padding: 2.1875rem 2.1875rem;
+}
+
+.uk-card {
+  position: var(--au-card-position);
+  box-sizing: var(--au-card-box-sizing);
+  @if (mixin-exists(hook-card)) {
+    @include hook-card();
+  }
+}
+
+/* Sections
+========================================================================== */
+
+.uk-card-body {
+  display: flow-root;
+  padding: var(--au-card-body-padding);
+  @if (mixin-exists(hook-card-body)) {
+    @include hook-card-body();
+  }
+}
+
+.uk-card-header {
+  display: flow-root;
+  padding: var(--au-card-header-padding);
+  @if (mixin-exists(hook-card-header)) {
+    @include hook-card-header();
+  }
+}
+
+.uk-card-footer {
+  display: flow-root;
+  padding: var(--au-card-footer-padding);
+  @if (mixin-exists(hook-card-footer)) {
+    @include hook-card-footer();
+  }
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+  .uk-card-body {
+    padding: var(--au-card-body-padding-l);
+  }
+
+  .uk-card-header {
+    padding: var(--au-card-header-padding-l) var(--au-card-header-padding-l);
+  }
+
+  .uk-card-footer {
+    padding: var(--au-card-footer-padding-l) var(--au-card-footer-padding-l);
+  }
+}
+
+/*
+* Remove margin from the last-child
+*/
+
+.uk-card-body > :last-child,
+.uk-card-header > :last-child,
+.uk-card-footer > :last-child {
+  margin-bottom: var(--au-card-is-last-child-margin);
+}
+
+/* Media
+========================================================================== */
+
+/*
+* Reserved alignment modifier to style the media element, e.g. with `border-radius`
+* Implemented by the theme
+*/
+
+[class*='uk-card-media'] {
+  @if (mixin-exists(hook-card-media)) {
+    @include hook-card-media();
+  }
+}
+
+.uk-card-media-top,
+.uk-grid-stack > .uk-card-media-left,
+.uk-grid-stack > .uk-card-media-right {
+  @if (mixin-exists(hook-card-media-top)) {
+    @include hook-card-media-top();
+  }
+}
+
+.uk-card-media-bottom {
+  @if (mixin-exists(hook-card-media-bottom)) {
+    @include hook-card-media-bottom();
+  }
+}
+
+:not(.uk-grid-stack) > .uk-card-media-left {
+  @if (mixin-exists(hook-card-media-left)) {
+    @include hook-card-media-left();
+  }
+}
+
+:not(.uk-grid-stack) > .uk-card-media-right {
+  @if (mixin-exists(hook-card-media-right)) {
+    @include hook-card-media-right();
+  }
+}
+
+/* Title
+========================================================================== */
+
+.uk-card-title {
+  font-size: var(--au-card-title-font-size);
+  line-height: var(--au-card-title-line-height);
+  @if (mixin-exists(hook-card-title)) {
+    @include hook-card-title();
+  }
+}
+
+/* Badge
+========================================================================== */
+
+/*
+* 1. Position
+* 2. Size
+* 3. Style
+* 4. Center child vertically
+*/
+
+.uk-card-badge {
+  /* 1 */
+  position: var(--au-card-badge-position);
+  top: var(--au-card-badge-top);
+  right: var(--au-card-badge-right);
+  z-index: var(--au-card-badge-zindex);
+  /* 2 */
+  height: var(--au-card-badge-height);
+  padding: var(--au-card-badge-padding);
+  /* 3 */
+  background: var(--au-card-badge-background);
+  color: var(--au-card-badge-color);
+  font-size: var(--au-card-badge-font-size);
+  /* 4 */
+  display: var(--au-card-badge-display);
+  justify-content: var(--au-card-badge-justify-content);
+  align-items: var(--au-card-badge-align-item);
+  line-height: var(--au-card-badge-line-height);
+  @if (mixin-exists(hook-card-badge)) {
+    @include hook-card-badge();
+  }
+}
+
+/*
+* Remove margin from adjacent element
+*/
+
+.uk-card-badge:first-child + * {
+  margin-top: var(--au-card-badge-first-child-mt);
+}
+
+/* Hover modifier
+========================================================================== */
+
+.uk-card-hover:not(.uk-card-default):not(.uk-card-primary):not(
+    .uk-card-secondary
+  ):hover {
+  background-color: var(--au-card-default-background-hover);
+  @if (mixin-exists(hook-card-hover)) {
+    @include hook-card-hover();
+  }
+}
+
+/* Style modifiers
+========================================================================== */
+
+/*
+* Default
+* Note: Header and Footer are only implemented for the default style
+*/
+
+.uk-card-default {
+  background-color: var(--au-card-default-background);
+  color: var(--au-card-default-color);
+  @if (mixin-exists(hook-card-default)) {
+    @include hook-card-default();
+  }
+}
+
+.uk-card-default .uk-card-title {
+  color: var(--au-card-default-color);
+  @if (mixin-exists(hook-card-default-title)) {
+    @include hook-card-default-title();
+  }
+}
+
+.uk-card-default.uk-card-hover:hover {
+  background-color: var(--au-card-default-background-hover);
+  @if (mixin-exists(hook-card-default-hover)) {
+    @include hook-card-default-hover();
+  }
+}
+
+.uk-card-default .uk-card-header {
+  @if (mixin-exists(hook-card-default-header)) {
+    @include hook-card-default-header();
+  }
+}
+
+.uk-card-default .uk-card-footer {
+  @if (mixin-exists(hook-card-default-footer)) {
+    @include hook-card-default-footer();
+  }
+}
+
+/*
+* Muted
+*/
+
+.uk-card-muted {
+  background-color: var(--au-card-muted-background);
+  color: var(--au-card-muted-color);
+  @if (mixin-exists(hook-card-muted)) {
+    @include hook-card-muted();
+  }
+}
+
+.uk-card-muted .uk-card-title {
+  color: var(--au-card-muted-color);
+  @if (mixin-exists(hook-card-muted-title)) {
+    @include hook-card-muted-title();
+  }
+}
+
+.uk-card-muted.uk-card-hover:hover {
+  background-color: var(--au-card-muted-background-hover);
+  @if (mixin-exists(hook-card-muted-hover)) {
+    @include hook-card-muted-hover();
+  }
+}
+
+/*
+* Primary
+*/
+
+.uk-card-primary {
+  background-color: var(--au-card-primary-background);
+  color: var(--au-card-primary-color);
+  @if (mixin-exists(hook-card-primary)) {
+    @include hook-card-primary();
+  }
+}
+
+.uk-card-primary .uk-card-title {
+  color: var(--au-card-primary-color);
+  @if (mixin-exists(hook-card-primary-title)) {
+    @include hook-card-primary-title();
+  }
+}
+
+.uk-card-primary.uk-card-hover:hover {
+  background-color: var(--au-card-primary-background-hover);
+  @if (mixin-exists(hook-card-primary-hover)) {
+    @include hook-card-primary-hover();
+  }
+}
+
+/*
+* Secondary
+*/
+
+.uk-card-secondary {
+  background-color: var(--au-card-secondary-background);
+  color: var(--au-card-secondary-color);
+  @if (mixin-exists(hook-card-secondary)) {
+    @include hook-card-secondary();
+  }
+}
+
+.uk-card-secondary .uk-card-title {
+  color: var(--au-card-secondary-color);
+  @if (mixin-exists(hook-card-secondary-title)) {
+    @include hook-card-secondary-title();
+  }
+}
+
+.uk-card-secondary.uk-card-hover:hover {
+  background-color: var(--au-card-secondary-background-hover);
+  @if (mixin-exists(hook-card-secondary-hover)) {
+    @include hook-card-secondary-hover();
+  }
+}
+
+/* Size modifier
+========================================================================== */
+
+/*
+* Small
+*/
+
+.uk-card-small.uk-card-body,
+.uk-card-small .uk-card-body {
+  padding: var(--au-card-small-body-padding);
+}
+
+.uk-card-small .uk-card-header {
+  padding: var(--au-card-small-header-padding);
+}
+.uk-card-small .uk-card-footer {
+  padding: var(--au-card-small-footer-padding);
+}
+
+/*
+* Large
+*/
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+  .uk-card-large.uk-card-body,
+  .uk-card-large .uk-card-body {
+    padding: var(--au-card-large-body-padding);
+  }
+
+  .uk-card-large .uk-card-header {
+    padding: var(--au-card-large-header-padding);
+  }
+  .uk-card-large .uk-card-footer {
+    padding: var(--au-card-large-footer-padding);
+  }
+}
+
+// Hooks
+// ========================================================================
+
+@if (mixin-exists(hook-card-misc)) {
+  @include hook-card-misc();
+}

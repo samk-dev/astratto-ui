@@ -1,0 +1,40 @@
+:root {
+  --au-panel-display: flow-root;
+  --au-panel-position: relative;
+  --au-panel-box-sizing: border-box;
+
+  --au-panel-last-child-margin-bottom: 0;
+
+  --au-panel-scrollable-height: 170px;
+  --au-panel-scrollable-padding: 10px;
+  --au-panel-scrollable-border: var(--au-global-border-width) solid var(--au-global-border-color);
+  --au-panel-scrollable-overflow: auto;
+  --au-panel-scrollable-resize: both;
+}
+
+.uk-panel {
+  display: var(--au-panel-display);
+  position: var(--au-panel-position);
+  box-sizing: var(--au-panel-box-sizing);
+  @if(mixin-exists(hook-panel-scrollable)) {@include hook-panel();}
+}
+
+/*
+* Remove margin from the last-child
+*/
+
+.uk-panel > :last-child { margin-bottom: var(--au-panel-last-child-margin-bottom); }
+
+
+/*
+* Scrollable
+*/
+
+.uk-panel-scrollable {
+  height: var(--au-panel-scrollable-height);
+  padding: var(--au-panel-scrollable-padding);
+  border: var(--au-panel-scrollable-border);
+  overflow: var(--au-panel-scrollable-overflow);
+  resize: var(--au-panel-scrollable-resize);
+  @if(mixin-exists(hook-panel-scrollable)) {@include hook-panel-scrollable();}
+}

@@ -16,6 +16,11 @@ interface AccordionItem {
   [key: string]: any
 }
 
+interface EmittedData {
+  index: number
+  item: AccordionItem
+}
+
 const props = defineProps({
   id: {
     type: String,
@@ -33,10 +38,6 @@ const props = defineProps({
     type: String,
     default: 'ease'
   },
-  offset: {
-    type: Number,
-    default: 0
-  },
   collapsible: {
     type: Boolean,
     default: true
@@ -51,11 +52,11 @@ const props = defineProps({
   },
   iconOpen: {
     type: String,
-    default: 'chevron-down'
+    default: 'plus'
   },
   iconClose: {
     type: String,
-    default: 'chevron-up'
+    default: 'minus'
   },
   clsItem: {
     type: String,
@@ -83,58 +84,56 @@ const props = defineProps({
   }
 })
 
+const elID = computed(() => {
+  const id = useSlugify(props.items[0].title)
+  return props.id || `accordion-${id}`
+})
+
 const emits = defineEmits<{
-  (e: 'itemOpen', value: AccordionItem): void
-  (e: 'beforeshow', event: Event): void
-  (e: 'show', event: Event): void
-  (e: 'shown', event: Event): void
-  (e: 'beforehide', event: Event): void
-  (e: 'hide', event: Event): void
-  (e: 'hidden', event: Event): void
+  show: [data: EmittedData]
+  shown: [data: EmittedData]
+  beforeHide: [data: EmittedData]
+  hide: [data: EmittedData]
+  hidden: [data: EmittedData]
 }>()
 
 const uikitAttrs = computed(() => {
-  return `collapsible: ${props.collapsible}; multiple: ${props.multiple}; offset: ${props.offset}; animation: ${props.animation}; duration: ${props.animationDuration}; transition: ${props.transition}`
+  return `collapsible: ${props.collapsible}; multiple: ${props.multiple}; animation: ${props.animation}; duration: ${props.animationDuration}; transition: ${props.transition}`
 })
 
+const activeIndex = ref<EmittedData>()
+
 // TODO: check why .util is not being found in uikit types
+const uikit = useUIkit()
+// // @ts-ignore
+// uikit?.util.on(`#${elID}`, 'beforeshow', function () {
+//   emits('beforeShow', activeIndex.value as EmittedData)
+// })
 
-if (props.id) {
-  const uikit = useUIkit()
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'beforeshow', (e: Event) => {
-    emits('beforeshow', e)
-  })
-
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'show', (e: Event) => {
-    emits('show', e)
-  })
-
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'shown', (e: Event) => {
-    emits('shown', e)
-  })
-
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'beforehide', (e: Event) => {
-    emits('beforehide', e)
-  })
-
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'hide', (e: Event) => {
-    emits('hide', e)
-  })
-
-  // @ts-ignore
-  uikit?.util.on(`#${props.id}`, 'hidden', (e: Event) => {
-    emits('hidden', e)
-  })
-}
+// @ts-ignore
+uikit?.util.on(`#${elID.value}`, 'show', function () {
+  emits('show', activeIndex.value as EmittedData)
+}) as any
+// @ts-ignore
+uikit?.util.on(`#${elID.value}`, 'shown', function () {
+  emits('shown', activeIndex.value as EmittedData)
+})
+// @ts-ignore
+uikit?.util.on(`#${elID.value}`, 'beforehide', function () {
+  emits('beforeHide', activeIndex.value as EmittedData)
+})
+// @ts-ignore
+uikit?.util.on(`#${elID.value}`, 'hide', function () {
+  emits('hide', activeIndex.value as EmittedData)
+})
+// @ts-ignore
+uikit?.util.on(`#${elID.value}`, 'hidden', function () {
+  emits('hidden', activeIndex.value as EmittedData)
+})
 </script>
 
 <template>
-  <ul :id="props.id" :uk-accordion="uikitAttrs">
+  <ul :id="elID" :uk-accordion="uikitAttrs">
     <template
       v-for="(item, index) in props.items"
       :key="useSlugify(`${item.label}-${index}`)"
@@ -152,7 +151,7 @@ if (props.id) {
             props.clsTitle
           ]"
           href="#"
-          @click.prevent="emits('itemOpen', item)"
+          @click.prevent="activeIndex = { index, item }"
         >
           <span class="uk-flex uk-flex-middle">
             <slot name="icon" :item="item" :index="index">
@@ -171,7 +170,7 @@ if (props.id) {
             </slot>
           </span>
 
-          <slot name="icon-trailing">
+          <slot name="icon-trailing" :item="item" :index="index">
             <AuIcon
               :name="props.iconOpen"
               :class="['uk-accordion-icon-open', props.clsIconOpen]"

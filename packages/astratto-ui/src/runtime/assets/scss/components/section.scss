@@ -1,0 +1,142 @@
+:root {
+  --au-section-display: flow-root;
+  --au-section-box-sizing: border-box;
+
+  --au-section-padding-top: var(--au-global-spacing-medium);
+  --au-section-padding-bottom: var(--au-global-spacing-medium);
+  --au-section-padding-top-m: var(--au-global-spacing-large);
+  --au-section-padding-bottom-m: var(--au-global-spacing-large);
+
+  --au-section-xsmall-padding-top: var(--au-global-spacing-default);
+  --au-section-xsmall-padding-bottom: var(--au-global-spacing-default);
+
+  --au-section-small-padding-top: var(--au-global-spacing-medium);
+  --au-section-small-padding-bottom: var(--au-global-spacing-medium);
+
+  --au-section-large-padding-top: var(--au-global-spacing-large);
+  --au-section-large-padding-bottom: var(--au-global-spacing-large);
+  --au-section-large-padding-top-m: var(--au-global-spacing-xlarge);
+  --au-section-large-padding-bottom-m: var(--au-global-spacing-xlarge);
+
+  --au-section-xlarge-padding-top: var(--au-global-spacing-xlarge);
+  --au-section-xlarge-padding-bottom: var(--au-global-spacing-xlarge);
+  --au-section-xlarge-padding-top-m: calc(
+    var(--au-global-spacing-xlarge) + var(--au-global-spacing-default)
+  );
+  --au-section-xlarge-padding-bottom-m: calc(
+    var(--au-global-spacing-xlarge) + var(--au-global-spacing-default)
+  );
+
+  --au-section-last-child-margin-bottom: 0;
+
+  --au-section-default-background: var(--au-background-default);
+  --au-section-default-color: var(--au-text-color-default);
+
+  --au-section-muted-background: var(--au-background-muted);
+  --au-section-muted-color: var(--au-text-color-default);
+
+  --au-section-primary-background: var(--au-background-primary);
+  --au-section-primary-color: var(--au-global-text-color-default-inverse);
+
+  --au-section-secondary-background: var(--au-background-secondary);
+  --au-section-secondary-color: var(--au-global-text-color-default-inverse);
+}
+
+.uk-section {
+  display: var(--au-section-display);
+  box-sizing: var(--au-section-box-sizing);
+  padding-top: var(--au-section-padding-top);
+  padding-bottom: var(--au-section-padding-bottom);
+  @if (mixin-exists(hook-section)) {
+    @include hook-section();
+  }
+}
+
+@media (min-width: $breakpoint-medium) {
+  .uk-section {
+    padding-top: var(--au-section-padding-top-m);
+    padding-bottom: var(--au-section-padding-bottom-m);
+  }
+}
+
+.uk-section > :last-child {
+  margin-bottom: var(--au-section-last-child-margin-bottom);
+}
+
+.uk-section-xsmall {
+  padding-top: var(--au-section-xsmall-padding-top);
+  padding-bottom: var(--au-section-xsmall-padding-bottom);
+}
+
+.uk-section-small {
+  padding-top: var(--au-section-small-padding-top);
+  padding-bottom: var(--au-section-small-padding-bottom);
+}
+
+.uk-section-large {
+  padding-top: var(--au-section-large-padding-top);
+  padding-bottom: var(--au-section-large-padding-bottom);
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: $breakpoint-medium) {
+  .uk-section-large {
+    padding-top: var(--au-section-large-padding-top-m);
+    padding-bottom: var(--au-section-large-padding-bottom-m);
+  }
+}
+
+.uk-section-xlarge {
+  padding-top: var(--au-section-xlarge-padding-top);
+  padding-bottom: var(--au-section-xlarge-padding-bottom);
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: $breakpoint-medium) {
+  .uk-section-xlarge {
+    padding-top: var(--au-section-xlarge-padding-top-m);
+    padding-bottom: var(--au-section-xlarge-padding-bottom-m);
+  }
+}
+
+.uk-section-default {
+  background: var(--au-section-default-background);
+  color: var(--au-section-default-color);
+  @if (mixin-exists(hook-section-default)) {
+    @include hook-section-default();
+  }
+}
+
+.uk-section-muted {
+  background: var(--au-section-muted-background);
+  color: var(--au-section-muted-color);
+  @if (mixin-exists(hook-section-muted)) {
+    @include hook-section-muted();
+  }
+}
+
+.uk-section-primary {
+  background: var(--au-section-primary-background);
+  color: var(--au-section-primary-color);
+  @if (mixin-exists(hook-section-primary)) {
+    @include hook-section-primary();
+  }
+}
+
+.uk-section-secondary {
+  background: var(--au-section-secondary-background);
+  color: var(--au-section-secondary-color);
+  @if (mixin-exists(hook-section-secondary)) {
+    @include hook-section-secondary();
+  }
+}
+
+.uk-section-overlap {
+  @if (mixin-exists(hook-section-overlap)) {
+    @include hook-section-overlap();
+  }
+}
+
+@if (mixin-exists(hook-section-misc)) {
+  @include hook-section-misc();
+}

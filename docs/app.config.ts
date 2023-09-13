@@ -6,21 +6,21 @@ export default defineAppConfig({
       {
         label: 'Documentation',
         href: '/docs',
-        iconLeading: 'book-open',
+        iconLeading: 'file-text',
         iconTrailing: '',
         target: '_self'
       },
       {
         label: 'Theme Builder',
         href: '/',
-        iconLeading: 'settings-sliders',
+        iconLeading: 'settings',
         iconTrailing: '',
         target: '_self'
       },
       {
         label: 'Changelog',
         href: 'https://github.com/samk-dev/astratto-ui/CHANGELOG.md',
-        iconLeading: 'file-text',
+        iconLeading: 'git-branch',
         iconTrailing: '',
         target: '_blank'
       }
@@ -29,7 +29,9 @@ export default defineAppConfig({
       service: 'github',
       url: 'https://github.com/samk-dev/astratto-ui',
       urlDocs: 'https://github.com/samk-dev/astratto-ui/docs'
-    }
+    },
+    uikitUrl: 'https://getuikit.com',
+    nuxtUrl: 'https://nuxt.com'
   },
   pages: {
     index: {

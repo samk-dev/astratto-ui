@@ -24,7 +24,7 @@ const props = defineProps({
 <template>
   <component
     :is="props.tag"
-    :data-uk-icon="`icon: ${props.name}; ratio: ${props.ratio}`"
+    :uk-icon="`icon: ${props.name}; ratio: ${props.ratio}`"
     aria-hidden
   />
 </template>

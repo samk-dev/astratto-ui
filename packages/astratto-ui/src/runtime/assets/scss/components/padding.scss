@@ -1,0 +1,68 @@
+:root {
+  --au-padding: var(--au-global-gutter-default);
+  --au-padding-xsmall: var(--au-global-spacing-xsmall);
+  --au-padding-small: var(--au-global-gutter-small);
+  --au-padding-medium: var(--au-global-gutter-medium);
+  --au-padding-large: var(--au-global-gutter-large);
+  --au-padding-xlarge: var(--au-global-gutter-xlarge);
+}
+
+.uk-padding {
+  padding: var(--au-global-gutter-default);
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+  .uk-padding {
+    padding: var(--au-global-gutter-medium);
+  }
+}
+
+.uk-padding-xsmall {
+  padding: var(--au-global-spacing-xsmall);
+}
+
+.uk-padding-small {
+  padding: var(--au-global-gutter-small);
+}
+
+.uk-padding-large {
+  padding: var(--au-global-gutter-large);
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+  .uk-padding-large {
+    padding: var(--au-global-gutter-large);
+  }
+}
+
+.uk-padding-remove {
+  padding: 0 !important;
+}
+.uk-padding-remove-top {
+  padding-top: 0 !important;
+}
+.uk-padding-remove-bottom {
+  padding-bottom: 0 !important;
+}
+.uk-padding-remove-left {
+  padding-left: 0 !important;
+}
+.uk-padding-remove-right {
+  padding-right: 0 !important;
+}
+
+.uk-padding-remove-vertical {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.uk-padding-remove-horizontal {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@if (mixin-exists(hook-padding-misc)) {
+  @include hook-padding-misc();
+}

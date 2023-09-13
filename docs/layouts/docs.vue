@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { AuContainer } from '#components'
-
-const { app } = useAppConfig()
 const { navigation, page, surround, globals } = useContent()
 
 console.log('navigation:', navigation.value)
@@ -20,16 +17,14 @@ console.log('globals:', globals.value)
 
     <AppHeader />
 
-    <AuContainer size="xlarge" class="uk-flex">
+    <AuContainer size="xlarge" class="uk-flex uk-position-relative">
       <aside
-        class="uk-width-auto uk-visible@m uk-padding-small uk-padding-remove-horizontal uk-position-relative app-docs-sidebar-left"
+        class="uk-visible@m uk-overflow-auto uk-padding-small app-sidebar-nav"
       >
-        <div class="app-docs-sidebar-left-content">
-          <DocsNavigation :nav-tree="navigation[0].children" />
-        </div>
+        <DocsNavigation />
       </aside>
 
-      <main class="uk-width-expand uk-padding-small uk-docs-article uk-article">
+      <main class="uk-width-expand uk-article uk-docs-article">
         <DocsHero
           :title="page.title"
           :dir="page._dir"
@@ -40,11 +35,9 @@ console.log('globals:', globals.value)
         <slot />
       </main>
 
-      <aside
-        class="uk-width-auto uk-visible@m uk-padding-small uk-padding-remove-right"
-      >
+      <aside class="uk-width-auto uk-visible@m">
         <h4>On this page</h4>
-        <DocsNavigationTree :items="normalizeToc(page.body?.toc?.links)" />
+        <DocsToc :items="normalizeToc(page.body?.toc?.links)" />
       </aside>
     </AuContainer>
   </div>
@@ -52,17 +45,29 @@ console.log('globals:', globals.value)
 
 <style lang="scss">
 .uk-docs-article {
+  overflow-x: auto;
+  padding: 20px;
+  @media (min-width: 640px) {
+    padding: 20px 40px;
+  }
+  h1,
+  h2 {
+    font-weight: bold;
+  }
   h2 a,
   h3 a {
     color: var(--au-global-color-text) !important;
   }
+  /* table {
+    @extend .uk-table;
+  } */
 }
-.app-docs-sidebar {
-  &-left {
-    &-content {
-      position: sticky;
-      top: var(--au-global-spacing-medium);
-    }
-  }
+.app-sidebar-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  min-width: 12.5rem;
+  max-height: 100vh;
+  // border-right: 1px solid var(--au-global-color-muted);
 }
 </style>

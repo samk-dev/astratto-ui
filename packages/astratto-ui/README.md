@@ -7,11 +7,7 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt.
-
-It's the successor of my old `private library with support for nuxt2`. I usually use it in clients work.
-
-Nuxt 3 came out so the need for an upgrade is necessary, so why not a re-write and open it for everyone?
+Yes, yet another UI library - Design System. Built on top of UIkit Framework, && it's exclusive to Nuxt.
 
 <!-- - [✨ &nbsp;Release Notes](/CHANGELOG.md) -->
 
@@ -20,9 +16,14 @@ Nuxt 3 came out so the need for an upgrade is necessary, so why not a re-write a
 
 ## Features
 
-- Built on top of UIkit 3
+- Built on top of UIkit Framework
 - Very light weight && elegant
-- Modular, use what only what's needed
+- Modular
+- Plays nice with Css utility frameworks like Tailwindcss
+
+## Limitations
+
+- Can't prefix scss/less builds. If used a long side another instance of UIkit there will be style clashes here and there. But it can be used with another prefixed instance of UIkit. [Avoiding conflicts Docs](https://getuikit.com/docs/avoiding-conflicts)
 
 ## Quick Setup
 
@@ -59,32 +60,31 @@ That's it! You can now use Astratto UI in your Nuxt app ✨
 ```bash
 # Install dependencies
 pnpm install
-
-# Generate type stubs
-pnpm run dev:prepare
-
-# Develop with the playground
-pnpm run dev
-
-# Build the playground
-pnpm run dev:build
-
-# Run ESLint
-pnpm run lint
-
-# Run Vitest
-pnpm run test
-pnpm run test:watch
-
-# Release new version
-pnpm run release
 ```
+
+### Available Commands
+
+| Command                  | Action                                           |
+| :----------------------- | :----------------------------------------------- |
+| `pnpm install`           | Installs dependencies                            |
+| `pnpm dev:ui`            | Starts local dev server at `localhost:4666`      |
+| `dev:prepare:ui`         | Generate stubs                                   |
+| `pnpm dev:docs`          | Starts Docs local dev server at `localhost:4667` |
+| `pnpm playground:build`   | build the playground                             |
+| `pnpm playground:preview` | Preview the playground                           |
 
 ### Credits
 
-icons some are built inhouse and the other 90% from Untitled UI Icons Pack: <https://www.untitledui.com/icons>
+This project is build on top of the shoulders of giants
 
-images and videos:
+- YooThemes - UIkit
+- Nuxt Labs - Nuxt
+- Sébastien Chopin - Nuxt Color Mode
+- Anthony Fu - VueUse
+
+**`astratto ui is not endorsed or certified by Nuxt, UIkit or any person mentioned 👆`**
+
+Assets:
 
 - Photo by Nada Ghannam: <https://www.pexels.com/photo/old-in-damascus-11233594/>
 - Photo by Martijn Adegeest: <https://www.pexels.com/photo/moulin-pouge-shop-facade-587840/>

@@ -1,11 +1,5 @@
-<script setup lang="ts">
-definePageMeta({
-  layout: 'docs'
-})
-</script>
-
 <template>
-  <div>
+  <NuxtLayout name="docs">
     <ContentDoc />
-  </div>
+  </NuxtLayout>
 </template>
