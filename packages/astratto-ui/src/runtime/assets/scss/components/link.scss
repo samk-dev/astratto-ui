@@ -1,0 +1,105 @@
+:root {
+  --au-link-muted-color: var(--au-global-color-muted-200);
+  --au-link-muted-hover-color: var(--au-global-color-muted-150);
+  --au-link-text-color: inherit;
+  --au-link-text-hover-color: var(--au-global-color-primary);
+  --au-link-heading-color: inherit;
+  --au-link-heading-hover-color: var(--au-global-color-primary);
+  --au-link-heading-text-decoration: none;
+  --au-link-toggle-color: inherit;
+  --au-link-reset-color: inherit !important;
+  --au-link-toggle-text-decoration: none !important;
+  --au-link-reset-text-decoration: none !important;
+}
+
+a.uk-link-muted,
+.uk-link-muted a,
+.uk-link-toggle .uk-link-muted {
+  color: var(--au-link-muted-color);
+  @if (mixin-exists(hook-link-muted)) {
+    @include hook-link-muted();
+  }
+}
+
+a.uk-link-muted:hover,
+.uk-link-muted a:hover,
+.uk-link-toggle:hover .uk-link-muted {
+  color: var(--au-link-muted-hover-color);
+  @if (mixin-exists(hook-link-muted-hover)) {
+    @include hook-link-muted-hover();
+  }
+}
+
+/* Text
+ ========================================================================== */
+
+a.uk-link-text,
+.uk-link-text a,
+.uk-link-toggle .uk-link-text {
+  color: var(--au-link-text-color);
+  @if (mixin-exists(hook-link-text)) {
+    @include hook-link-text();
+  }
+}
+
+a.uk-link-text:hover,
+.uk-link-text a:hover,
+.uk-link-toggle:hover .uk-link-text {
+  color: var(--au-link-text-hover-color);
+  @if (mixin-exists(hook-link-text-hover)) {
+    @include hook-link-text-hover();
+  }
+}
+
+/* Heading
+ ========================================================================== */
+
+a.uk-link-heading,
+.uk-link-heading a,
+.uk-link-toggle .uk-link-heading {
+  color: var(--au-link-heading-color);
+  @if (mixin-exists(hook-link-heading)) {
+    @include hook-link-heading();
+  }
+}
+
+a.uk-link-heading:hover,
+.uk-link-heading a:hover,
+.uk-link-toggle:hover .uk-link-heading {
+  color: var(--au-link-heading-hover-color);
+  text-decoration: var(--au-link-heading-text-decoration);
+  @if (mixin-exists(hook-link-heading-hover)) {
+    @include hook-link-heading-hover();
+  }
+}
+
+/* Reset
+ ========================================================================== */
+
+/*
+ * `!important` needed to override inverse component
+ */
+
+a.uk-link-reset,
+.uk-link-reset a {
+  color: var(--au-link-reset-color);
+  text-decoration: var(--au-link-reset-text-decoration);
+  @if (mixin-exists(hook-link-reset)) {
+    @include hook-link-reset();
+  }
+}
+
+/* Toggle
+ ========================================================================== */
+
+.uk-link-toggle {
+  color: var(--au-link-toggle-color);
+  text-decoration: var(--au-link-toggle-text-decoration);
+}
+
+// Hooks
+// ========================================================================
+
+@if (mixin-exists(hook-link-misc)) {
+  @include hook-link-misc();
+}
