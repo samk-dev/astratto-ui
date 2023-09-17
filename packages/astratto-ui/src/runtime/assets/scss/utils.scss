@@ -1,11 +1,11 @@
 @mixin generate-color-classes($type, $color, $variants) {
   @each $variant in $variants {
-    $class-name: if($variant == 0, #{$color}, "#{#{$color}-#{$variant}}");
+    $class-name: if($variant == 0, #{$color}, '#{#{$color}-#{$variant}}');
 
     .uk-#{$type}-#{$class-name} {
-      @if ($type == "background") {
+      @if ($type == 'background') {
         background-color: var(--au-global-color-#{$class-name});
-      } @else if ($type == "text") {
+      } @else if ($type == 'text') {
         color: var(--au-global-color-#{$class-name});
       }
     }
@@ -14,10 +14,10 @@
 
 // Generate background classes
 @each $color, $variants in $color-variants {
-  @include generate-color-classes("background", $color, $variants);
+  @include generate-color-classes('background', $color, $variants);
 }
 
 // Generate text classes
-@each $color, $variants in $color-variants {
-  @include generate-color-classes("text", $color, $variants);
-}
+// @each $color, $variants in $color-variants {
+//   @include generate-color-classes("text", $color, $variants);
+// }

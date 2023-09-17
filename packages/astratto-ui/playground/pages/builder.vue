@@ -13,7 +13,7 @@ definePageMeta({
         libero excepturi, modi, illum enim perspiciatis amet cumque facere
         molestias!
 
-        <AuHeading tag="h1" size="medium">
+        <AuHeading as="h1" size="medium">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit
         </AuHeading>
       </AuContainer>

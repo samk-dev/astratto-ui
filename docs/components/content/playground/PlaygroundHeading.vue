@@ -47,7 +47,7 @@ const sizes = ['small', 'medium', 'large', 'xlarge', '2xlarge']
         </p>
       </div>
 
-      <div style="text-align: right">
+      <div class="uk-text-right">
         <AuHeading as="h3" line> <span>Heading with line</span> </AuHeading>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
@@ -57,7 +57,7 @@ const sizes = ['small', 'medium', 'large', 'xlarge', '2xlarge']
         </p>
       </div>
 
-      <div style="text-align: center">
+      <div class="uk-text-center">
         <AuHeading as="h3" line> <span>Heading with line</span> </AuHeading>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto

@@ -140,6 +140,16 @@
   --au-global-width-small: 56.25rem;
   --au-global-width-large: 87.5rem;
   --au-global-width-xlarge: 100rem;
+  // shadows
+  --au-global-small-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --au-global-medium-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  --au-global-large-box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
+  --au-global-xlarge-box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16);
+  --au-global-box-shadow-duration: 0.1s;
+  --au-global-box-shadow-height: 30px;
+  --au-global-box-shadow-border-radius: 100%;
+  --au-global-box-shadow-background: #444;
+  --au-global-box-shadow-blur: 20px;
   // animation
   --au-global-transition-duration: 0.1s;
   --au-global-transition: ease;

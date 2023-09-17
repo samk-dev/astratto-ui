@@ -7,24 +7,25 @@
             >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
             soluta eum voluptate dolorum veniam, quis totam, molestiae tempore
             iusto libero ut et? Repudiandae architecto enim nulla, optio at id
-            ab.</AuPanel
-          >
+            ab.
+          </AuPanel>
+        </div>
+
+        <div>
+          <AuPanel
+            >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
+            soluta eum voluptate dolorum veniam, quis totam, molestiae tempore
+            iusto libero ut et? Repudiandae architecto enim nulla, optio at id
+            ab.
+          </AuPanel>
         </div>
         <div>
           <AuPanel
             >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
             soluta eum voluptate dolorum veniam, quis totam, molestiae tempore
             iusto libero ut et? Repudiandae architecto enim nulla, optio at id
-            ab.</AuPanel
-          >
-        </div>
-        <div>
-          <AuPanel
-            >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
-            soluta eum voluptate dolorum veniam, quis totam, molestiae tempore
-            iusto libero ut et? Repudiandae architecto enim nulla, optio at id
-            ab.</AuPanel
-          >
+            ab.
+          </AuPanel>
         </div>
       </AuGrid>
 
@@ -42,6 +43,7 @@
             dolores fuga incidunt. Est, in?
           </AuPanel>
         </div>
+
         <div>
           <AuPanel scrollable
             >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
@@ -53,6 +55,7 @@
             architecto ex!
           </AuPanel>
         </div>
+
         <div>
           <AuPanel scrollable
             >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
