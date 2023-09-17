@@ -1,0 +1,219 @@
+:root {
+  --au-heading-small-font-size: 38px; // 38px 0.73
+  --au-heading-small-line-height: 0.73;
+
+  --au-heading-medium-font-size: 40px; // 40px 0.714
+  --au-heading-medium-line-height: 0.714;
+
+  --au-heading-large-font-size: 50px; // 50px 0.78
+  --au-heading-large-line-height: 0.78;
+
+  --au-heading-xlarge-font-size: 4rem; // 4rem / 64px
+  --au-heading-xlarge-line-height: 0.8;
+
+  --au-heading-2xlarge-font-size: 6rem; // 6rem / 96px
+  --au-heading-2xlarge-line-height: 0.9;
+
+  --au-heading-small-font-size-m: 3.25rem; // 3.25rem / 52px
+  --au-heading-medium-font-size-m: 3.5rem; // 3.5rem / 56px
+  --au-heading-large-font-size-m: 4rem; // 4rem / 64px
+  --au-heading-xlarge-font-size-m: 4rem; // 6rem / 96px
+  --au-heading-2xlarge-font-size-m: 4rem; // 8rem / 128px
+
+  --au-heading-medium-font-size-l: 4rem; // 64px
+  --au-heading-large-font-size-l: 6rem; // 96px
+  --au-heading-xlarge-font-size-l: 8rem; // 128px
+  --au-heading-2xlarge-font-size-l: 11rem; // 176px
+
+  --au-heading-divider-padding-bottom: 10px;
+  --au-heading-divider-border-width: 1px;
+  --au-heading-divider-border-style: solid;
+
+  --au-heading-bullet-before-content: '';
+  --au-heading-bullet-before-display: inline-block;
+  --au-heading-bullet-before-position: relative;
+  --au-heading-bullet-before-top: 0;
+  --au-heading-bullet-before-vertical-align: middle;
+  --au-heading-bullet-before-height: $heading-bullet-height;
+  --au-heading-bullet-before-margin-right: $heading-bullet-margin-right;
+  --au-heading-bullet-before-border-left: $heading-bullet-border-width solid
+    $heading-bullet-border;
+}
+
+/* ========================================================================
+   Component: Heading
+ ========================================================================== */
+
+.uk-heading-small {
+  font-size: var(--au-heading-small-font-size);
+  line-height: var(--au-heading-small-line-height);
+  @if (mixin-exists(hook-heading-small)) {
+    @include hook-heading-small();
+  }
+}
+
+.uk-heading-medium {
+  font-size: var(--au-heading-medium-font-size);
+  line-height: var(--au-heading-medium-line-height);
+  @if (mixin-exists(hook-heading-medium)) {
+    @include hook-heading-medium();
+  }
+}
+
+.uk-heading-large {
+  font-size: var(--au-heading-large-font-size);
+  line-height: var(--au-heading-large-line-height);
+  @if (mixin-exists(hook-heading-large)) {
+    @include hook-heading-large();
+  }
+}
+
+.uk-heading-xlarge {
+  font-size: var(--au-heading-xlarge-font-size);
+  line-height: var(--au-heading-xlarge-line-height);
+  @if (mixin-exists(hook-heading-xlarge)) {
+    @include hook-heading-xlarge();
+  }
+}
+
+.uk-heading-2xlarge {
+  font-size: var(--au-heading-2xlarge-font-size);
+  line-height: var(--au-heading-2xlarge-line-height);
+  @if (mixin-exists(hook-heading-2xlarge)) {
+    @include hook-heading-2xlarge();
+  }
+}
+
+/* Tablet Landscape and bigger */
+@media (min-width: $breakpoint-medium) {
+  .uk-heading-small {
+    font-size: var(--au-heading-small-font-size-m);
+  }
+  .uk-heading-medium {
+    font-size: var(--au-heading-medium-font-size-m);
+  }
+  .uk-heading-large {
+    font-size: var(--au-heading-large-font-size-m);
+  }
+  .uk-heading-xlarge {
+    font-size: var(--au-heading-xlarge-font-size-m);
+  }
+  .uk-heading-2xlarge {
+    font-size: var(--au-heading-2xlarge-font-size-m);
+  }
+}
+
+/* Laptop and bigger */
+@media (min-width: $breakpoint-large) {
+  .uk-heading-medium {
+    font-size: var(--au-heading-medium-font-size-l);
+  }
+  .uk-heading-large {
+    font-size: var(--au-heading-large-font-size-l);
+  }
+  .uk-heading-xlarge {
+    font-size: var(--au-heading-xlarge-font-size-l);
+  }
+  .uk-heading-2xlarge {
+    font-size: var(--au-heading-2xlarge-font-size-l);
+  }
+}
+
+/* Divider
+ ========================================================================== */
+
+.uk-heading-divider {
+  padding-bottom: var(--au-heading-divider-padding-bottom);
+  border-bottom: var(--au-heading-divider-border-width)
+    var(--au-heading-divider-border-style) var(--au-heading-divider-border);
+  @if (mixin-exists(hook-heading-divider)) {
+    @include hook-heading-divider();
+  }
+}
+//
+// /* Bullet
+//  ========================================================================== */
+//
+// .uk-heading-bullet {
+//   position: relative;
+// }
+//
+// /*
+//  * 1. Using `inline-block` to make it work with text alignment
+//  * 2. Center vertically
+//  * 3. Style
+//  */
+//
+// .uk-heading-bullet::before {
+//   content: '';
+//   /* 1 */
+//   display: inline-block;
+//   /* 2 */
+//   position: relative;
+//   top: $heading-bullet-top;
+//   vertical-align: middle;
+//   /* 3 */
+//   height: $heading-bullet-height;
+//   margin-right: $heading-bullet-margin-right;
+//   border-left: $heading-bullet-border-width solid $heading-bullet-border;
+//   @if (mixin-exists(hook-heading-bullet)) {
+//     @include hook-heading-bullet();
+//   }
+// }
+//
+// /* Line
+//  ========================================================================== */
+//
+// /*
+//  * Clip the child element
+//  */
+//
+// .uk-heading-line {
+//   overflow: hidden;
+// }
+//
+// /*
+//  * Extra markup is needed to make it work with text align
+//  */
+//
+// .uk-heading-line > * {
+//   display: inline-block;
+//   position: relative;
+// }
+//
+// /*
+//  * 1. Center vertically
+//  * 2. Make the element as large as possible. It's clipped by the container.
+//  * 3. Style
+//  */
+//
+// .uk-heading-line > ::before,
+// .uk-heading-line > ::after {
+//   content: '';
+//   /* 1 */
+//   position: absolute;
+//   top: unquote('calc(#{$heading-line-top} - (#{$heading-line-height} / 2))');
+//   /* 2 */
+//   width: $heading-line-width;
+//   /* 3 */
+//   border-bottom: $heading-line-border-width solid $heading-line-border;
+//   @if (mixin-exists(hook-heading-line)) {
+//     @include hook-heading-line();
+//   }
+// }
+//
+// .uk-heading-line > ::before {
+//   right: 100%;
+//   margin-right: $heading-line-margin-horizontal;
+// }
+// .uk-heading-line > ::after {
+//   left: 100%;
+//   margin-left: $heading-line-margin-horizontal;
+// }
+//
+// // Hooks
+// // ========================================================================
+//
+// @if (mixin-exists(hook-heading-misc)) {
+//   @include hook-heading-misc();
+// }
