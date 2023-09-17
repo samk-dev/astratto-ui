@@ -1,43 +1,62 @@
 :root {
-  --au-heading-small-font-size: 38px; // 38px 0.73
-  --au-heading-small-line-height: 0.73;
+  --au-heading-small-font-size: 2.375rem;
+  --au-heading-small-line-height: 1.2;
 
-  --au-heading-medium-font-size: 40px; // 40px 0.714
-  --au-heading-medium-line-height: 0.714;
+  --au-heading-medium-font-size: 2.5rem;
+  --au-heading-medium-line-height: 1.1;
 
-  --au-heading-large-font-size: 50px; // 50px 0.78
-  --au-heading-large-line-height: 0.78;
+  --au-heading-large-font-size: 3.125rem;
+  --au-heading-large-line-height: 1.1;
 
-  --au-heading-xlarge-font-size: 4rem; // 4rem / 64px
-  --au-heading-xlarge-line-height: 0.8;
+  --au-heading-xlarge-font-size: 4rem;
+  --au-heading-xlarge-line-height: 1;
 
-  --au-heading-2xlarge-font-size: 6rem; // 6rem / 96px
-  --au-heading-2xlarge-line-height: 0.9;
+  --au-heading-2xlarge-font-size: 6rem;
+  --au-heading-2xlarge-line-height: 1;
 
-  --au-heading-small-font-size-m: 3.25rem; // 3.25rem / 52px
-  --au-heading-medium-font-size-m: 3.5rem; // 3.5rem / 56px
-  --au-heading-large-font-size-m: 4rem; // 4rem / 64px
-  --au-heading-xlarge-font-size-m: 4rem; // 6rem / 96px
-  --au-heading-2xlarge-font-size-m: 4rem; // 8rem / 128px
+  --au-heading-small-font-size-m: 3.25rem;
+  --au-heading-medium-font-size-m: 3.5rem;
+  --au-heading-large-font-size-m: 4rem;
+  --au-heading-xlarge-font-size-m: 4rem;
+  --au-heading-2xlarge-font-size-m: 4rem;
 
-  --au-heading-medium-font-size-l: 4rem; // 64px
-  --au-heading-large-font-size-l: 6rem; // 96px
-  --au-heading-xlarge-font-size-l: 8rem; // 128px
-  --au-heading-2xlarge-font-size-l: 11rem; // 176px
+  --au-heading-medium-font-size-l: 4rem;
+  --au-heading-large-font-size-l: 6rem;
+  --au-heading-xlarge-font-size-l: 8rem;
+  --au-heading-2xlarge-font-size-l: 11rem;
 
-  --au-heading-divider-padding-bottom: 10px;
-  --au-heading-divider-border-width: 1px;
-  --au-heading-divider-border-style: solid;
+  --au-heading-divider-padding-bottom: calc(5px + 0.1em);
+  --au-heading-divider-border: calc(0.2px + 0.05em) solid
+    var(--au-global-color-muted);
+
+  --au-heading-bullet-position: relative;
 
   --au-heading-bullet-before-content: '';
   --au-heading-bullet-before-display: inline-block;
   --au-heading-bullet-before-position: relative;
-  --au-heading-bullet-before-top: 0;
+  --au-heading-bullet-before-top: calc(-0.1 * 1em);
   --au-heading-bullet-before-vertical-align: middle;
-  --au-heading-bullet-before-height: $heading-bullet-height;
-  --au-heading-bullet-before-margin-right: $heading-bullet-margin-right;
-  --au-heading-bullet-before-border-left: $heading-bullet-border-width solid
-    $heading-bullet-border;
+  --au-heading-bullet-before-height: calc(4px + 0.7em);
+  --au-heading-bullet-before-margin-right: 0;
+  --au-heading-bullet-before-border-left: calc(5px + 0.1em) solid
+    var(--au-global-color-muted);
+
+  --au-heading-line-overflow: hidden;
+  --au-heading-line-children-display: inline-block;
+  --au-heading-line-children-position: relative;
+
+  --au-heading-line-before-after-content: '';
+  --au-heading-line-before-after-position: absolute;
+  --au-heading-line-before-after-top: calc(50% - (calc(0.2px + 0.05em) / 2));
+  --au-heading-line-before-after-width: 2000px;
+  --au-heading-line-before-after-border-bottom: calc(0.2px + 0.05em) solid
+    var(--au-global-color-muted);
+
+  --au-heading-line-before-right: 100%;
+  --au-heading-line-before-margin-right: calc(5px + 0.3em);
+
+  --au-heading-line-after-left: 100%;
+  --au-heading-line-after-margin-right: calc(5px + 0.3em);
 }
 
 /* ========================================================================
@@ -124,96 +143,95 @@
 
 .uk-heading-divider {
   padding-bottom: var(--au-heading-divider-padding-bottom);
-  border-bottom: var(--au-heading-divider-border-width)
-    var(--au-heading-divider-border-style) var(--au-heading-divider-border);
+  border-bottom: var(--au-heading-divider-border);
   @if (mixin-exists(hook-heading-divider)) {
     @include hook-heading-divider();
   }
 }
-//
-// /* Bullet
-//  ========================================================================== */
-//
-// .uk-heading-bullet {
-//   position: relative;
-// }
-//
-// /*
-//  * 1. Using `inline-block` to make it work with text alignment
-//  * 2. Center vertically
-//  * 3. Style
-//  */
-//
-// .uk-heading-bullet::before {
-//   content: '';
-//   /* 1 */
-//   display: inline-block;
-//   /* 2 */
-//   position: relative;
-//   top: $heading-bullet-top;
-//   vertical-align: middle;
-//   /* 3 */
-//   height: $heading-bullet-height;
-//   margin-right: $heading-bullet-margin-right;
-//   border-left: $heading-bullet-border-width solid $heading-bullet-border;
-//   @if (mixin-exists(hook-heading-bullet)) {
-//     @include hook-heading-bullet();
-//   }
-// }
-//
-// /* Line
-//  ========================================================================== */
-//
-// /*
-//  * Clip the child element
-//  */
-//
-// .uk-heading-line {
-//   overflow: hidden;
-// }
-//
-// /*
-//  * Extra markup is needed to make it work with text align
-//  */
-//
-// .uk-heading-line > * {
-//   display: inline-block;
-//   position: relative;
-// }
-//
-// /*
-//  * 1. Center vertically
-//  * 2. Make the element as large as possible. It's clipped by the container.
-//  * 3. Style
-//  */
-//
-// .uk-heading-line > ::before,
-// .uk-heading-line > ::after {
-//   content: '';
-//   /* 1 */
-//   position: absolute;
-//   top: unquote('calc(#{$heading-line-top} - (#{$heading-line-height} / 2))');
-//   /* 2 */
-//   width: $heading-line-width;
-//   /* 3 */
-//   border-bottom: $heading-line-border-width solid $heading-line-border;
-//   @if (mixin-exists(hook-heading-line)) {
-//     @include hook-heading-line();
-//   }
-// }
-//
-// .uk-heading-line > ::before {
-//   right: 100%;
-//   margin-right: $heading-line-margin-horizontal;
-// }
-// .uk-heading-line > ::after {
-//   left: 100%;
-//   margin-left: $heading-line-margin-horizontal;
-// }
-//
-// // Hooks
-// // ========================================================================
-//
-// @if (mixin-exists(hook-heading-misc)) {
-//   @include hook-heading-misc();
-// }
+
+/* Bullet
+ ========================================================================== */
+
+.uk-heading-bullet {
+  position: var(--au-heading-bullet-position);
+}
+
+/*
+ * 1. Using `inline-block` to make it work with text alignment
+ * 2. Center vertically
+ * 3. Style
+ */
+
+.uk-heading-bullet::before {
+  content: var(--au-heading-bullet-before-content);
+  /* 1 */
+  display: var(--au-heading-bullet-before-display);
+  /* 2 */
+  position: var(--au-heading-bullet-before-position);
+  top: var(--au-heading-bullet-before-top);
+  vertical-align: middle;
+  /* 3 */
+  height: var(--au-heading-bullet-before-height);
+  margin-right: var(--au-heading-bullet-before-margin-right);
+  border-left: var(--au-heading-bullet-before-border-left);
+  @if (mixin-exists(hook-heading-bullet)) {
+    @include hook-heading-bullet();
+  }
+}
+
+/* Line
+ ========================================================================== */
+
+/*
+ * Clip the child element
+ */
+
+.uk-heading-line {
+  overflow: var(--au-heading-line-overflow);
+}
+
+/*
+ * Extra markup is needed to make it work with text align
+ */
+
+.uk-heading-line > * {
+  display: var(--au-heading-line-children-display);
+  position: var(--au-heading-line-children-position);
+}
+
+/*
+ * 1. Center vertically
+ * 2. Make the element as large as possible. It's clipped by the container.
+ * 3. Style
+ */
+
+.uk-heading-line > ::before,
+.uk-heading-line > ::after {
+  content: var(--au-heading-line-before-after-content);
+  /* 1 */
+  position: var(--au-heading-line-before-after-position);
+  top: var(--au-heading-line-before-after-top);
+  /* 2 */
+  width: var(--au-heading-line-before-after-width);
+  /* 3 */
+  border-bottom: var(--au-heading-line-before-after-border-bottom);
+  @if (mixin-exists(hook-heading-line)) {
+    @include hook-heading-line();
+  }
+}
+
+.uk-heading-line > ::before {
+  right: var(--au-heading-line-before-right);
+  margin-right: var(--au-heading-line-before-margin-right);
+}
+.uk-heading-line > ::after {
+  left: 100%;
+  margin-left: var(--au-heading-line-before-margin-right);
+}
+
+// Hooks
+// ========================================================================
+
+@if (mixin-exists(hook-heading-misc)) {
+  @include hook-heading-misc();
+}

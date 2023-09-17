@@ -16,6 +16,7 @@
     "ui-library"
   ],
   "scripts": {
+    "prepare": "husky install",
     "dev": "turbo run dev",
     "dev:docs": "turbo run dev --filter=docs",
     "dev:ui": "turbo run dev --filter=@samk-dev/astratto-ui",

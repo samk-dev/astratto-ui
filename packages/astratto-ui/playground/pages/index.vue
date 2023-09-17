@@ -10,14 +10,14 @@
           <ul class="uk-list">
             <li><NuxtLink to="#">Link</NuxtLink></li>
             <li>
-              <NuxtLink to="#" class="uk-link-muted">Link Muted</NuxtLink>>
+              <NuxtLink to="#" class="uk-link-muted">Link Muted</NuxtLink>
             </li>
-            <li><NuxtLink to="#" class="uk-link-text">Link Text</NuxtLink>></li>
+            <li><NuxtLink to="#" class="uk-link-text">Link Text</NuxtLink></li>
             <li>
-              <NuxtLink to="#" class="uk-link-heading">Link Heading</NuxtLink>>
+              <NuxtLink to="#" class="uk-link-heading">Link Heading</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="#" class="uk-link-reset">Link Reset</NuxtLink>>
+              <NuxtLink to="#" class="uk-link-reset">Link Reset</NuxtLink>
             </li>
           </ul>
         </AuCard>

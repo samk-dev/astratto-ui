@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import type { PropType } from '#imports'
+import { computed } from '#imports'
 
 defineOptions({
   name: 'AuHeading'
 })
 
 const props = defineProps({
-  tag: {
+  as: {
     type: String as PropType<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>,
     required: true
-  },
-  text: {
-    type: String,
-    default: ''
   },
   size: {
     type: String as PropType<
@@ -27,21 +24,24 @@ const props = defineProps({
   bullet: {
     type: Boolean,
     default: false
+  },
+  line: {
+    type: Boolean,
+    default: false
   }
+})
+
+const elCls = computed(() => {
+  const elDivider = props.divider ? 'uk-heading-divider' : ''
+  const elBullet = props.bullet ? 'uk-heading-bullet' : ''
+  const elLine = props.line ? 'uk-heading-line' : ''
+
+  return `uk-heading-${props.size} ${elDivider} ${elBullet} ${elLine}`
 })
 </script>
 
 <template>
-  <component
-    :is="props.tag"
-    :class="[
-      `uk-heading-${props.size}`,
-      props.divider ? 'uk-heading-divider' : '',
-      props.bullet ? 'uk-heading-bullet' : ''
-    ]"
-  >
-    <slot>
-      {{ props.text }}
-    </slot>
+  <component :is="props.as" :class="[elCls]">
+    <slot />
   </component>
 </template>
