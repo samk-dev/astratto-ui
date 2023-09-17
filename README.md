@@ -9,10 +9,6 @@
 
 Yes, yet another UI library. Built on top of UIkit 3, it's exclusive to Nuxt.
 
-It's the successor of my old `private library with support for nuxt2`. I usually use it in clients work.
-
-Nuxt 3 came out so the need for an upgrade is necessary, so why not a re-write and open it for everyone?
-
 <!-- - [✨ &nbsp;Release Notes](/CHANGELOG.md) -->
 
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/astratto-ui?file=playground%2Fapp.vue) -->
@@ -51,37 +47,16 @@ That's it! You can now use Astratto UI in your Nuxt app ✨
 
 ## Development
 
-Clone the repository and initialize submodules
+### Available Commands
 
-```bash
-git clone --recursive https://github.com/samk-dev/astratto-ui
-```
-
-then
-
-```bash
-# Install dependencies
-pnpm install
-
-# Generate type stubs
-pnpm run dev:prepare
-
-# Develop with the playground
-pnpm run dev
-
-# Build the playground
-pnpm run dev:build
-
-# Run ESLint
-pnpm run lint
-
-# Run Vitest
-pnpm run test
-pnpm run test:watch
-
-# Release new version
-pnpm run release
-```
+| Command                | Action                                      |
+| :--------------------- | :------------------------------------------ |
+| `pnpm prepare`         | Husky Install                               |
+| `pnpm install`         | Installs dependencies                       |
+| `pnpm dev`             | Starts local dev server at `localhost:4666` |
+| `pnpm run dev:prepare` | Generate stubs                              |
+| `pnpm run lint`        | Run eslint                                  |
+| `pnpm run format`      | Run prettier                                |
 
 <!-- Badges -->
 

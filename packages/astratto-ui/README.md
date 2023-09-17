@@ -64,14 +64,13 @@ pnpm install
 
 ### Available Commands
 
-| Command                  | Action                                           |
-| :----------------------- | :----------------------------------------------- |
-| `pnpm install`           | Installs dependencies                            |
-| `pnpm dev:ui`            | Starts local dev server at `localhost:4666`      |
-| `dev:prepare:ui`         | Generate stubs                                   |
-| `pnpm dev:docs`          | Starts Docs local dev server at `localhost:4667` |
-| `pnpm playground:build`   | build the playground                             |
-| `pnpm playground:preview` | Preview the playground                           |
+| Command                   | Action                                      |
+| :------------------------ | :------------------------------------------ |
+| `pnpm install`            | Installs dependencies                       |
+| `pnpm dev`                | Starts local dev server at `localhost:4666` |
+| `dev:prepare`             | Generate stubs                              |
+| `pnpm playground:build`   | build the playground                        |
+| `pnpm playground:preview` | Preview the playground                      |
 
 ### Credits
 
