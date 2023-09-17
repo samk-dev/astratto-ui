@@ -108,9 +108,11 @@ export default defineNuxtModule<AuModuleOptions>({
       config.optimizeDeps.include.push('uikit')
     })
 
+    const componentsPath = 'runtime/components'
+
     await addComponentsDir({
       pathPrefix: false,
-      path: resolver.resolve('runtime/components', 'base'),
+      path: resolver.resolve(componentsPath, 'content'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',
       ignore: ['**/examples/*.vue'],
@@ -120,7 +122,7 @@ export default defineNuxtModule<AuModuleOptions>({
 
     await addComponentsDir({
       pathPrefix: false,
-      path: resolver.resolve('runtime/components', 'data'),
+      path: resolver.resolve(componentsPath, 'base'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',
       ignore: ['**/examples/*.vue'],
@@ -130,7 +132,7 @@ export default defineNuxtModule<AuModuleOptions>({
 
     await addComponentsDir({
       pathPrefix: false,
-      path: resolver.resolve('runtime/components', 'form-elements'),
+      path: resolver.resolve(componentsPath, 'data'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',
       ignore: ['**/examples/*.vue'],
@@ -140,7 +142,7 @@ export default defineNuxtModule<AuModuleOptions>({
 
     await addComponentsDir({
       pathPrefix: false,
-      path: resolver.resolve('runtime/components', 'layout'),
+      path: resolver.resolve(componentsPath, 'form-elements'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',
       ignore: ['**/examples/*.vue'],
@@ -150,7 +152,27 @@ export default defineNuxtModule<AuModuleOptions>({
 
     await addComponentsDir({
       pathPrefix: false,
-      path: resolver.resolve('runtime/components', 'overlays'),
+      path: resolver.resolve(componentsPath, 'layout'),
+      prefix: `${options.prefix}`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
+
+    await addComponentsDir({
+      pathPrefix: false,
+      path: resolver.resolve(componentsPath, 'navigation'),
+      prefix: `${options.prefix}`,
+      pattern: '**/*.vue',
+      ignore: ['**/examples/*.vue'],
+      transpile: true,
+      global: false
+    })
+
+    await addComponentsDir({
+      pathPrefix: false,
+      path: resolver.resolve(componentsPath, 'overlays'),
       prefix: `${options.prefix}`,
       pattern: '**/*.vue',
       ignore: ['**/examples/*.vue'],

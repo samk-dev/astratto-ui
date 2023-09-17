@@ -49,14 +49,16 @@ That's it! You can now use Astratto UI in your Nuxt app ✨
 
 ### Available Commands
 
-| Command                | Action                                      |
-| :--------------------- | :------------------------------------------ |
-| `pnpm prepare`         | Husky Install                               |
-| `pnpm install`         | Installs dependencies                       |
-| `pnpm dev`             | Starts local dev server at `localhost:4666` |
-| `pnpm run dev:prepare` | Generate stubs                              |
-| `pnpm run lint`        | Run eslint                                  |
-| `pnpm run format`      | Run prettier                                |
+| Command                | Action                                                   |
+| :--------------------- | :------------------------------------------------------- |
+| `pnpm prepare`         | Husky Install                                            |
+| `pnpm install`         | Installs dependencies                                    |
+| `pnpm dev`             | Playground @ `localhost:4666` && Docs @ `loadlhost:4667` |
+| `pnpm dev:ui`          | Playground @ `localhost:4666`                            |
+| `pnpm dev:docs`        | Docs @ `loadlhost:4667`                                  |
+| `pnpm run dev:prepare` | Generate stubs                                           |
+| `pnpm run lint`        | Run eslint                                               |
+| `pnpm run format`      | Run prettier                                             |
 
 <!-- Badges -->
 

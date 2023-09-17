@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { UiKitThemeButton, UiKitSizeButton } from '../../../types'
-import AuIcon from './AuIcon.vue'
+import AuIcon from '../content/AuIcon.vue'
 import { computed } from '#imports'
 import type { PropType } from '#imports'
 

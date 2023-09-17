@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { UiKitThemeStates } from '../../../types'
-import AuIcon from './AuIcon.vue'
+import AuIcon from '../content/AuIcon.vue'
 import type { PropType } from '#imports'
 import { computed } from '#imports'
 
