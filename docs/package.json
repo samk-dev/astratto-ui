@@ -11,9 +11,9 @@
     "@nuxt/content": "^2.8.2",
     "@samk-dev/eslint-config": "^1.0.5",
     "@samk-dev/prettier-config": "^1.0.3",
-    "@types/node": "^18.15.12",
-    "nuxt": "^3.7.2",
-    "sass": "^1.66.1",
+    "@types/node": "^20.6.2",
+    "nuxt": "^3.7.3",
+    "sass": "^1.67.0",
     "sass-loader": "^13.3.2"
   }
 }
