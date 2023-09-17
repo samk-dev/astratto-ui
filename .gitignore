@@ -9,6 +9,9 @@ node_modules
 .tmp
 .cache
 
+# Turborepo
+.turbo
+
 # VSCode
 .vscode/*
 !.vscode/settings.json
@@ -23,6 +26,7 @@ node_modules
 
 # Nova
 .nova
+**/**/.nova
 
 # Neovim
 .neoconf.json

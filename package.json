@@ -16,10 +16,9 @@
     "ui-library"
   ],
   "scripts": {
-    "dev:docs": "pnpm --filter docs dev",
-    "dev:ui": "pnpm --filter @samk-dev/astratto-ui dev",
-    "dev:prepare:ui": "pnpm --filter @samk-dev/astratto-ui dev:prepare",
-    "build:ui": "pnpm --filter @samk-dev/astratto-ui prepack",
+    "dev": "turbo run dev",
+    "dev:docs": "turbo run dev --filter=docs",
+    "dev:ui": "turbo run dev --filter=@samk-dev/astratto-ui",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,vue,json}\""
   },
@@ -27,7 +26,8 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1"
+    "lint-staged": "^14.0.1",
+    "turbo": "^1.10.14"
   },
   "lint-staged": {
     "packages/**/*.{.js,ts,vue,tsx}": [
